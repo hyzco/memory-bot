@@ -2,7 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
 
-const baseDownloadUrl = 'https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/file/';
+const baseDownloadUrl = 'https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/';
 const directories = ['./']; // directories to scan
 const outputFile = 'libs.json';
 
