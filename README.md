@@ -1,2 +1,2 @@
-# memory-bot
+# memory-bot-dll resources
 
