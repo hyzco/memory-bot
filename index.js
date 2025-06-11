@@ -1,9 +1,10 @@
+// generateLibsJson.js
 const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
 
 const baseDownloadUrl = 'https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/';
-const directories = ['./']; // directories to scan
+const dirs = ['lib', 'plugins']; // directories to scan
 const outputFile = 'libs.json';
 
 function sha256Base64(filePath) {
@@ -11,34 +12,35 @@ function sha256Base64(filePath) {
   return crypto.createHash('sha256').update(data).digest('base64');
 }
 
-function scanAndGenerate() {
-  const result = {};
-
-  for (const dir of directories) {
-    if (!fs.existsSync(dir)) continue;
-    const files = fs.readdirSync(dir).filter(f => fs.statSync(path.join(dir, f)).isFile());
-
-    for (const file of files) {
-      const fullPath = path.join(dir, file);
-      const sha256 = sha256Base64(fullPath);
-      const relPath = path.join(dir, file).replace(/\\/g, '/'); // normalize slashes for Windows
-
-      result[file] = {
-        path: relPath,
-        sha256: sha256,
-        download: baseDownloadUrl + encodeURIComponent(file)
-      };
-
-      // Example: add "auto": true for jars in plugins, you can customize this
-      if (dir === 'plugins' && file.endsWith('.jar')) {
-        result[file].auto = true;
-      }
-    }
-  }
-
-  return result;
+function scanDir(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(name => fs.statSync(path.join(dir, name)).isFile())
+    .map(name => ({ dir, name }));
 }
 
-const libsJson = scanAndGenerate();
-fs.writeFileSync(outputFile, JSON.stringify(libsJson, null, 2));
-console.log(`Generated ${outputFile} with SHA-256 base64 hashes.`);
+function generateJson() {
+  const entries = {};
+
+  for (const { dir, name } of dirs.flatMap(scanDir)) {
+    const filePath = path.join(dir, name);
+    const relPath = path.posix.join(dir, name);
+    const sha256 = sha256Base64(filePath);
+
+    const entry = {
+      path: relPath,
+      sha256,
+      download: baseDownloadUrl + encodeURIComponent(name),
+    };
+
+    // optional: auto = true for .jar files (as in your example)
+    if (name.endsWith('.jar')) entry.auto = true;
+
+    entries[name] = entry;
+  }
+
+  fs.writeFileSync(outputFile, JSON.stringify(entries, null, 2) + '\n');
+  console.log(`✅ ${outputFile} generated with ${Object.keys(entries).length} entries.`);
+}
+
+generateJson();
