@@ -1,0 +1,64 @@
+{
+  "KekkaPlayer.dll": {
+    "path": "lib/KekkaPlayer.dll",
+    "sha256": "Nvu0HobbM8gFwr+Zxmo4N5RKlYZOsUJ6YfiLLHYBuDs=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/KekkaPlayer.dll"
+  },
+  "DarkBoatAPI.dll": {
+    "path": "lib/DarkBoatAPI.dll",
+    "sha256": "NzUHhV2yNN6M/xhtXJw8VwrsPYfgzPvYqzkF5QZzlyE=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/DarkBoatAPI.dll"
+  },
+  "DarkHookAPI.dll": {
+    "path": "lib/DarkHookAPI.dll",
+    "sha256": "+H+y1ptDgVr4xUjfTE76oBOhZYhCWEyo7H9DP/B2f00=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/DarkHookAPI.dll"
+  },
+  "DarkMemAPI.dll": {
+    "path": "lib/DarkMemAPI.dll",
+    "sha256": "OEgS1OejlUX004sAIsjTmkzw0ymXMIYhNJnesKcHXBw=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/DarkMemAPI.dll"
+  },
+  "DarkInputAPI.dll": {
+    "path": "lib/DarkInputAPI.dll",
+    "sha256": "Suh9CiXQc7yhIv/TFex6zyokbNgJDi67DJNHECT68wY=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/DarkInputAPI.dll"
+  },
+  "verifier.jar": {
+    "path": "lib/verifier.jar",
+    "sha256": "PA2ZGZKf/5RUiILFoCsW26deKl3+5I6AC0SsMYZHggM=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/verifier.jar",
+    "auto": true
+  },
+  "DefaultPlugin.jar": {
+    "path": "plugins/DefaultPlugin.jar",
+    "sha256": "4bMHTAnojvWA4leFPkWBMwXskAGO79nO4cEaZXw2d4A=",
+    "download": "https://github.com/darkbot-reloaded/DefaultPlugin/releases/download/v2.0.0/DefaultPlugin.jar",
+    "auto": true
+  },
+  "DarkFlash.ocx": {
+    "path": "lib/DarkFlash.ocx",
+    "sha256": "sEdVEtWtRJ36fSG1omRcsXEdLOmLQsn+AAtfvA+CMb0=",
+    "download": "https://host.darkbot.eu/uploads/DarkFlash_34_0_0_267.ocx"
+  },
+  "DarkFlash-W7.ocx": {
+    "path": "lib/DarkFlash-W7.ocx",
+    "sha256": "72WxECQ6gv/q6PaBUdUCUI8PFHoI/ovwJm8VR/mK6Fo=",
+    "download": "https://host.darkbot.eu/uploads/DarkFlash-W7_34_0_0_267.ocx"
+  },
+  "KekkaRunner.exe": {
+    "path": "lib/KekkaRunner.exe",
+    "sha256": "sw0pGkMZIGVNXufe8eILd5YMvjaJlPgL4cXo9sPG378=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/KekkaRunner.exe"
+  },
+  "libdo_lib.so": {
+    "path": "lib/libdo_lib.so",
+    "sha256": "4ciacIYRRRJlLmLjUKIHg3oyN9SnVRkJAfz+wFtol7Q=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/libdo_lib.so"
+  },
+  "DarkTanos.so": {
+    "path": "lib/DarkTanos.so",
+    "sha256": "DQv+sGAmVi0D24RwKVF/t7fhMgoxjAnLUgkdUPA5L8Y=",
+    "download": "https://gist.github.com/Pablete1234/2e43458bb3b644e16d146969069b1548/raw/DarkTanos.so"
+  }
+}
