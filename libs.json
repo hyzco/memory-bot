@@ -2,57 +2,57 @@
   "DarkBoatAPI.dll": {
     "path": "lib/DarkBoatAPI.dll",
     "sha256": "NzUHhV2yNN6M/xhtXJw8VwrsPYfgzPvYqzkF5QZzlyE=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkBoatAPI.dll"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkBoatAPI.dll"
   },
   "DarkFlash-W7_34_0_0_267.ocx": {
     "path": "lib/DarkFlash-W7_34_0_0_267.ocx",
     "sha256": "72WxECQ6gv/q6PaBUdUCUI8PFHoI/ovwJm8VR/mK6Fo=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkFlash-W7_34_0_0_267.ocx"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkFlash-W7_34_0_0_267.ocx"
   },
   "DarkFlash_34_0_0_267.ocx": {
     "path": "lib/DarkFlash_34_0_0_267.ocx",
     "sha256": "sEdVEtWtRJ36fSG1omRcsXEdLOmLQsn+AAtfvA+CMb0=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkFlash_34_0_0_267.ocx"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkFlash_34_0_0_267.ocx"
   },
   "DarkHookAPI.dll": {
     "path": "lib/DarkHookAPI.dll",
     "sha256": "+H+y1ptDgVr4xUjfTE76oBOhZYhCWEyo7H9DP/B2f00=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkHookAPI.dll"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkHookAPI.dll"
   },
   "DarkInputAPI.dll": {
     "path": "lib/DarkInputAPI.dll",
     "sha256": "Suh9CiXQc7yhIv/TFex6zyokbNgJDi67DJNHECT68wY=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkInputAPI.dll"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkInputAPI.dll"
   },
   "DarkMemAPI.dll": {
     "path": "lib/DarkMemAPI.dll",
     "sha256": "OEgS1OejlUX004sAIsjTmkzw0ymXMIYhNJnesKcHXBw=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkMemAPI.dll"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkMemAPI.dll"
   },
   "DarkTanos.so": {
     "path": "lib/DarkTanos.so",
     "sha256": "DQv+sGAmVi0D24RwKVF/t7fhMgoxjAnLUgkdUPA5L8Y=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/DarkTanos.so"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/DarkTanos.so"
   },
   "KekkaPlayer.dll": {
     "path": "lib/KekkaPlayer.dll",
     "sha256": "Nvu0HobbM8gFwr+Zxmo4N5RKlYZOsUJ6YfiLLHYBuDs=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/KekkaPlayer.dll"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/KekkaPlayer.dll"
   },
   "KekkaRunner.exe": {
     "path": "lib/KekkaRunner.exe",
     "sha256": "sw0pGkMZIGVNXufe8eILd5YMvjaJlPgL4cXo9sPG378=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/KekkaRunner.exe"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/KekkaRunner.exe"
   },
   "libdo_lib.so": {
     "path": "lib/libdo_lib.so",
     "sha256": "4ciacIYRRRJlLmLjUKIHg3oyN9SnVRkJAfz+wFtol7Q=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/libdo_lib.so"
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/libdo_lib.so"
   },
   "verifier.jar": {
     "path": "lib/verifier.jar",
     "sha256": "MdYvT4nBir8mcbZl5KACD7ypPA/bBf0imZfH6Z5Hkgk=",
-    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/verifier.jar",
+    "download": "https://raw.githubusercontent.com/hyzco/memory-bot/refs/heads/main/lib/verifier.jar",
     "auto": true
   }
 }

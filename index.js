@@ -30,7 +30,7 @@ function generateJson() {
     const entry = {
       path: relPath,
       sha256,
-      download: baseDownloadUrl + encodeURIComponent(name),
+	  download: baseDownloadUrl + path.posix.join(dir, encodeURIComponent(name))
     };
 
     // optional: auto = true for .jar files (as in your example)
