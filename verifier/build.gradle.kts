@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "eu.darkbot.verifier"
-version = "1.0-SNAPSHOT"
+version = ""
 
 repositories {
     mavenCentral()
@@ -37,8 +37,8 @@ tasks.register<Exec>("signJar") {
 
     commandLine("jarsigner",
         "-keystore", "mykeystore.jks",
-        "-storepass", "808a1a23",
-        "-keypass", "808a1a23",
+        "-storepass", "123456",
+        "-keypass", "123456",
         jarFile.absolutePath,
         "mykey"
     )

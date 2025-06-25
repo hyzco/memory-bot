@@ -52,7 +52,7 @@ dependencies {
     // use this if you want to use local(mavenLocal) darkbot API
     //api("eu.darkbot", "darkbot-impl", apiVersion)
     api("eu.darkbot.DarkBotAPI", "darkbot-impl", apiVersion)
-
+    api("net.bytebuddy", "byte-buddy", "1.12.19")
     // have to keep version 2.8.9, in newer versions GSON calls `toString` of config enums upon creation
     api("com.google.code.gson", "gson", "2.8.9")
     api("com.miglayout", "miglayout-swing", "11.3")
@@ -60,7 +60,6 @@ dependencies {
     api("com.formdev", "flatlaf-extras", flatLafVersion)
     api("org.jgrapht", "jgrapht-core", "1.5.2")
     api("it.unimi.dsi", "fastutil-core", "8.5.13")
-
     // Testing stat time-series requires this
     //api("org.knowm.xchart", "xchart", "3.8.5")
 

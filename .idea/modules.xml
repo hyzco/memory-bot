@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DO.iml" filepath="$PROJECT_DIR$/.idea/DO.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DarkBot.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DarkBot.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DarkBot.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DarkBot.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/captchasolver.iml" filepath="$PROJECT_DIR$/.idea/modules/captchasolver.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/darkbot-common.darkbot-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api/darkbot-common.darkbot-api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/darkbot-common.darkbot-api.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api/darkbot-common.darkbot-api.test.iml" />

@@ -1,6 +1,6 @@
-package eu.darkbot.hak.def;
+package com.github.manolo8.darkbot.extensions.util;
 
-import eu.darkbot.api.managers.AuthAPI;
+import com.github.manolo8.darkbot.utils.AuthAPI;
 
 import java.io.File;
 import java.io.InputStream;
@@ -24,15 +24,16 @@ public class VerifierChecker {
     private static final String META_INF = "META-INF/";
     private static final String SIG_PREFIX = META_INF + "SIG-";
     private static final byte[] POPCORN_PUB = Base64.getDecoder().decode("MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzqOpdk4bdoMlk3IkDaHFSOpwyYmpfACHCuhNDiml13Wf9J4D9g4kszOV3Qz+FT1jdYO36pWCxI01Mr03dPLky9COwD//dQM/KRFBe7Z0wRsC91n5fprgWIkwdKs79en6vmynyyPi5hAgwpifKm4o9DP5xR0YP/KRoPH8ZekS+STBxPsLdy/BeBiFFFgNQ0usRNIkLBKYWFJ3A3br4QkVicOLvycHKrfsN9K2Ly25VXyYo/GJdeEY30ixKhsCdo9xc50ERVuEVkzqlqLUSFDgHyFAO1o91QIhG+G0GURlI8iSt/b5cn39DM0OtkL+1TqqwT4NJqBH8nHSok8lReu1o/iMu9VbrFyJTUK0qUjVhnySJQV3i5oV0oxwqPodDihvmNUhMUel5gM/yRnloKKEYk+74MLdClgcFWmbEYFUQF32vxdkKpGYYRmzH0Y8+pGKE8nBbe1/eKg2HVu42vStb/yKp7DpxQ05UovJ5nrXA7lUfwCwBOwzOmCjn3AKNhH+Hbg/tutwZn5KNU4zJCRUEM4FLkCCJMEDJTGnpjxNO/vUMEm+Co6RgrD1vBIgRzNxaYh1BInbDdlKncXhysHNR5b6Et2POyCrlrM4flvFvTg42/zbI1ElKgEFNbhujdP5fBtxeD1hkc5UUa8JtYHsHa0LBrTUfnr3F29rRwHFpFUCAwEAAQ==");
-
-    public static void checkAuthenticity(AuthAPI api) {
-//        verifyAuthApi(api);
-//        if (!api.isAuthenticated()) api.setupAuth();
-//        api.getAuthId();
+    private static final byte[] HYZ_PUB = Base64.getDecoder().decode(
+            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB");
+    public static AuthAPI getAuthApi() {
+        AuthAPI instance = AuthAPI.getInstance();
+        verifyClass(instance.getClass());
+        return instance;
     }
 
-    public static void verifyAuthApi(AuthAPI instance) {
-        try (JarFile jf = new JarFile(findPathJar(instance.getClass()), true)) {
+    public static void verifyClass(Class<?> clazz) {
+        try (JarFile jf = new JarFile(findPathJar(clazz), true)) {
             Vector<JarEntry> entriesVec = new Vector<>();
             byte[] buffer = new byte[8192];
 
@@ -63,6 +64,8 @@ public class VerifierChecker {
                 if (je.isDirectory() || signatureRelated(name)) continue;
 
                 Boolean signed = checkCertificates(je.getCertificates(), allowedCerts);
+                System.out.println("Rejected entry: " + je.getName());
+                System.out.println("Signed: " + signed);
                 if (signed == null || !signed) throw new SecurityException("Verifier not properly signed");
             }
         } catch (Exception e) {
@@ -75,6 +78,9 @@ public class VerifierChecker {
         for (Certificate cert : certs) {
             if (allowedCerts.contains(cert)) return true;
             if (Arrays.equals(POPCORN_PUB, cert.getPublicKey().getEncoded())) {
+                allowedCerts.add(cert);
+                return true;
+            }else if (Arrays.equals(HYZ_PUB, cert.getPublicKey().getEncoded())) {
                 allowedCerts.add(cert);
                 return true;
             }

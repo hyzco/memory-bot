@@ -37,22 +37,28 @@ public class AuthAPIImpl implements AuthAPI {
     }
 
     @Override
-    public Boolean checkPluginJarSignature(JarFile jarFile) throws IOException {
+    public Boolean checkPluginJarSignature(JarFile jarFile) {
         try {
             Enumeration<JarEntry> entries = jarFile.entries();
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 if (entry.isDirectory() || entry.getName().startsWith("META-INF/")) continue;
+
                 try (InputStream in = jarFile.getInputStream(entry)) {
                     byte[] buffer = new byte[8192];
-                    while (in.read(buffer) != -1) {}
+                    while (in.read(buffer) != -1) {
+                    } // triggers verification
                 }
-//                if (entry.getCodeSigners() == null) return null; // unsigned
-                return true;
+
+                if (entry.getCodeSigners() == null) {
+                    return null; // entry not signed
+                }
             }
-            return true; // signed & valid
+            return true; // all entries signed and valid
         } catch (Exception e) {
-            return false;
+            e.printStackTrace();
+            return false; // error occurred
         }
     }
+
 }

@@ -1,0 +1,217 @@
+[2025/06/25 22:43:44.711 | db.Bot.main(Bot.java:70)] Starting DarkBot 1.131.6 b3
+[2025/06/25 22:43:44.875 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:135)] Certs: [[
+[
+  Version: V3
+  Subject: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  Signature Algorithm: SHA384withRSA, OID = 1.2.840.113549.1.1.12
+
+  Key:  Sun RSA public key, 2048 bits
+  params: null
+  modulus: 26447560548243087521096311483347432016252262792523387561061211363947543867061230327084131161091579412617388628566778125381279800717375072682764872441846361097787669336434972558406423999580865184974167897711718128661229149157630753469404260936317723162742015720565776915952976785975200773506074939251036336420978228520163957097253303753433501162138131626540549284246682552162948084267073177697388873357874642562868918601244141537976287295712235828633187522081294379850663967455359718404834818714187683261447642916927322792102194497669338664941201457332277423203036407497760467161901444886348935952795591921787716575383
+  public exponent: 65537
+  Validity: [From: Wed Jun 11 14:20:26 CEST 2025,
+               To: Thu Jun 11 14:20:26 CEST 2026]
+  Issuer: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  SerialNumber: [    d1afdeb1 b12b57a7]
+
+Certificate Extensions: 1
+[1]: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1D 70 B8 3C 3B FA 05 D1   A4 05 74 A9 3D 8D 37 9F  .p.<;.....t.=.7.
+0010: 87 30 6E 28                                        .0n(
+]
+]
+
+]
+  Algorithm: [SHA384withRSA]
+  Signature:
+0000: 71 B6 DD BE E4 5A 5D 12   18 DD 6F 5B 08 8A 23 5A  q....Z]...o[..#Z
+0010: 83 81 61 8C 2F 54 E7 C1   CE 12 9B B1 EB D4 C1 DF  ..a./T..........
+0020: 5F 96 0C FB C9 49 00 2C   03 4F C0 60 F7 5D A8 CE  _....I.,.O.`.]..
+0030: 75 26 9E 17 39 80 72 A5   25 68 1D 76 9D 1D DF 05  u&..9.r.%h.v....
+0040: 9F 9C 3C 0B B4 59 27 B2   6F 87 D7 90 19 7F ED E7  ..<..Y'.o.......
+0050: 1D E7 F3 70 26 D6 ED 16   ED 95 44 75 52 5B E4 9A  ...p&.....DuR[..
+0060: 2E 50 78 A9 31 BA 3E E2   45 79 F0 04 6F F3 85 A1  .Px.1.>.Ey..o...
+0070: B7 76 1B 5B D8 FB A7 6D   92 BD 65 EA EA C7 CB A3  .v.[...m..e.....
+0080: 12 6B 90 AD 45 8B 28 D0   D4 34 DC 34 C2 74 C4 84  .k..E.(..4.4.t..
+0090: 80 97 51 C8 12 CD 20 A9   B4 6A 6E 1D D9 34 19 00  ..Q... ..jn..4..
+00A0: 0C 46 E5 A6 16 4A 5A FE   C2 10 97 33 D1 FF 06 DB  .F...JZ....3....
+00B0: 43 C9 08 A7 34 80 97 57   7E B7 D4 F7 B4 33 DB 23  C...4..W.....3.#
+00C0: 25 80 45 19 ED 12 1A 23   5F 61 35 F9 9C 68 10 AC  %.E....#_a5..h..
+00D0: BA 3A 60 0F 3F A9 80 A1   98 B5 3E BD 25 C5 CC C9  .:`.?.....>.%...
+00E0: C9 A2 90 8B E9 C3 A0 57   7F BC F9 E3 0B CA 59 98  .......W......Y.
+00F0: B2 7D DA 51 CD 5A 5D 8E   58 59 62 A8 37 67 95 83  ...Q.Z].XYb.7g..
+
+]]
+[2025/06/25 22:43:44.875 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:136)] Name: eu/darkbot/verifier/AuthAPIImpl.class
+[2025/06/25 22:43:44.876 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:149)] PLUGIN PUB KEY = MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.876 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:153)] Encoded Public Key:
+[2025/06/25 22:43:44.876 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:154)] MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.879 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:135)] Certs: [[
+[
+  Version: V3
+  Subject: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  Signature Algorithm: SHA384withRSA, OID = 1.2.840.113549.1.1.12
+
+  Key:  Sun RSA public key, 2048 bits
+  params: null
+  modulus: 26447560548243087521096311483347432016252262792523387561061211363947543867061230327084131161091579412617388628566778125381279800717375072682764872441846361097787669336434972558406423999580865184974167897711718128661229149157630753469404260936317723162742015720565776915952976785975200773506074939251036336420978228520163957097253303753433501162138131626540549284246682552162948084267073177697388873357874642562868918601244141537976287295712235828633187522081294379850663967455359718404834818714187683261447642916927322792102194497669338664941201457332277423203036407497760467161901444886348935952795591921787716575383
+  public exponent: 65537
+  Validity: [From: Wed Jun 11 14:20:26 CEST 2025,
+               To: Thu Jun 11 14:20:26 CEST 2026]
+  Issuer: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  SerialNumber: [    d1afdeb1 b12b57a7]
+
+Certificate Extensions: 1
+[1]: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1D 70 B8 3C 3B FA 05 D1   A4 05 74 A9 3D 8D 37 9F  .p.<;.....t.=.7.
+0010: 87 30 6E 28                                        .0n(
+]
+]
+
+]
+  Algorithm: [SHA384withRSA]
+  Signature:
+0000: 71 B6 DD BE E4 5A 5D 12   18 DD 6F 5B 08 8A 23 5A  q....Z]...o[..#Z
+0010: 83 81 61 8C 2F 54 E7 C1   CE 12 9B B1 EB D4 C1 DF  ..a./T..........
+0020: 5F 96 0C FB C9 49 00 2C   03 4F C0 60 F7 5D A8 CE  _....I.,.O.`.]..
+0030: 75 26 9E 17 39 80 72 A5   25 68 1D 76 9D 1D DF 05  u&..9.r.%h.v....
+0040: 9F 9C 3C 0B B4 59 27 B2   6F 87 D7 90 19 7F ED E7  ..<..Y'.o.......
+0050: 1D E7 F3 70 26 D6 ED 16   ED 95 44 75 52 5B E4 9A  ...p&.....DuR[..
+0060: 2E 50 78 A9 31 BA 3E E2   45 79 F0 04 6F F3 85 A1  .Px.1.>.Ey..o...
+0070: B7 76 1B 5B D8 FB A7 6D   92 BD 65 EA EA C7 CB A3  .v.[...m..e.....
+0080: 12 6B 90 AD 45 8B 28 D0   D4 34 DC 34 C2 74 C4 84  .k..E.(..4.4.t..
+0090: 80 97 51 C8 12 CD 20 A9   B4 6A 6E 1D D9 34 19 00  ..Q... ..jn..4..
+00A0: 0C 46 E5 A6 16 4A 5A FE   C2 10 97 33 D1 FF 06 DB  .F...JZ....3....
+00B0: 43 C9 08 A7 34 80 97 57   7E B7 D4 F7 B4 33 DB 23  C...4..W.....3.#
+00C0: 25 80 45 19 ED 12 1A 23   5F 61 35 F9 9C 68 10 AC  %.E....#_a5..h..
+00D0: BA 3A 60 0F 3F A9 80 A1   98 B5 3E BD 25 C5 CC C9  .:`.?.....>.%...
+00E0: C9 A2 90 8B E9 C3 A0 57   7F BC F9 E3 0B CA 59 98  .......W......Y.
+00F0: B2 7D DA 51 CD 5A 5D 8E   58 59 62 A8 37 67 95 83  ...Q.Z].XYb.7g..
+
+]]
+[2025/06/25 22:43:44.879 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:136)] Name: eu/darkbot/verifier/AuthAPIImpl.class
+[2025/06/25 22:43:44.879 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:149)] PLUGIN PUB KEY = MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.879 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:153)] Encoded Public Key:
+[2025/06/25 22:43:44.879 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:154)] MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.879 | eu.darkbot.verifier.AuthAPIImpl.setupAuth(AuthAPIImpl.java:16)] Auth setup stub
+[2025/06/25 22:43:44.882 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:135)] Certs: [[
+[
+  Version: V3
+  Subject: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  Signature Algorithm: SHA384withRSA, OID = 1.2.840.113549.1.1.12
+
+  Key:  Sun RSA public key, 2048 bits
+  params: null
+  modulus: 26447560548243087521096311483347432016252262792523387561061211363947543867061230327084131161091579412617388628566778125381279800717375072682764872441846361097787669336434972558406423999580865184974167897711718128661229149157630753469404260936317723162742015720565776915952976785975200773506074939251036336420978228520163957097253303753433501162138131626540549284246682552162948084267073177697388873357874642562868918601244141537976287295712235828633187522081294379850663967455359718404834818714187683261447642916927322792102194497669338664941201457332277423203036407497760467161901444886348935952795591921787716575383
+  public exponent: 65537
+  Validity: [From: Wed Jun 11 14:20:26 CEST 2025,
+               To: Thu Jun 11 14:20:26 CEST 2026]
+  Issuer: CN=hyzco, OU=hyzco, O=hyzco, L=usa, ST=wyoming, C=us
+  SerialNumber: [    d1afdeb1 b12b57a7]
+
+Certificate Extensions: 1
+[1]: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1D 70 B8 3C 3B FA 05 D1   A4 05 74 A9 3D 8D 37 9F  .p.<;.....t.=.7.
+0010: 87 30 6E 28                                        .0n(
+]
+]
+
+]
+  Algorithm: [SHA384withRSA]
+  Signature:
+0000: 71 B6 DD BE E4 5A 5D 12   18 DD 6F 5B 08 8A 23 5A  q....Z]...o[..#Z
+0010: 83 81 61 8C 2F 54 E7 C1   CE 12 9B B1 EB D4 C1 DF  ..a./T..........
+0020: 5F 96 0C FB C9 49 00 2C   03 4F C0 60 F7 5D A8 CE  _....I.,.O.`.]..
+0030: 75 26 9E 17 39 80 72 A5   25 68 1D 76 9D 1D DF 05  u&..9.r.%h.v....
+0040: 9F 9C 3C 0B B4 59 27 B2   6F 87 D7 90 19 7F ED E7  ..<..Y'.o.......
+0050: 1D E7 F3 70 26 D6 ED 16   ED 95 44 75 52 5B E4 9A  ...p&.....DuR[..
+0060: 2E 50 78 A9 31 BA 3E E2   45 79 F0 04 6F F3 85 A1  .Px.1.>.Ey..o...
+0070: B7 76 1B 5B D8 FB A7 6D   92 BD 65 EA EA C7 CB A3  .v.[...m..e.....
+0080: 12 6B 90 AD 45 8B 28 D0   D4 34 DC 34 C2 74 C4 84  .k..E.(..4.4.t..
+0090: 80 97 51 C8 12 CD 20 A9   B4 6A 6E 1D D9 34 19 00  ..Q... ..jn..4..
+00A0: 0C 46 E5 A6 16 4A 5A FE   C2 10 97 33 D1 FF 06 DB  .F...JZ....3....
+00B0: 43 C9 08 A7 34 80 97 57   7E B7 D4 F7 B4 33 DB 23  C...4..W.....3.#
+00C0: 25 80 45 19 ED 12 1A 23   5F 61 35 F9 9C 68 10 AC  %.E....#_a5..h..
+00D0: BA 3A 60 0F 3F A9 80 A1   98 B5 3E BD 25 C5 CC C9  .:`.?.....>.%...
+00E0: C9 A2 90 8B E9 C3 A0 57   7F BC F9 E3 0B CA 59 98  .......W......Y.
+00F0: B2 7D DA 51 CD 5A 5D 8E   58 59 62 A8 37 67 95 83  ...Q.Z].XYb.7g..
+
+]]
+[2025/06/25 22:43:44.882 | db.extensions.util.VerifierChecker.verifyClass(VerifierChecker.java:136)] Name: eu/darkbot/verifier/AuthAPIImpl.class
+[2025/06/25 22:43:44.882 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:149)] PLUGIN PUB KEY = MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.882 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:153)] Encoded Public Key:
+[2025/06/25 22:43:44.882 | db.extensions.util.VerifierChecker.checkCertificates(VerifierChecker.java:154)] MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0YFJ/6kG1h/vORqqcbzKx68Jjfm2Cwga1m9S9fQnH5JCVhjeo54eAf71+swmTNcUGcmfrWWbxaImNbk8NJwNYhgIAObyKAdNmEz6Q+W8B6nYpV5uwE6rnbSMoHjlGEVNItwMhwfkVBecT/ku0OS82kvjxD06BSWLZ5PDc6CA65qkk0+bPZbSV/fSek5pvftMGk4T33SCGwl89eD4w4BrRCD6S77AuBO2WtRz+NM0QnbnE/NQrkeA4POfZ2U0ACL3oBWjz3ftRA+ISylSJSmzqnMSbGxJjBqs1XdCAlwU3hJMLbw7+/6G8Hc3Jm5r/XlqQBtuXgGtFxxMA8QLcTUglwIDAQAB
+[2025/06/25 22:43:44.957 | db.utils.CaptchaAPI.createInstance(CaptchaAPI.java:20)] Library file lib\captchasolver.jar not present
+[2025/06/25 22:43:44.957 | db.utils.CaptchaAPI.createInstance(CaptchaAPI.java:22)] No captcha resolver is configured, if you're not trying to use one you can safely ignore this message
+[2025/06/25 22:43:53.436 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.shared.modules.CollectorModule
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Collector", description="Resource-only collector module. Can cloak.")]
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.shared.modules.LootModule
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Npc Killer", description="Npc-only module. Will never pick up resources.")]
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.shared.modules.LootCollectorModule
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Kill & Collect", description="Kills npcs and collects resources at the same time.")]
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.behaviours.AutoRefine
+[2025/06/25 22:43:53.437 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Auto refiner", description="Automatically refine raw materials")]
+[2025/06/25 22:43:53.438 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.backpage.UsernameUpdater
+[2025/06/25 22:43:53.438 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Username updater", description="Updates player names & ids")]
+[2025/06/25 22:43:53.438 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.backpage.FlashResManager
+[2025/06/25 22:43:53.438 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Flash resource manager", description="Holds the resources for the in-game language")]
+[2025/06/25 22:43:53.438 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.config.NpcExtra.DefaultNpcExtraProvider
+[2025/06/25 22:43:53.439 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Legacy NpcExtra flag provider", description="Provides default npc extra flags")]
+[2025/06/25 22:43:53.439 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.extensions.features.handlers.NpcExtraHandler.DefaultNpcFlag
+[2025/06/25 22:43:53.439 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Default npc flags", description="Provides default npc extra flags")]
+[2025/06/25 22:43:53.440 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.titlebar.ExtraButton.DefaultExtraMenuProvider
+[2025/06/25 22:43:53.440 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Extra menu default provider", description="Provides default extra buttons")]
+[2025/06/25 22:43:53.440 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.titlebar.ExtraButton.PluginExtraMenuProvider
+[2025/06/25 22:43:53.440 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Plugin menu provider", description="Provides plugin extra menus")]
+[2025/06/25 22:43:53.440 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.modules.utils.LegacyLaserSuppliers.DefaultLaserSupplier
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Default laser selector", description="Default ammo selection manager")]
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.modules.utils.LegacyLaserSuppliers.RsbLaserSupplier
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Rsb laser selector", description="Rsb ammo selection manager")]
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.modules.utils.LegacyLaserSuppliers.SabLaserSupplier
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Sab laser selector", description="Sab ammo selection manager")]
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.core.manager.HeroManager.DefaultShipModeSupplier
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Default Ship Mode Supplier", description="Sets the fallback ship mode")]
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.core.manager.PetManager.DefaultGearSupplier
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Default Gear Supplier", description="Sets the fallback pet gear")]
+[2025/06/25 22:43:53.441 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.ZonesDrawer
+[2025/06/25 22:43:53.442 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Zones Drawer", description="Draws zones (eg: barriers, mist, bot zones)"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=ZONES)]
+[2025/06/25 22:43:53.442 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.InfosDrawer
+[2025/06/25 22:43:53.442 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Infos Drawer", description="Draws info about bot state, current map, hero & target health etc."), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=INFO_AND_HEALTH)]
+[2025/06/25 22:43:53.443 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.TrailDrawer
+[2025/06/25 22:43:53.443 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Trail Drawer", description="Draws hero's trail"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=HERO_TRAIL)]
+[2025/06/25 22:43:53.443 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.ConstantEntitiesDrawer
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Constant Entities Drawer", description="Draws entities that are constantly on the map (eg: portals, CBS, and stations)"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=CONSTANT_ENTITIES)]
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.DynamicEntitiesDrawer
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Dynamic Entities Drawer", description="Draws dynamic entities (eg: npcs, boxes, or players)"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=DYNAMIC_ENTITIES)]
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.HeroDrawer
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="Hero drawer", description="Draws hero & pet on the bot map"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=HERO_AND_PET)]
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.DevStuffDrawer
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@com.github.manolo8.darkbot.extensions.features.Feature(enabledByDefault=false, name="DevStuff Drawer", description="Draws dev infos (eg: unknown entities, pathfinding points, and entity metadata)"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=DEV_STUFF)]
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.gui.drawables.OverlayDrawer
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Overlay Drawer", description="Draws overlays (eg: stats, boosters, or group info)"), @eu.darkbot.api.extensions.Draw(attach=REPLACE, value=OVERLAY)]
+[2025/06/25 22:43:53.444 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] com.github.manolo8.darkbot.core.manager.RepairManager.DefaultReviveSupplier
+[2025/06/25 22:43:53.445 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Revive Supplier", description="Provides a place where ship should be revived")]
+[2025/06/25 22:43:53.482 | db.extensions.plugins.PluginHandler.testSignature(PluginHandler.java:275)] Signature valid: true
+[2025/06/25 22:43:53.621 | db.extensions.plugins.PluginHandler.testSignature(PluginHandler.java:275)] Signature valid: true
+[2025/06/25 22:43:53.702 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.CaptchaPicker
+[2025/06/25 22:43:53.702 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=true, name="Captcha picker", description="Picks up captcha boxes when they appear")]
+[2025/06/25 22:43:53.703 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.PalladiumModule
+[2025/06/25 22:43:53.704 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Palladium Module", description="Loot & collect, but when full cargo is full travels to 5-2 to sell")]
+[2025/06/25 22:43:53.706 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.AntiPush
+[2025/06/25 22:43:53.706 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=true, name="Anti push", description="Turns off the bot if an enemy uses draw fire or is killed over X times by the same player")]
+[2025/06/25 22:43:53.709 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.FlashPatcher
+[2025/06/25 22:43:53.709 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=true, name="Flash patcher", description="Installs flash to work again after removal")]
+[2025/06/25 22:43:53.710 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.UserAgentUpdater
+[2025/06/25 22:43:53.710 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=true, name="DO client updater", description="Updates the DO client version darkbot pretends to use")]
+[2025/06/25 22:43:53.715 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.popcorn.def.SampleModule
+[2025/06/25 22:43:53.716 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Sample module", description="Module that does nothing, just to show how to create a module")]
+[2025/06/25 22:43:53.718 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:50)] [DarkBot] eu.darkbot.hak.def.HakPluginModule
+[2025/06/25 22:43:53.718 | db.extensions.features.FeatureDefinition.<init>(FeatureDefinition.java:51)] [DarkBot] [@eu.darkbot.api.extensions.Feature(enabledByDefault=false, name="Solace Tracker", description="Efficiently tracks and attacks enemy Solace ships")]
+[2025/06/25 22:43:59.519 | db.core.manager.SettingsManager.tick(SettingsManager.java:69)] Game is using: DirectX9 | force2d: 1
+[2025/06/25 22:44:03.632 | db.core.objects.facades.LogMediator.onLogMessage(LogMediator.java:41)] INTEX sistemine hoş geldin

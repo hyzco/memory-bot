@@ -5,6 +5,7 @@ import com.github.manolo8.darkbot.Main;
 import com.github.manolo8.darkbot.config.ConfigEntity;
 import com.github.manolo8.darkbot.core.IDarkBotAPI;
 import com.github.manolo8.darkbot.extensions.plugins.PluginClassLoader;
+import com.github.manolo8.darkbot.extensions.util.VerifierChecker;
 import com.github.manolo8.darkbot.gui.login.SavedLogins;
 import com.github.manolo8.darkbot.utils.Encryption;
 import com.github.manolo8.darkbot.utils.login.Credentials;
@@ -82,6 +83,12 @@ public class HakPluginModule implements Module, Configurable<HakPluginModule.Con
 
         ClassLoader classLoader = PluginClassLoader.class.getClassLoader().getParent();
 
+        if(VerifierChecker.getAuthApi().isAuthenticated()) {
+            System.out.println("Auth api is authenticated");
+        }else{
+            System.out.println("Auth api is not authenticated");
+            throw new RuntimeException("Auth api is not authenticated");
+        }
     }
 
     @Override
