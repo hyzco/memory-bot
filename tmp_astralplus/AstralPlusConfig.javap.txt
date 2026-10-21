@@ -1,0 +1,6 @@
+﻿Compiled from "AstralPlusConfig.java"
+public class com.deemeplus.modules.astral.AstralPlusConfig {
+  public int minTimePerAction;
+  public boolean enableRandom;
+  public com.deemeplus.modules.astral.AstralPlusConfig();
+}

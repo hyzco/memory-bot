@@ -240,7 +240,11 @@ public class GameAPIImpl<
     protected void setData() {
         if (hasCapability(Capability.LOGIN)) {
             String url = "https://" + loginData.getUrl() + "/", sid = "dosid=" + loginData.getSid();
-            window.setData(url, sid, loginData.getPreloaderUrl(), loginData.getParams(config));
+            String preloader = loginData.getPreloaderUrl();
+            String vars = loginData.getParams(config);
+            System.out.println("setData url=" + url + " preloader=" + preloader);
+            System.out.println("setData vars=" + vars);
+            window.setData(url, sid, preloader, vars);
         }
     }
 
@@ -483,23 +487,34 @@ public class GameAPIImpl<
 
     @Override
     public void selectEntity(Entity entity) {
-        if (!API.hasCapability(Capability.DIRECT_CALL_METHOD)) return;
-        if (mapManager.mapClick(true)) {
-            if (entity instanceof Lockable) {
-                //assuming that selectEntity selects only ships & is supported by every API
-                //actually this should be called on every entity with LockType trait
+        if (entity == null || entity.getAddress() == 0 || !entity.isValid()) return;
+        if (!mapManager.mapClick(true)) return;
 
-                if (mapManager.isTarget(entity)) return;
+        if (!API.hasCapability(Capability.DIRECT_CALL_METHOD)) {
+            if (entity instanceof Lockable && mapManager.isTarget(entity)) return;
 
-                // MapNpc (eg: LoW relay) can't be locked normally, try to use setTarget instead
-                if ((!(entity instanceof Ship) || entity instanceof MapNpc) && !mapManager.setTarget(entity.address)) {
-                    return;
-                }
-
-                direct.selectEntity(entity);
-            } else {
-                entity.clickable.click();
+            Utils.SelectEntityClick click = Utils.createSelectEntityClick(entity);
+            interaction.mouseClick(click.clickX, click.clickY);
+            if (!(entity instanceof Lockable)) {
+                interaction.mouseClick(click.clickX, click.clickY);
             }
+            return;
+        }
+
+        if (entity instanceof Lockable) {
+            //assuming that selectEntity selects only ships & is supported by every API
+            //actually this should be called on every entity with LockType trait
+
+            if (mapManager.isTarget(entity)) return;
+
+            // MapNpc (eg: LoW relay) can't be locked normally, try to use setTarget instead
+            if ((!(entity instanceof Ship) || entity instanceof MapNpc) && !mapManager.setTarget(entity.address)) {
+                return;
+            }
+
+            direct.selectEntity(entity);
+        } else {
+            entity.clickable.click();
         }
     }
 
@@ -616,6 +631,11 @@ public class GameAPIImpl<
     @Override
     public long lastInternetReadTime() {
         return handler.lastInternetReadTime();
+    }
+
+    @Override
+    public long lastClientReadTime() {
+        return handler.lastClientReadTime();
     }
 
     @Override

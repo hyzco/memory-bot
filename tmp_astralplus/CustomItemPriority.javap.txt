@@ -1,0 +1,12 @@
+﻿Compiled from "CustomItemPriority.java"
+public class com.deemeplus.modules.astral.CustomItemPriority {
+  public boolean active;
+  public java.util.Map<java.lang.String, com.deemeplus.modules.astral.ItemInfo> itemInfos;
+  private static int K9HmR65Fjr;
+  private transient int KDxQpVNonu;
+  private static java.lang.String[] nothing_to_see_here;
+  public com.deemeplus.modules.astral.CustomItemPriority();
+  static {};
+  private static java.lang.String thisIsAInsaneEncryptionMethod(byte[], int);
+  private static int kmjfnxbkovzpaqxc(int, int);
+}

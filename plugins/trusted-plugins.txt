@@ -1,0 +1,6 @@
+# Locally trusted plugin hashes. One SHA-256 hash per line.
+# Format: <sha256> [optional comment]
+# Rebuilds change the hash, so update the entry after replacing a plugin jar.
+
+CertUtil:-hashfilecommandcompletedsuccessfully. DmPlugin.jar
+e6430be1a825e93bcfa457df278416b5bc7db1e5c1f997f3e7fd1f7c1c5c42f9 AstralPlugin.jar

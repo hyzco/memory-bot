@@ -83,6 +83,26 @@ public class Config implements eu.darkbot.api.config.legacy.Config {
         public @Option ShipConfig OFFENSIVE = new ShipConfig(1, '8');
         public @Option ShipConfig ROAM = new ShipConfig(1, '9');
         public @Option ShipConfig RUN = new ShipConfig(2, '9');
+        @Option("config.general.hak_clan_tutucu")
+        public HakClanTutucu HAK_CLAN_TUTUCU = new HakClanTutucu();
+
+        public static class HakClanTutucu {
+            @Option("config.general.hak_clan_tutucu.selector_key")
+            public String SELECTOR_KEY = "L";
+
+            @Option("config.general.hak_clan_tutucu.enable_locking")
+            public boolean ENABLE_LOCKING = true;
+
+            @Option("config.general.hak_clan_tutucu.auto_attack")
+            public boolean AUTO_ATTACK = false;
+
+            @Option("config.general.hak_clan_tutucu.max_lock_distance")
+            @Number(min = 200, max = 3000, step = 50)
+            public int MAX_LOCK_DISTANCE = 1100;
+
+            @Option("config.general.hak_clan_tutucu.lock_on_nearest")
+            public boolean LOCK_ON_NEAREST = true;
+        }
 
         public @Option Safety SAFETY = new Safety();
         public static class Safety {
@@ -233,7 +253,7 @@ public class Config implements eu.darkbot.api.config.legacy.Config {
         public @Option @Visibility(Level.ADVANCED) APIConfig API_CONFIG = new APIConfig();
         public static class APIConfig {
             public @Option @Dropdown BrowserApi BROWSER_API = OSUtil.getDefaultAPI();
-            public @Option boolean FULLY_HIDE_API = true;
+            public @Option boolean FULLY_HIDE_API = false;
             public @Option boolean FORCE_GAME_LANGUAGE = false;
             public @Option boolean ENFORCE_HW_ACCEL = true;
             public @Option boolean USE_3D = false;
@@ -398,7 +418,7 @@ public class Config implements eu.darkbot.api.config.legacy.Config {
 
     @Override
     public eu.darkbot.api.config.types.PlayerInfo getPlayerInfo(int id) {
-        return PLAYER_INFOS.computeIfAbsent(id, i -> new PlayerInfo(null, i));
+        return PLAYER_INFOS.computeIfAbsent(id, i -> new PlayerInfo(null, i, null));
     }
 
     @Override

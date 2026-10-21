@@ -1,0 +1,13 @@
+﻿Compiled from "PortalInfo.java"
+public class com.deemeplus.modules.astral.PortalInfo {
+  public int priority;
+  public boolean ignoreLimit;
+  private static int YUtW1byYgh;
+  private transient int hTSuWcbinC;
+  private static java.lang.String[] nothing_to_see_here;
+  public com.deemeplus.modules.astral.PortalInfo(int);
+  public com.deemeplus.modules.astral.PortalInfo(int, boolean, int);
+  static {};
+  private static java.lang.String thisIsAInsaneEncryptionMethod(byte[], int);
+  private static int vrebtuxkvxawyjkb(int, int);
+}

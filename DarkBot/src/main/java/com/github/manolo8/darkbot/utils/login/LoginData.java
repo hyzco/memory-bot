@@ -47,8 +47,14 @@ public class LoginData {
 
     public String getParams(ConfigAPI config) {
         if (isNotInitialized()) return null;
-        // create copy of params to keep original values
-        return FlashVarReplacement.createVarsString(config, new HashMap<>(params));
+        Map<String, String> normalized = new HashMap<>(params);
+
+        String browser = normalized.get("browser");
+        if (browser == null || browser.isEmpty() || "Unknown".equalsIgnoreCase(browser)) {
+            normalized.put("browser", "Chrome");
+        }
+
+        return FlashVarReplacement.createVarsString(config, normalized);
     }
 
     public boolean isNotInitialized() {

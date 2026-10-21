@@ -12,17 +12,7 @@ import com.github.manolo8.darkbot.core.BotInstaller;
 import com.github.manolo8.darkbot.core.IDarkBotAPI;
 import com.github.manolo8.darkbot.core.api.Capability;
 import com.github.manolo8.darkbot.core.api.InvalidNativeSignature;
-import com.github.manolo8.darkbot.core.manager.EffectManager;
-import com.github.manolo8.darkbot.core.manager.FacadeManager;
-import com.github.manolo8.darkbot.core.manager.GuiManager;
-import com.github.manolo8.darkbot.core.manager.HeroManager;
-import com.github.manolo8.darkbot.core.manager.MapManager;
-import com.github.manolo8.darkbot.core.manager.PerformanceManager;
-import com.github.manolo8.darkbot.core.manager.PingManager;
-import com.github.manolo8.darkbot.core.manager.RepairManager;
-import com.github.manolo8.darkbot.core.manager.SettingsManager;
-import com.github.manolo8.darkbot.core.manager.StarManager;
-import com.github.manolo8.darkbot.core.manager.StatsManager;
+import com.github.manolo8.darkbot.core.manager.*;
 import com.github.manolo8.darkbot.core.utils.Lazy;
 import com.github.manolo8.darkbot.extensions.DarkBotPluginApiImpl;
 import com.github.manolo8.darkbot.extensions.features.FeatureDefinition;
@@ -34,21 +24,20 @@ import com.github.manolo8.darkbot.extensions.plugins.PluginUpdater;
 import com.github.manolo8.darkbot.extensions.util.VerifierChecker;
 import com.github.manolo8.darkbot.extensions.util.Version;
 import com.github.manolo8.darkbot.gui.MainGui;
+import com.github.manolo8.darkbot.gui.astral.AstralControlGui;
 import com.github.manolo8.darkbot.gui.utils.Popups;
 import com.github.manolo8.darkbot.modules.DisconnectModule;
 import com.github.manolo8.darkbot.modules.DummyExceptionModule;
 import com.github.manolo8.darkbot.modules.DummyModule;
+import com.github.manolo8.darkbot.modules.HakClanTutucuModule;
 import com.github.manolo8.darkbot.utils.I18n;
 import com.github.manolo8.darkbot.utils.StartupChecks;
 import com.github.manolo8.darkbot.utils.StartupParams;
 import com.github.manolo8.darkbot.utils.Time;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import eu.darkbot.api.extensions.Behavior;
-import eu.darkbot.api.extensions.Configurable;
-import eu.darkbot.api.extensions.Installable;
+import eu.darkbot.api.extensions.*;
 import eu.darkbot.api.extensions.Module;
-import eu.darkbot.api.extensions.TemporalModule;
 import eu.darkbot.api.game.other.Lockable;
 import eu.darkbot.api.managers.BotAPI;
 import eu.darkbot.api.managers.EventBrokerAPI;
@@ -59,13 +48,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Main extends Thread implements PluginListener, BotAPI {
 
     /** Do not use in plugins! Only for bot internal usage */
     @ApiStatus.Internal public static Main INSTANCE;
 
-    public static final Version VERSION      = new Version("1.131.6 Hak beta 1");
+    public static final Version VERSION      = new Version("1.132.3");
+    public static final String  EDITION      = "Hak Clan Special Edition";
     public static final Object UPDATE_LOCKER = new Object();
     public static final Gson GSON            = new GsonBuilder()
             .setPrettyPrinting()
@@ -107,6 +98,7 @@ public class Main extends Thread implements PluginListener, BotAPI {
     private final PerformanceManager performanceManager;
 
     private final MainGui form;
+    private final AstralControlGui astralControlGui;
     private final BotInstaller botInstaller;
 
     public com.github.manolo8.darkbot.core.itf.Module module; // Legacy module, kept for old plugin compatibility
@@ -182,13 +174,22 @@ public class Main extends Thread implements PluginListener, BotAPI {
         this.pluginHandler.updatePluginsSync();
         this.pluginHandler.addListener(this);
 
-        this.form = new MainGui(this);
+        this.form = new MainGui(this, !params.useAstralUi());
         this.pluginUpdater.scheduleUpdateChecker();
 
         if (configManager.getConfigFailed())
             Popups.of("Error", I18n.get("bot.issue.config_load_failed"), JOptionPane.ERROR_MESSAGE).showAsync();
 
+        if (params.useAstralUi()) {
+            AstralControlGui.resolveAstralModuleId(this)
+                    .ifPresent(moduleId -> config.GENERAL.CURRENT_MODULE = moduleId);
+        }
+
         API.createWindow();
+
+        this.astralControlGui = params.useAstralUi() ? new AstralControlGui(this) : null;
+        if (astralControlGui != null) astralControlGui.setVisible(true);
+
         if (params.getAutoStart()) setRunning(true);
         this.start();
         backpage.start();
@@ -395,7 +396,11 @@ public class Main extends Thread implements PluginListener, BotAPI {
         if (this.running == running) return;
         status.send(running);
         this.running = running;
-        API.setUserInput(!running);
+        API.setUserInput(!running || isManualTutucuMode());
+    }
+
+    private boolean isManualTutucuMode() {
+        return HakClanTutucuModule.class.getCanonicalName().equals(config.GENERAL.CURRENT_MODULE);
     }
 
     private void onRunningToggle(boolean running) {
@@ -414,7 +419,17 @@ public class Main extends Thread implements PluginListener, BotAPI {
 
     private void checkModule() {
         if (newModule == null || !Objects.equals(moduleId, config.GENERAL.CURRENT_MODULE)) {
-            Module module = featureRegistry.getFeature(moduleId = config.GENERAL.CURRENT_MODULE, Module.class)
+            moduleId = config.GENERAL.CURRENT_MODULE;
+            Module module = featureRegistry.getFeature(moduleId, Module.class)
+                .or(() -> params.useAstralUi()
+                        ? AstralControlGui.resolveAstralModuleId(this)
+                        .filter(resolved -> !Objects.equals(resolved, moduleId))
+                        .flatMap(resolved -> {
+                            config.GENERAL.CURRENT_MODULE = resolved;
+                            moduleId = resolved;
+                            return featureRegistry.getFeature(resolved, Module.class);
+                        })
+                        : Optional.empty())
                 .orElseGet(() -> {
                     String name = moduleId.substring(moduleId.lastIndexOf(".") + 1);
                     Popups.of("Error", I18n.get("bot.issue.module_load_failed", name), JOptionPane.ERROR_MESSAGE).showAsync();

@@ -100,7 +100,7 @@ public class RepairManager implements Manager, RepairAPI {
 
                         int currentRepairs = repairStation.getInstantRepairs();
                         if (currentRepairs >= main.config.GENERAL.SAFETY.INSTANT_REPAIR) {
-                            repairStation.clickable.click();
+                            repairStation.trySelect(false);
                             System.out.println("Used instant repair! " + currentRepairs);
                         }
 

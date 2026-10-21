@@ -53,7 +53,7 @@ public class DarkMemAdapter extends GameAPIImpl<DarkMem, DarkMemAdapter.DarkMemH
         }
 
         public boolean isValid() {
-            return pid != 0;
+            return pid != 0 && MapManager.clientWidth > 100 && MapManager.clientHeight > 100;
         }
     }
 

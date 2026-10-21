@@ -252,15 +252,18 @@ public class MapManager implements Manager, StarSystemAPI {
                 || main.guiManager.lostConnection.visible) return false;
 
         long eventManager = Main.API.readLong(eventAddress);
-        if (eventManager > 0) {
-            boolean enabled = !API.readBoolean(eventManager + 36); // are clicks enabled?
-            if (enabled) {
-                if (isEntityAction || lastMove.tryActivate()) {
-                    API.callMethodChecked(false, "23(26)008431800",26, eventManager);
-                    if (isEntityAction) lastMove.disarm();
-                }
-                return true;
+        if (!ByteUtils.isValidPtr(eventManager) || !ByteUtils.isScriptableObjectValid(eventManager)) return false;
+
+        boolean enabled = !API.readBoolean(eventManager + 36); // are clicks enabled?
+        if (enabled) {
+            if (isEntityAction || lastMove.tryActivate()) {
+                // Native signature-checking can crash on transient/stale event-manager objects during reloads or reconnects.
+                // Prefer the direct call when the object is not yet settled, otherwise keep the checked path.
+                if (BotInstaller.isSettled()) API.callMethodChecked(false, "23(26)008431800", 26, eventManager);
+                else API.callMethod(26, eventManager);
+                if (isEntityAction) lastMove.disarm();
             }
+            return true;
         }
         return false;
     }

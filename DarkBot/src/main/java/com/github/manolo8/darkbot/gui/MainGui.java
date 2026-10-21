@@ -36,8 +36,8 @@ public class MainGui extends JFrame {
     public static final int DEFAULT_WIDTH = 640, DEFAULT_HEIGHT = 480;
     private int lastTick;
 
-    public MainGui(Main main) throws HeadlessException {
-        super("DarkBot");
+    public MainGui(Main main, boolean visibleOnStart) throws HeadlessException {
+        super("Hak Clan SE");
         getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_SHOW_ICON, false);
         getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_SHOW_TITLE, false);
 
@@ -71,13 +71,15 @@ public class MainGui extends JFrame {
         setIconImage(ICON);
 
         setComponentPosition();
-        titleBar.setInfo("DarkBot " + Main.VERSION);
+        titleBar.setInfo("Hak Clan SE " + Main.VERSION);
 
-        setVisible(true);
+        setVisible(visibleOnStart);
 
-        setAlwaysOnTop(true);
-        toFront();
-        requestFocus();
+        if (visibleOnStart) {
+            setAlwaysOnTop(true);
+            toFront();
+            requestFocus();
+        }
         setAlwaysOnTop(main.config.BOT_SETTINGS.BOT_GUI.ALWAYS_ON_TOP);
 
         if (Main.API.hasCapability(Capability.WINDOW_POSITION)) {
@@ -149,9 +151,9 @@ public class MainGui extends JFrame {
 
     public void tick() {
         if (main.config.MISCELLANEOUS.USERNAME_ON_TITLE) {
-            if (main.hero.playerInfo.username != null) setTitle("DarkBot - " + main.hero.playerInfo.username);
+            if (main.hero.playerInfo.username != null) setTitle("Hak Clan SE - " + main.hero.playerInfo.username);
         }
-        else setTitle("DarkBot");
+        else setTitle("Hak Clan SE");
 
         if ((lastTick++ % main.config.BOT_SETTINGS.MAP_DISPLAY.REFRESH_DELAY) == 0) {
             mapDrawer.repaint();

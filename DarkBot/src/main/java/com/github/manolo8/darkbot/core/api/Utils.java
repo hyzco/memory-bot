@@ -13,17 +13,15 @@ import java.util.Set;
 public class Utils {
     public static final String SELECT_MAP_ASSET = "MapAssetNotificationTRY_TO_SELECT_MAPASSET";
 
-    public static long[] createSelectEntityArgs(Entity entity) {
+    public static SelectEntityClick createSelectEntityClick(Entity entity) {
         RectangleImpl viewBounds = Main.INSTANCE.mapManager.viewBounds.polygon.getBounds();
         double bx = viewBounds.getX(), by = viewBounds.getY();
         double bw = viewBounds.getWidth(), bh = viewBounds.getHeight();
         int cw = MapManager.clientWidth, ch = MapManager.clientHeight;
 
-        // The location of entity in the screen, possibly shifted to be inside the screen
         int entityScreenX = softClamp(translate(entity.getX() - bx, bw, cw), cw);
         int entityScreenY = softClamp(translate(entity.getY() - by, bh, ch), ch);
 
-        // An angle of max +-45 deg ensures if the entity is inside, mouse pos is also inside
         double angle = entity.angleTo(viewBounds.getCenterX(), viewBounds.getCenterY())
                 + (Math.random() - 0.5) * MathUtils.HALF_PI;
         double dist = Math.random() * entity.clickable.defRadius;
@@ -31,12 +29,36 @@ public class Utils {
         int diffX = translate(-Math.cos(angle) * dist, bw, cw);
         int diffY = translate(-Math.sin(angle) * dist, bh, ch);
 
+        return new SelectEntityClick(
+                entityScreenX + diffX,
+                entityScreenY + diffY,
+                entityScreenX,
+                entityScreenY);
+    }
+
+    public static long[] createSelectEntityArgs(Entity entity) {
+        SelectEntityClick click = createSelectEntityClick(entity);
+
         return tagIntegers(
                 entity.getId(),
                 (int) entity.getX(), (int) entity.getY(),
-                entityScreenX + diffX, entityScreenY + diffY,
-                entityScreenX, entityScreenY,
+                click.clickX, click.clickY,
+                click.entityScreenX, click.entityScreenY,
                 entity.clickable.defRadius);
+    }
+
+    public static class SelectEntityClick {
+        public final int clickX;
+        public final int clickY;
+        public final int entityScreenX;
+        public final int entityScreenY;
+
+        public SelectEntityClick(int clickX, int clickY, int entityScreenX, int entityScreenY) {
+            this.clickX = clickX;
+            this.clickY = clickY;
+            this.entityScreenX = entityScreenX;
+            this.entityScreenY = entityScreenY;
+        }
     }
 
     private static long[] tagIntegers(int... args) {
@@ -86,7 +108,11 @@ public class Utils {
 
         default boolean checkSignature(boolean checkName, String signature, int index, long object) {
             if (index <= 2 || !ByteUtils.isValidPtr(object)) return false;
+            if (!ByteUtils.isScriptableObjectValid(object)) return false;
             if (!signatureCache().contains(signature)) {
+                // native check crashes if called on still-settling objects right after reload, wait it out
+                if (!BotInstaller.isSettled()) return false;
+
                 // -1 or -2 == memory read error, 0 == invalid signature, 1 == valid
                 int ret = checkMethodSignature(object, index, checkName, signature);
 

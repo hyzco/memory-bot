@@ -1,0 +1,10 @@
+﻿Compiled from "ItemInfo.java"
+public class com.deemeplus.modules.astral.ItemInfo {
+  public int priority;
+  private static int zRkunq8fqg;
+  private transient int I7A7zpZOCo;
+  private static java.lang.String[] nothing_to_see_here;
+  public com.deemeplus.modules.astral.ItemInfo(int, int);
+  static {};
+  private static java.lang.String thisIsAInsaneEncryptionMethod(byte[], int);
+}

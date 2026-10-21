@@ -1,5 +1,6 @@
 package com.github.manolo8.darkbot.core;
 
+import com.github.manolo8.darkbot.Main;
 import com.github.manolo8.darkbot.core.api.Capability;
 import com.github.manolo8.darkbot.core.itf.Manager;
 import com.github.manolo8.darkbot.core.utils.Lazy;
@@ -17,6 +18,14 @@ public class BotInstaller implements API.Singleton {
     private static final byte[] bytesToSettings =
             new byte[]{0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 5};
 
+    public static byte[] getMainApplicationPattern() {
+        return bytesToMainApplication.clone();
+    }
+
+    private static final long INVALID_TIMEOUT_WITH_READ = 180_000;
+    private static final long INVALID_TIMEOUT_NO_READ = 300_000;
+    private static final int MAX_INVALID_TIMEOUT_HITS = 2;
+
     public static long SCRIPT_OBJECT_VTABLE, STRING_OBJECT_VTABLE;
     public final Lazy<Long> mainApplicationAddress = new Lazy<>();
     public final Lazy<Boolean> invalid = new Lazy<>(true);
@@ -30,9 +39,21 @@ public class BotInstaller implements API.Singleton {
 
     private final Timer invalidTimer = Timer.get();
 
+    // Flash-side objects are still settling right after a reload; native signature checks on them
+    // are prone to reading freed/half-constructed memory, so gate first-use checks for a bit.
+    public static volatile long lastValidAt = 0;
+    public static final long SETTLE_MS = 400;
+
+    public static boolean isSettled() {
+        return System.currentTimeMillis() - lastValidAt >= SETTLE_MS;
+    }
+
     public BotInstaller() {
         this.invalid.add(value -> {
-            if (!value) invalidTimer.disarm();
+            if (!value) {
+                invalidTimer.disarm();
+                lastValidAt = System.currentTimeMillis();
+            }
         });
     }
 
@@ -59,6 +80,7 @@ public class BotInstaller implements API.Singleton {
         }
 
         invalid.send(true);
+        // Keep bot in invalid state until core pointers are resolved.
         return true;
     }
 
@@ -130,6 +152,7 @@ public class BotInstaller implements API.Singleton {
     }
 
     private long lastInternetRead;
+    private int invalidTimeoutHits;
     private void checkInvalid() {
         // Background only api ignores invalid checks
         if (API.hasCapability(Capability.BACKGROUND_ONLY)) return;
@@ -138,14 +161,28 @@ public class BotInstaller implements API.Singleton {
             long lastRead = API.lastInternetReadTime();
             if (lastInternetRead != lastRead) {
                 lastInternetRead = lastRead;
-                invalidTimer.activate(60_000); // decrypting of main.swf can be tough
-            } else if (!invalidTimer.isArmed()) invalidTimer.activate(60_000);
+                invalidTimeoutHits = 0;
+                invalidTimer.activate(INVALID_TIMEOUT_WITH_READ);
+            } else if (!invalidTimer.isArmed()) invalidTimer.activate(INVALID_TIMEOUT_WITH_READ);
 
-        } else if (!invalidTimer.isArmed()) invalidTimer.activate(150_000); // 2.5 min
+        } else if (!invalidTimer.isArmed()) invalidTimer.activate(INVALID_TIMEOUT_NO_READ);
 
         // timer is disarmed, so is potentially stuck on loading
         if (invalidTimer.tryDisarm()) {
-            if (API.hasCapability(Capability.HANDLER_CLEAR_CACHE))
+            invalidTimeoutHits++;
+            if (invalidTimeoutHits < MAX_INVALID_TIMEOUT_HITS) {
+                invalidTimer.activate(API.hasCapability(Capability.HANDLER_INTERNET_READ_TIME)
+                        ? INVALID_TIMEOUT_WITH_READ : INVALID_TIMEOUT_NO_READ);
+                System.out.println("Loading watchdog timeout " + invalidTimeoutHits + "/"
+                        + MAX_INVALID_TIMEOUT_HITS + ", waiting before refresh...");
+                return;
+            }
+
+            invalidTimeoutHits = 0;
+            if (API.hasCapability(Capability.HANDLER_CLEAR_CACHE)
+                    && Main.INSTANCE != null
+                    && Main.INSTANCE.config != null
+                    && Main.INSTANCE.config.BOT_SETTINGS.API_CONFIG.CLEAR_CACHE_ON_STUCK)
                 API.clearCache(".*");
 
             API.handleRefresh(true);

@@ -25,9 +25,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,6 +54,7 @@ public class PluginHandler implements API.Singleton {
             I18n.get( "plugins.issues.signature.unknown_signature.desc"), PluginIssue.Level.ERROR);
     public static final PluginIssue INVALID_SIGNATURE = new PluginIssue("plugins.issues.signature.invalid_signature",
             I18n.get("plugins.issues.signature.invalid_signature.desc"), PluginIssue.Level.ERROR);
+        public static final String TRUSTED_LOCALLY = "plugins.issues.signature.trusted_locally";
 
     public static final File PLUGIN_FOLDER = new File("plugins"),
             PLUGIN_UPDATE_FOLDER = new File("plugins/updates"),
@@ -65,8 +69,17 @@ public class PluginHandler implements API.Singleton {
     public final List<PluginException> LOADING_EXCEPTIONS = new ArrayList<>();
 
     private static final List<PluginListener> LISTENERS = new ArrayList<>();
+        private static final Set<String> MANAGED_PLUGIN_FILES = new HashSet<>(List.of(
+            "AstralPlugin.jar",
+            "DefaultPlugin.jar",
+            "DmPlugin.jar",
+            "DonorPlugin.jar",
+            "KekkaReloaded.jar",
+            "LeanPlugin.jar"
+        ));
 
     private final EventBrokerAPI eventBroker;
+    private final LocalPluginTrust localPluginTrust = new LocalPluginTrust();
 
     public void addListener(PluginListener listener) {
         if (!LISTENERS.contains(listener)) LISTENERS.add(listener);
@@ -83,7 +96,24 @@ public class PluginHandler implements API.Singleton {
 
     private File[] getJars(File folder) {
         File[] jars = folder.listFiles((dir, name) -> name.endsWith(".jar"));
-        return jars != null ? jars : new File[0];
+        if (jars == null) return new File[0];
+
+        List<File> ordered = Stream.of(jars)
+                .sorted(Comparator
+                        .comparingInt((File file) -> managedPluginPriority(file.getName()))
+                        .thenComparing(File::getName, String.CASE_INSENSITIVE_ORDER))
+                .collect(Collectors.toList());
+        return ordered.toArray(File[]::new);
+    }
+
+    public static boolean isManagedPluginFile(String fileName) {
+        return MANAGED_PLUGIN_FILES.contains(fileName);
+    }
+
+    private static int managedPluginPriority(String fileName) {
+        if ("AstralPlugin.jar".equalsIgnoreCase(fileName)) return 100;
+        if (isManagedPluginFile(fileName)) return 10;
+        return 0;
     }
 
     /** Updates plugins asynchronously */
@@ -116,6 +146,7 @@ public class PluginHandler implements API.Singleton {
     private void updatePluginsInternal() {
         synchronized (this) {
             List<Plugin> previousPlugins = new ArrayList<>(LOADED_PLUGINS);
+            localPluginTrust.reload();
 
             LOADED_PLUGINS.clear();
             FAILED_PLUGINS.clear();
@@ -136,6 +167,10 @@ public class PluginHandler implements API.Singleton {
             for (File plugin : getJars(PLUGIN_UPDATE_FOLDER)) {
                 Path plPath = plugin.toPath();
                 try {
+                    if (isManagedPluginFile(plugin.getName())) {
+                        Files.deleteIfExists(plPath);
+                        continue;
+                    }
                     Files.move(plPath, PLUGIN_PATH.resolve(plPath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
                 } catch (Exception e) {
                     LOADING_EXCEPTIONS.add(new PluginException("Failed to update plugin: " + plPath.getFileName(), e));
@@ -242,7 +277,7 @@ public class PluginHandler implements API.Singleton {
             issues.addFailure((isUpdate ? INVALID_UPDATE_JSON : INVALID_JSON),
                     I18n.get("plugins.issues.invalid_json.desc", pd.minVersion, pd.supportedVersion));
 
-        String supportedRange = "DarkBot v" + (pd.minVersion.compareTo(pd.supportedVersion) == 0 ?
+        String supportedRange = "v" + (pd.minVersion.compareTo(pd.supportedVersion) == 0 ?
                 pd.minVersion : pd.minVersion + "-v" + pd.supportedVersion);
 
         if (Main.VERSION.compareTo(pd.minVersion) < 0)
@@ -268,14 +303,27 @@ public class PluginHandler implements API.Singleton {
     }
 
     private void testSignature(Plugin plugin, JarFile jar) throws IOException {
+        String trustedHash = localPluginTrust.getTrustedHash(plugin.getFile()).orElse(null);
         try {
             Boolean signatureValid = AuthAPI.getInstance().checkPluginJarSignature(jar);
-            if (signatureValid == null) plugin.getIssues().add(PLUGIN_NOT_SIGNED);
-            else if (!signatureValid) plugin.getIssues().add(UNKNOWN_SIGNATURE);
-            System.out.println("Signature valid: " + signatureValid);
+            if (signatureValid == null) {
+                if (trustedHash != null) addLocalTrustWarning(plugin, trustedHash);
+                else plugin.getIssues().add(PLUGIN_NOT_SIGNED.getMessageKey(), PLUGIN_NOT_SIGNED.getDescription(), PluginIssue.Level.WARNING);
+            } else if (!signatureValid) {
+                if (trustedHash != null) addLocalTrustWarning(plugin, trustedHash);
+                else plugin.getIssues().add(UNKNOWN_SIGNATURE.getMessageKey(), UNKNOWN_SIGNATURE.getDescription(), PluginIssue.Level.WARNING);
+            }
         } catch (SecurityException e) {
-            plugin.getIssues().add(INVALID_SIGNATURE);
+            if (trustedHash != null) addLocalTrustWarning(plugin, trustedHash);
+            else plugin.getIssues().add(INVALID_SIGNATURE.getMessageKey(), INVALID_SIGNATURE.getDescription(), PluginIssue.Level.WARNING);
         }
+    }
+
+    private void addLocalTrustWarning(Plugin plugin, String trustedHash) {
+        plugin.getIssues().add(TRUSTED_LOCALLY,
+                I18n.get("plugins.issues.signature.trusted_locally.desc",
+                        plugin.getFile().getName(), trustedHash, LocalPluginTrust.TRUST_FILE.toString()),
+                PluginIssue.Level.WARNING);
     }
 
     private boolean isFeature(String path) {

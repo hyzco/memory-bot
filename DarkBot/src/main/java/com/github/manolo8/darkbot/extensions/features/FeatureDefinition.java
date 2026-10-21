@@ -14,7 +14,6 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -47,8 +46,6 @@ public class FeatureDefinition<T> implements FeatureInfo<T> {
 
         this.id = clazz.getCanonicalName();
         this.listener.add(uiListener::send);
-        System.out.println("[DarkBot] " + clazz.getCanonicalName());
-        System.out.println("[DarkBot] " + Arrays.toString(clazz.getAnnotations()));
 
         boolean enabledByDefault;
         if (clazz.getAnnotation(Feature.class) != null) {

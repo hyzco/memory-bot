@@ -43,7 +43,7 @@ public class LibSetup {
         }
 
         for (Lib lib : libraries.values()) {
-//            if (lib.auto) downloadLib(lib, null);
+            if (lib.auto) downloadLib(lib, null);
         }
     }
 
@@ -70,6 +70,14 @@ public class LibSetup {
     public static boolean downloadLib(Lib lib, @Nullable Path libPath) {
         if (lib == null) return false;
         if (libPath == null) libPath = Paths.get(lib.path);
+
+        String fileName = libPath.getFileName() == null ? "" : libPath.getFileName().toString();
+        boolean keepLocalVerifier = Boolean.getBoolean("darkbot.keep.local.verifier")
+                || Files.exists(Paths.get("keep-local-verifier.txt"));
+        if (keepLocalVerifier && "verifier.jar".equalsIgnoreCase(fileName)) {
+            System.out.println("Keeping local verifier.jar, skipping remote update");
+            return false;
+        }
 
         if (Files.exists(libPath)) {
             try {

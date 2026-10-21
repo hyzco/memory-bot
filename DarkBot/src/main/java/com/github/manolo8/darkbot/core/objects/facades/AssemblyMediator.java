@@ -3,6 +3,7 @@ package com.github.manolo8.darkbot.core.objects.facades;
 import com.github.manolo8.darkbot.core.itf.Updatable;
 import com.github.manolo8.darkbot.core.objects.swf.FlashList;
 import com.github.manolo8.darkbot.core.objects.swf.FlashListLong;
+import eu.darkbot.api.API;
 import eu.darkbot.api.managers.AssemblyAPI;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -14,13 +15,13 @@ import java.util.List;
 import static com.github.manolo8.darkbot.Main.API;
 
 @Getter
-public class AssemblyMediator extends Updatable implements AssemblyAPI {
+public class AssemblyMediator extends Updatable implements API.Singleton {
     private int selectedRecipeIndex;
     private final Recipe selectedRecipe = new Recipe();
 
     private boolean listUpdated = false;
     private final FlashList<Recipe> recipes = FlashList.ofVector(Recipe::new);
-    private final List<Filter> filters = new ArrayList<>();
+    private final List<AssemblyAPI.Filter> filters = new ArrayList<>();
     private final FlashList<RowFilter> rowSettings = FlashList.ofVector(RowFilter::new);
 
     private boolean isFilterDropDownOpen;
@@ -32,21 +33,22 @@ public class AssemblyMediator extends Updatable implements AssemblyAPI {
 
         listUpdated = false;
         selectedRecipe.updateIfChanged(readAtom(0x70));
-        selectedRecipe.update();
 
         if (rowSettings.updateAndReport(readAtom(0x78, 0xb0))) {
             filters.clear();
-            for (int i = 0; i < rowSettings.size(); i++) {
-                RowFilter currRow = rowSettings.get(i);
-                filters.add(currRow.first.withPos(i, 0));
-                filters.add(currRow.second.withPos(i, 1));
+            for (int i = 0; i < this.rowSettings.size(); i++) {
+                RowFilter currRow = this.rowSettings.get(i);
+                ItemFilter first = currRow.getFirst().withPos(i, 0);
+                if(first.isValid()) this.filters.add(first);
+
+                ItemFilter second = currRow.getSecond().withPos(i, 1);
+                if(second.isValid()) this.filters.add(second);
             }
         }
 
         isFilterDropDownOpen = readBoolean(0x78, 0x60, 0x1D0);
     }
 
-    @Override
     public List<? extends AssemblyAPI.Recipe> getRecipes() {
         if (!listUpdated) {
             recipes.update(readAtom(0x60, 0x20));
@@ -66,7 +68,7 @@ public class AssemblyMediator extends Updatable implements AssemblyAPI {
         private final List<String> rewards = new ArrayList<>();
         private final FlashList<ResourceRequired> resourcesRequired = FlashList.ofVector(ResourceRequired::new);
         private boolean isCraftable, isInProgress, isCollectable = false;
-        private int craftTimeLeft, craftTimeRequired;
+        private int craftTimeLeft, craftTimeRequired, buildAmount;
         private final FlashListLong craftTimeData = FlashListLong.ofVector();
 
         @Override
@@ -85,15 +87,16 @@ public class AssemblyMediator extends Updatable implements AssemblyAPI {
         @Override
         public void update() {
             isCraftable = readBoolean(0x20);
-            craftTimeLeft = (int) readDouble(0x40, 0x28, 0x38);
+            craftTimeLeft = (int) readDouble(0x40, 0x20, 0x28);
+            buildAmount = (int) readDouble(0x40, 0x20, 0x30);
 
             long data = readAtom(0x58, 0x40, 0x20);
             visibility = API.readString(data, 0x90);
-            craftTimeData.update(API.readAtom(data, 0x98));
+            craftTimeData.update(API.readAtom(data, 0xb0));
             if (!craftTimeData.isEmpty())
-                craftTimeRequired = API.readInt(craftTimeData.getLong(0), 0x24);
-            isInProgress = craftTimeLeft > 0 && craftTimeLeft <= craftTimeRequired;
-            isCollectable = !isInProgress && readDouble(0x40, 0x20, 0x28) == 1.0;
+                craftTimeRequired = API.readInt(craftTimeData.getLong(0), 0x24) * 1000;
+            isInProgress = !isCraftable && buildAmount > 0 && craftTimeLeft > 1;
+            isCollectable = !isCraftable && buildAmount == 0 && craftTimeLeft == 1;
         }
 
     }
@@ -113,6 +116,7 @@ public class AssemblyMediator extends Updatable implements AssemblyAPI {
         }
     }
 
+    @Getter
     @ToString
     private static class RowFilter extends Reporting {
         private final ItemFilter first = new ItemFilter();
@@ -155,6 +159,10 @@ public class AssemblyMediator extends Updatable implements AssemblyAPI {
             this.row = row;
             this.col = col;
             return this;
+        }
+
+        public boolean isValid() {
+            return !filterName.isBlank();
         }
     }
 }

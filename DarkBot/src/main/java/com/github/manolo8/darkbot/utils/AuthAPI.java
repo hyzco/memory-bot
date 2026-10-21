@@ -2,6 +2,7 @@ package com.github.manolo8.darkbot.utils;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Files;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,7 +10,9 @@ import java.util.jar.JarFile;
 
 public interface AuthAPI extends eu.darkbot.api.managers.AuthAPI {
 
-    Path VERIFIER_PATH = Paths.get("lib", "verifier.jar");
+    Path VERIFIER_PATH = Files.exists(Paths.get("verifier", "build", "libs", "verifier.jar"))
+            ? Paths.get("verifier", "build", "libs", "verifier.jar")
+            : Paths.get("lib", "verifier.jar");
     AuthAPI INSTANCE = ReflectionUtils.createInstance("eu.darkbot.verifier.AuthAPIImpl", VERIFIER_PATH);
 
     static AuthAPI getInstance() {

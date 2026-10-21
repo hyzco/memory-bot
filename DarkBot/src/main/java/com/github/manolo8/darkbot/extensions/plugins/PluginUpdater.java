@@ -86,6 +86,11 @@ public class PluginUpdater implements API.Singleton {
     }
 
     private void checkUpdate(Plugin plugin) throws IOException {
+        if (PluginHandler.isManagedPluginFile(plugin.getFile().getName())) {
+            plugin.setUpdateStatus(Plugin.UpdateStatus.UP_TO_DATE);
+            return;
+        }
+
         if (plugin.getIssues().getIssues().contains(PluginHandler.UPDATE_NOT_POSSIBLE)) {
             plugin.setUpdateStatus(Plugin.UpdateStatus.UNKNOWN);
             return;
@@ -213,6 +218,11 @@ public class PluginUpdater implements API.Singleton {
         @Override
         protected Void doInBackground() throws Exception {
             publish(PluginCard.UpdateStatus.STARTING);
+
+            if (PluginHandler.isManagedPluginFile(plugin.getFile().getName())) {
+                plugin.setUpdateStatus(Plugin.UpdateStatus.UP_TO_DATE);
+                return null;
+            }
 
             if (plugin.getUpdateDefinition() == null)
                 plugin.setUpdateDefinition(findUpdate(plugin.getDefinition()));

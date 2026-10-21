@@ -49,10 +49,48 @@ public class Bot {
             FlatNativeWindowBorder.isSupported();
 
             UIManager.setLookAndFeel(new DarkLaf());
-            UIManager.put("Button.arc", 0);
-            UIManager.put("Component.arc", 0);
+
+            // Modern rounded UI
+            UIManager.put("Button.arc", 8);
+            UIManager.put("Component.arc", 8);
+            UIManager.put("ProgressBar.arc", 8);
+            UIManager.put("TextComponent.arc", 8);
+            UIManager.put("CheckBox.arc", 4);
+
+            // Accent color — cyan/teal
+            Color accent = new Color(0x00B8D4);
+            UIManager.put("Component.focusColor", accent);
+            UIManager.put("TabbedPane.underlineColor", accent);
+            UIManager.put("ProgressBar.foreground", accent);
+            UIManager.put("Slider.thumbColor", accent);
+            UIManager.put("Slider.trackColor", new Color(0x3A3F47));
+
+            // Selection
+            UIManager.put("List.selectionBackground", new Color(0x0D47A1));
+            UIManager.put("Table.selectionBackground", new Color(0x0D47A1));
+            UIManager.put("Tree.selectionBackground", new Color(0x0D47A1));
+
+            // Softer background tones
+            UIManager.put("Table.alternateRowColor", new Color(0x2A2E35));
+
             UIManager.put("Button.default.boldText", false);
             UIManager.put("Table.cellFocusColor", new Color(0, 0, 0, 160));
+            UIManager.put("Table.showHorizontalLines", true);
+            UIManager.put("Table.showVerticalLines", false);
+
+            // Scrollbar
+            UIManager.put("ScrollBar.thumbArc", 999);
+            UIManager.put("ScrollBar.thumbInsets", new Insets(2, 2, 2, 2));
+            UIManager.put("ScrollBar.width", 10);
+
+            // Fonts — use Segoe UI on Windows for modern feel
+            Font baseFont = UIManager.getFont("defaultFont");
+            if (baseFont != null) {
+                Font modernFont = new Font("Segoe UI", Font.PLAIN, baseFont.getSize());
+                if (modernFont.getFamily().equals("Segoe UI")) {
+                    UIManager.put("defaultFont", modernFont);
+                }
+            }
 
             // set icon here to use it in login popup, java check popup etc.
             Popups.setDefaultIcon(MainGui.ICON);
@@ -67,10 +105,10 @@ public class Bot {
         LibSetup.setupLibraries();
         StartupParams params = new StartupParams(args);
 
-        System.out.println("Starting DarkBot " + Main.VERSION);
+        System.out.println("Starting Hak Clan SE " + Main.VERSION);
         //noinspection ThrowableNotThrown
         Runtime.getRuntime().addShutdownHook(new Thread(() ->
-                new Throwable("DarkBot shutdown peacefully!").printStackTrace()));
+                new Throwable("Hak Clan SE shutdown peacefully!").printStackTrace()));
 
         SwingUtilities.invokeLater(() -> new Main(params));
     }

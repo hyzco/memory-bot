@@ -2,6 +2,7 @@ package com.github.manolo8.darkbot.extensions.features.handlers;
 
 import com.github.manolo8.darkbot.config.types.suppliers.ModuleSupplier;
 import com.github.manolo8.darkbot.extensions.features.FeatureDefinition;
+import com.github.manolo8.darkbot.modules.HakClanTutucuModule;
 import eu.darkbot.api.extensions.Module;
 import eu.darkbot.shared.modules.CollectorModule;
 import eu.darkbot.shared.modules.LootCollectorModule;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 public class ModuleHandler extends FeatureHandler<eu.darkbot.api.extensions.Module> {
 
     private static final Class<?>[] NATIVE = new Class[]{
-            CollectorModule.class, LootModule.class, LootCollectorModule.class};
+            CollectorModule.class, LootModule.class, LootCollectorModule.class, HakClanTutucuModule.class};
 
     @Override
     public Class<?>[] getNativeFeatures() {

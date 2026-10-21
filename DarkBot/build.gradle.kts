@@ -46,20 +46,24 @@ configurations {
 }
 
 dependencies {
-    val apiVersion = "0.9.8"
+    val apiVersion = "0.9.12"
     val flatLafVersion = "3.4"
 
     // use this if you want to use local(mavenLocal) darkbot API
-    //api("eu.darkbot", "darkbot-impl", apiVersion)
-    api("eu.darkbot.DarkBotAPI", "darkbot-impl", apiVersion)
-    api("net.bytebuddy", "byte-buddy", "1.12.19")
+    val useLocalMaven = false
+    if (useLocalMaven) api("eu.darkbot", "darkbot-impl", apiVersion)
+    else api("eu.darkbot.DarkBotAPI", "darkbot-impl", apiVersion)
+
     // have to keep version 2.8.9, in newer versions GSON calls `toString` of config enums upon creation
     api("com.google.code.gson", "gson", "2.8.9")
     api("com.miglayout", "miglayout-swing", "11.3")
     api("com.formdev", "flatlaf", flatLafVersion)
     api("com.formdev", "flatlaf-extras", flatLafVersion)
+    api("com.github.kwhat", "jnativehook", "2.2.2")
+    api("net.bytebuddy", "byte-buddy", "1.12.19")
     api("org.jgrapht", "jgrapht-core", "1.5.2")
     api("it.unimi.dsi", "fastutil-core", "8.5.13")
+
     // Testing stat time-series requires this
     //api("org.knowm.xchart", "xchart", "3.8.5")
 
@@ -81,7 +85,7 @@ tasks.wrapper {
 
 tasks.jar {
     manifest {
-        attributes["SplashScreen-Image"] = "icon.png"
+        attributes["SplashScreen-Image"] = "splash.gif"
         attributes["Main-Class"] = application.mainClass
     }
 

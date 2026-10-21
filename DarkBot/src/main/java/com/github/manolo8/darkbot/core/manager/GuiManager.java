@@ -8,6 +8,7 @@ import com.github.manolo8.darkbot.core.objects.Gui;
 import com.github.manolo8.darkbot.core.objects.facades.SettingsProxy;
 import com.github.manolo8.darkbot.core.objects.facades.SlotBarsProxy;
 import com.github.manolo8.darkbot.core.objects.facades.StatsProxy;
+import com.github.manolo8.darkbot.core.objects.gui.AssemblyManager;
 import com.github.manolo8.darkbot.core.objects.gui.ChatGui;
 import com.github.manolo8.darkbot.core.objects.gui.DiminishQuestGui;
 import com.github.manolo8.darkbot.core.objects.gui.DispatchIconGui;
@@ -18,6 +19,7 @@ import com.github.manolo8.darkbot.core.objects.gui.LogoutGui;
 import com.github.manolo8.darkbot.core.objects.gui.OreTradeGui;
 import com.github.manolo8.darkbot.core.objects.gui.RefinementGui;
 import com.github.manolo8.darkbot.core.objects.gui.SettingsGui;
+import com.github.manolo8.darkbot.core.objects.gui.ShipWarpGui;
 import com.github.manolo8.darkbot.core.objects.gui.TargetedOfferGui;
 import com.github.manolo8.darkbot.core.objects.swf.FlashMap;
 import eu.darkbot.api.PluginAPI;
@@ -34,6 +36,10 @@ import static com.github.manolo8.darkbot.Main.API;
 
 public class GuiManager implements Manager, GameScreenAPI {
 
+    private static final long CONNECTING_VISIBLE_TIMEOUT = 90_000;
+    private static final long CONNECTING_QUIET_TIMEOUT = 60_000;
+    private static final long CONNECTING_HARD_TIMEOUT = 180_000;
+
     private final Main main;
     private final PluginAPI pluginAPI;
     private final SlotBarsProxy slotBarsProxy;
@@ -48,6 +54,11 @@ public class GuiManager implements Manager, GameScreenAPI {
     private long lastRepairAttempt;
     private long validTime;
     private long guiAddress;
+    private long connectingSince;
+    private long lastConnectingActivity;
+    private long lastConnectingDebug;
+    private long lastInternetReadDebug;
+    private long lastClientReadDebug;
 
     public final Gui lostConnection;
     public final Gui connecting;
@@ -69,6 +80,7 @@ public class GuiManager implements Manager, GameScreenAPI {
     public final GroupManager group;
     public final SettingsGui settingsGui;
     public final ChatGui chat;
+    public final ShipWarpGui shipWarpGui;
 
     public final Gui assembly;
 
@@ -148,12 +160,13 @@ public class GuiManager implements Manager, GameScreenAPI {
         this.refinement = register("refinement", RefinementGui.class);
         this.chat = register("chat", ChatGui.class);
         this.settingsGui = register("settings", SettingsGui.class);
+        this.shipWarpGui = register("ship_warp", ShipWarpGui.class);
 
         register("dispatch", DispatchManager.class);
         register("dispatch_popup_reward_list", DispatchPopupRewardGui.class);
         register("popup_generic_icon", DispatchIconGui.class);
         register("popup_generic_icon_ok", DispatchIconOkGui.class);
-        this.assembly = register("assembly");
+        this.assembly = register("assembly", AssemblyManager.class);
 
         register("ggBuilder", GateSpinnerGui.class);
         register("diminish_quests", DiminishQuestGui.class);
@@ -181,6 +194,7 @@ public class GuiManager implements Manager, GameScreenAPI {
                 guiCloser.reset();
             }
             connecting.reset();
+            resetConnectingState();
             API.resetCache();
         });
 
@@ -190,6 +204,7 @@ public class GuiManager implements Manager, GameScreenAPI {
 
             checks = LoadStatus.WAITING;
             guiCloser.reset();
+            resetConnectingState();
         });
     }
 
@@ -258,6 +273,46 @@ public class GuiManager implements Manager, GameScreenAPI {
         validTime = System.currentTimeMillis();
     }
 
+    private void resetConnectingState() {
+        connectingSince = 0;
+        lastConnectingActivity = 0;
+        lastConnectingDebug = 0;
+        lastInternetReadDebug = 0;
+        lastClientReadDebug = 0;
+    }
+
+    private void updateConnectingActivity(long now, long internetRead, long clientRead) {
+        if (connectingSince == 0) connectingSince = now;
+        if (lastConnectingActivity == 0) lastConnectingActivity = now;
+
+        if (internetRead != 0 && internetRead != lastInternetReadDebug) {
+            lastConnectingActivity = now;
+        }
+
+        if (clientRead != 0 && clientRead != lastClientReadDebug) {
+            lastConnectingActivity = now;
+        }
+    }
+
+    private void logConnectingDiagnostics(long now, long internetRead, long clientRead) {
+        if (now - lastConnectingDebug < 5000) return;
+        lastConnectingDebug = now;
+
+        long internetDelta = internetRead > 0 && lastInternetReadDebug > 0 ? internetRead - lastInternetReadDebug : 0;
+        long clientDelta = clientRead > 0 && lastClientReadDebug > 0 ? clientRead - lastClientReadDebug : 0;
+
+        lastInternetReadDebug = internetRead;
+        lastClientReadDebug = clientRead;
+
+        System.out.println("Connecting diagnostics: apiValid=" + API.isValid()
+                + " heroAddr=" + main.hero.address
+                + " map=" + main.hero.map.id
+                + " internetRead=" + internetRead
+                + " internetDelta=" + internetDelta
+                + " clientRead=" + clientRead
+                + " clientDelta=" + clientDelta);
+    }
+
     public boolean canTickModule() {
         // visible var is sometimes false even if lost connection window is visible
         if (lostConnection.address > 0) {
@@ -266,16 +321,30 @@ public class GuiManager implements Manager, GameScreenAPI {
                 tryReconnect(lostConnection);
                 checkInvalid();
             }
+            resetConnectingState();
             return false;
         } else if (connecting.visible) {
+            long now = System.currentTimeMillis();
+            long internetRead = API.lastInternetReadTime();
+            long clientRead = API.lastClientReadTime();
 
-            if (connecting.lastUpdatedOver(30000)) {
-                triggerRefresh("Triggering refresh: connection window stuck for too long", true);
+            updateConnectingActivity(now, internetRead, clientRead);
+            logConnectingDiagnostics(now, internetRead, clientRead);
+
+            boolean visibleTooLong = connecting.lastUpdatedOver(CONNECTING_VISIBLE_TIMEOUT);
+            boolean quietTooLong = lastConnectingActivity != 0 && now - lastConnectingActivity > CONNECTING_QUIET_TIMEOUT;
+            boolean hardTimeout = connectingSince != 0 && now - connectingSince > CONNECTING_HARD_TIMEOUT;
+
+            if ((visibleTooLong && quietTooLong) || hardTimeout) {
+                triggerRefresh("Triggering refresh: connection window stuck for too long", false);
                 connecting.reset();
+                resetConnectingState();
             }
 
             return false;
         }
+
+        resetConnectingState();
 
         // If logout is being shown without us having clicked, it's a DO bug, hide it
         if (logout.visible &&
@@ -297,6 +366,7 @@ public class GuiManager implements Manager, GameScreenAPI {
                 // Refresh if stuck on revive for 90 seconds, revive locations may have different cooldowns
                 if ((System.currentTimeMillis() - lastDeath - main.config.GENERAL.SAFETY.WAIT_BEFORE_REVIVE * 1000L) > 90_000) {
                     triggerRefresh("Triggering refresh: stuck on revive for too long!", false);
+                    lastDeath = -1; // Reset so consecutive refreshes don't fire immediately after reconnect
                 }
 
                 return false;

@@ -72,6 +72,10 @@ public interface GameAPI {
             return 0;
         }
 
+        default long lastClientReadTime() {
+            return 0;
+        }
+
         enum GameQuality {
             LOW, MEDIUM, HIGH, BEST, AUTO_LOW, AUTO_HIGH;
         }

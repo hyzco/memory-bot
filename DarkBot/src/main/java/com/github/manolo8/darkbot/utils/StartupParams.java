@@ -30,6 +30,7 @@ public class StartupParams implements API.Singleton {
         NO_OP, /** Run the bot in no-op mode (no-op api) */
         CONFIG(s -> s), /** Start the bot with a specific config */
         HIDE, /** If the bot should hide api window on start */
+        ASTRAL_UI, /** Start with the compact Astral control window instead of the normal DarkBot window */
         NO_WARN; /** Disable warnings about unsupported java version */
 
         private final ThrowingFunction<String, ?, Exception> parser;
@@ -117,6 +118,10 @@ public class StartupParams implements API.Singleton {
 
     public boolean getAutoHide() {
         return has(LaunchArg.HIDE);
+    }
+
+    public boolean useAstralUi() {
+        return has(LaunchArg.ASTRAL_UI);
     }
 
     @Override

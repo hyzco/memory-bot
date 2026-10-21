@@ -202,6 +202,11 @@ public class ConfigManager implements API.Singleton {
     public IDarkBotAPI getAPI(PluginAPI pluginApi) {
         StartupParams params = pluginApi.requireInstance(StartupParams.class);
         BrowserApi api = params.useNoOp() ? BrowserApi.NO_OP_API : config.BOT_SETTINGS.API_CONFIG.BROWSER_API;
+        if (api == BrowserApi.KEKKA_PLAYER && Boolean.getBoolean("darkbot.disable.kekka")) {
+            System.out.println("Kekka API disabled by system property, falling back to DARK_MEM_API");
+            api = BrowserApi.DARK_MEM_API;
+            config.BOT_SETTINGS.API_CONFIG.attachToBot = true;
+        }
         try {
             if (api == null) throw new IllegalArgumentException("No API has been set!");
             return pluginApi.requireInstance(api.clazz);

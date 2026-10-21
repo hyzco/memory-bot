@@ -1,0 +1,4940 @@
+﻿Compiled from "AstralMediator.java"
+public class com.deemeplus.modules.astral.AstralMediator {
+  private eu.darkbot.api.game.other.Gui astralGui;
+
+  private eu.darkbot.api.game.other.Gui astralShipSelectionGui;
+
+  private java.util.Random rnd;
+
+  private static int QMHucVC4Eb;
+
+  private transient int CQMg54U3ie;
+
+  private static java.lang.String[] nothing_to_see_here;
+
+  public com.deemeplus.modules.astral.AstralMediator(eu.darkbot.api.managers.GameScreenAPI, int);
+    Code:
+       0: ldc           #20                 // int 1440337806
+       2: ldc           #21                 // int 1495567894
+       4: ixor
+       5: istore        13
+       7: aload_0
+       8: astore_3
+       9: aload_3
+      10: invokespecial #24                 // Method java/lang/Object."<init>":()V
+      13: iload         13
+      15: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      18: lookupswitch  { // 4
+
+              77442032: 199
+
+             153789419: 60
+
+             546054434: 13
+
+             941212469: 67
+               default: 199
+          }
+      60: ldc           #31                 // int 1351487969
+      62: iload         13
+      64: ixor
+      65: istore        13
+      67: ldc           #32                 // int 1866452490
+      69: ldc           #33                 // int 941280983
+      71: ldc           #34                 // int 2099855938
+      73: getstatic     #36                 // Field QMHucVC4Eb:I
+      76: ixor
+      77: iload_2
+      78: ixor
+      79: ixor
+      80: ixor
+      81: istore        13
+      83: aload_0
+      84: ldc           #15                 // int 466025819
+      86: getstatic     #36                 // Field QMHucVC4Eb:I
+      89: ixor
+      90: putfield      #38                 // Field CQMg54U3ie:I
+      93: iload         13
+      95: ldc           #39                 // int 1419405375
+      97: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     100: istore        13
+     102: ldc           #44                 // int 1064232736
+     104: iload         13
+     106: ixor
+     107: istore        13
+     109: aload_0
+     110: astore        5
+     112: ldc           #46                 // String rogue_lite
+     114: astore        4
+     116: aload_1
+     117: aload         4
+     119: invokeinterface #52,  2           // InterfaceMethod eu/darkbot/api/managers/GameScreenAPI.getGui:(Ljava/lang/String;)Leu/darkbot/api/game/other/Gui;
+     124: astore        8
+     126: aload         5
+     128: aload         8
+     130: putfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+     133: ldc           #55                 // int 330401403
+     135: iload         13
+     137: ixor
+     138: istore        13
+     140: aload_0
+     141: astore        6
+     143: ldc           #57                 // String rogue_lite_selection
+     145: astore        11
+     147: aload_1
+     148: aload         11
+     150: invokeinterface #52,  2           // InterfaceMethod eu/darkbot/api/managers/GameScreenAPI.getGui:(Ljava/lang/String;)Leu/darkbot/api/game/other/Gui;
+     155: astore        9
+     157: aload         6
+     159: aload         9
+     161: putfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+     164: ldc           #60                 // int 1533300001
+     166: iload         13
+     168: ixor
+     169: istore        13
+     171: aload_0
+     172: astore        7
+     174: new           #62                 // class java/util/Random
+     177: astore        10
+     179: aload         10
+     181: invokespecial #63                 // Method java/util/Random."<init>":()V
+     184: aload         7
+     186: aload         10
+     188: putfield      #65                 // Field rnd:Ljava/util/Random;
+     191: ldc           #66                 // int 454232284
+     193: iload         13
+     195: ixor
+     196: istore        13
+     198: return
+     199: new           #68                 // class java/lang/RuntimeException
+     202: dup
+     203: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     206: athrow
+
+  protected boolean isAstralGuiVisible(int);
+    Code:
+       0: ldc           #74                 // int 1794966105
+       2: ldc           #75                 // int 1198436243
+       4: aload_0
+       5: getfield      #38                 // Field CQMg54U3ie:I
+       8: iload_1
+       9: ixor
+      10: ixor
+      11: ixor
+      12: istore        9
+      14: iload         9
+      16: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      19: ldc           #76                 // int 87435206
+      21: if_icmpne     734
+      24: ldc           #77                 // int 1066249262
+      26: iload         9
+      28: ixor
+      29: istore        9
+      31: aload_0
+      32: astore_2
+      33: aload_2
+      34: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      37: astore_3
+      38: aload_3
+      39: ifnull        438
+      42: iload         9
+      44: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      47: ldc           #78                 // int 234138581
+      49: if_icmpne     910
+      52: ldc           #79                 // int 2061344835
+      54: iload         9
+      56: ixor
+      57: istore        9
+      59: aload_0
+      60: astore        4
+      62: aload         4
+      64: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      67: astore        5
+      69: aload         5
+      71: invokeinterface #85,  1           // InterfaceMethod eu/darkbot/api/game/other/Gui.isVisible:()Z
+      76: istore        6
+      78: iload         6
+      80: ldc           #86                 // int 139674511
+      82: iload         9
+      84: ixor
+      85: if_icmpeq     126
+      88: iload         9
+      90: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      93: ldc           #87                 // int 2185910
+      95: if_icmpne     519
+      98: ldc           #88                 // int 2069813505
+     100: iload         9
+     102: ixor
+     103: istore        9
+     105: ldc           #89                 // int 1930271375
+     107: iload         9
+     109: ixor
+     110: i2b
+     111: istore        7
+     113: iload         9
+     115: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     118: ldc           #90                 // int 250226814
+     120: if_icmpne     519
+     123: goto          222
+     126: ldc           #91                 // int 1592804224
+     128: iload         9
+     130: ixor
+     131: istore        9
+     133: iload         9
+     135: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     138: ldc           #92                 // int 131827390
+     140: if_icmpeq     163
+     143: iload         9
+     145: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     148: ldc           #92                 // int 131827390
+     150: if_icmpne     519
+     153: ldc           #93                 // int 989184928
+     155: iload         9
+     157: ixor
+     158: istore        9
+     160: goto          519
+     163: iload         9
+     165: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     168: lookupswitch  { // 4
+
+             131827390: 212
+
+            1705206371: 831
+
+            1803013230: 163
+
+            2062385324: 910
+               default: 910
+          }
+     212: ldc           #94                 // int 118271514
+     214: iload         9
+     216: ixor
+     217: istore        9
+     219: goto          831
+     222: ldc           #95                 // int 103610271
+     224: iload         9
+     226: ixor
+     227: istore        9
+     229: iload         9
+     231: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     234: ldc           #96                 // int 49329777
+     236: if_icmpeq     251
+     239: aconst_null
+     240: athrow
+     241: nop
+     242: nop
+     243: nop
+     244: nop
+     245: nop
+     246: nop
+     247: nop
+     248: nop
+     249: nop
+     250: athrow
+     251: new           #73                 // class java/io/IOException
+     254: dup
+     255: invokespecial #97                 // Method java/io/IOException."<init>":()V
+     258: athrow
+     259: nop
+     260: nop
+     261: nop
+     262: nop
+     263: nop
+     264: nop
+     265: nop
+     266: nop
+     267: nop
+     268: athrow
+     269: iload         9
+     271: invokestatic  #101                // Method skidmod/Factory.efuojskrxnitvcvt:(I)I
+     274: lookupswitch  { // 2
+
+           -1458870133: 300
+
+            -914973926: 312
+               default: 428
+          }
+     300: iload         9
+     302: ldc           #102                // int 1668761944
+     304: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     307: istore        9
+     309: goto          319
+     312: ldc           #103                // int 1333327658
+     314: iload         9
+     316: ixor
+     317: istore        9
+     319: pop
+     320: iload         9
+     322: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     325: ldc           #104                // int 189198363
+     327: if_icmpne     386
+     330: iload         9
+     332: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     335: lookupswitch  { // 4
+
+             189198363: 376
+
+             306645217: 330
+
+             887422929: 386
+
+            1092276178: 856
+               default: 386
+          }
+     376: ldc           #105                // int 568948791
+     378: iload         9
+     380: ixor
+     381: istore        9
+     383: goto          856
+     386: iload         9
+     388: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     391: ldc           #104                // int 189198363
+     393: if_icmpne     386
+     396: iload         9
+     398: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     401: ldc           #106                // int 1513790358
+     403: iload         9
+     405: ixor
+     406: if_icmpne     386
+     409: aload_0
+     410: ldc           #107                // int 1642441956
+     412: iload         9
+     414: ixor
+     415: putfield      #38                 // Field CQMg54U3ie:I
+     418: new           #68                 // class java/lang/RuntimeException
+     421: dup
+     422: ldc           #109                // String double
+     424: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     427: athrow
+     428: new           #68                 // class java/lang/RuntimeException
+     431: dup
+     432: ldc           #114                // String Error in hash
+     434: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     437: athrow
+     438: ldc           #115                // int 783653154
+     440: iload         9
+     442: ixor
+     443: istore        9
+     445: iload         9
+     447: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     450: ldc           #116                // int 45310486
+     452: if_icmpeq     776
+     455: iload         9
+     457: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     460: ldc           #116                // int 45310486
+     462: if_icmpne     869
+     465: iload         9
+     467: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     470: lookupswitch  { // 4
+
+              17665113: 519
+
+              45310486: 512
+
+             380936186: 465
+
+            1415644757: 734
+               default: 734
+          }
+     512: ldc           #117                // int 812497217
+     514: iload         9
+     516: ixor
+     517: istore        9
+     519: iload         9
+     521: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     524: ldc           #98                 // int 214622369
+     526: if_icmpne     519
+     529: iload         9
+     531: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     534: ldc           #118                // int 466890314
+     536: iload         9
+     538: ixor
+     539: if_icmpne     519
+     542: aload_0
+     543: ldc           #119                // int 2019876820
+     545: iload         9
+     547: ixor
+     548: putfield      #38                 // Field CQMg54U3ie:I
+     551: iload         9
+     553: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     556: ldc           #96                 // int 49329777
+     558: if_icmpne     519
+     561: iload         9
+     563: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     566: ldc           #120                // int 1764197465
+     568: iload         9
+     570: ixor
+     571: if_icmpne     519
+     574: ldc           #121                // int 914822523
+     576: iload         9
+     578: ixor
+     579: putstatic     #36                 // Field QMHucVC4Eb:I
+     582: iload         9
+     584: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     587: ldc           #92                 // int 131827390
+     589: if_icmpne     519
+     592: iload         9
+     594: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     597: ldc           #122                // int 20749865
+     599: iload         9
+     601: ixor
+     602: if_icmpne     519
+     605: ldc           #123                // int 1090145269
+     607: iload         9
+     609: ixor
+     610: putstatic     #36                 // Field QMHucVC4Eb:I
+     613: iload         9
+     615: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     618: ldc           #90                 // int 250226814
+     620: if_icmpne     519
+     623: iload         9
+     625: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     628: ldc           #124                // int 604556052
+     630: iload         9
+     632: ixor
+     633: if_icmpne     519
+     636: ldc           #125                // int 1798998059
+     638: iload         9
+     640: ixor
+     641: putstatic     #36                 // Field QMHucVC4Eb:I
+     644: iload         9
+     646: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     649: ldc           #87                 // int 2185910
+     651: if_icmpne     519
+     654: iload         9
+     656: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     659: ldc           #126                // int 1812948918
+     661: iload         9
+     663: ixor
+     664: if_icmpne     519
+     667: ldc           #127                // int 74511351
+     669: iload         9
+     671: ixor
+     672: putstatic     #36                 // Field QMHucVC4Eb:I
+     675: new           #73                 // class java/io/IOException
+     678: dup
+     679: invokespecial #97                 // Method java/io/IOException."<init>":()V
+     682: athrow
+     683: nop
+     684: nop
+     685: nop
+     686: nop
+     687: nop
+     688: nop
+     689: nop
+     690: nop
+     691: nop
+     692: athrow
+     693: nop
+     694: nop
+     695: nop
+     696: nop
+     697: nop
+     698: nop
+     699: nop
+     700: nop
+     701: nop
+     702: athrow
+     703: nop
+     704: nop
+     705: nop
+     706: nop
+     707: nop
+     708: nop
+     709: nop
+     710: nop
+     711: nop
+     712: nop
+     713: nop
+     714: nop
+     715: athrow
+     716: nop
+     717: nop
+     718: nop
+     719: nop
+     720: nop
+     721: nop
+     722: nop
+     723: nop
+     724: nop
+     725: nop
+     726: nop
+     727: nop
+     728: nop
+     729: nop
+     730: nop
+     731: nop
+     732: nop
+     733: athrow
+     734: iload         9
+     736: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     739: ldc           #76                 // int 87435206
+     741: if_icmpne     734
+     744: iload         9
+     746: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     749: ldc           #134                // int 521731092
+     751: iload         9
+     753: ixor
+     754: if_icmpne     734
+     757: aload_0
+     758: ldc           #135                // int 212305218
+     760: iload         9
+     762: ixor
+     763: putfield      #38                 // Field CQMg54U3ie:I
+     766: new           #68                 // class java/lang/RuntimeException
+     769: dup
+     770: ldc           #109                // String double
+     772: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     775: athrow
+     776: iload         9
+     778: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     781: lookupswitch  { // 4
+
+              12907118: 869
+
+              45310486: 824
+
+             383531489: 831
+
+             556457023: 776
+               default: 869
+          }
+     824: ldc           #136                // int 227857659
+     826: iload         9
+     828: ixor
+     829: istore        9
+     831: ldc           #137                // int 1370467861
+     833: iload         9
+     835: ixor
+     836: i2b
+     837: istore        7
+     839: iload         9
+     841: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     844: ldc           #138                // int 239349991
+     846: if_icmpne     910
+     849: ldc           #139                // int 1712386667
+     851: iload         9
+     853: ixor
+     854: istore        9
+     856: iload         7
+     858: ireturn
+     859: nop
+     860: nop
+     861: nop
+     862: nop
+     863: nop
+     864: nop
+     865: nop
+     866: nop
+     867: nop
+     868: athrow
+     869: iload         9
+     871: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     874: ldc           #116                // int 45310486
+     876: if_icmpne     869
+     879: iload         9
+     881: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     884: ldc           #141                // int 388549941
+     886: iload         9
+     888: ixor
+     889: if_icmpne     869
+     892: ldc           #142                // int 141075624
+     894: iload         9
+     896: ixor
+     897: putstatic     #36                 // Field QMHucVC4Eb:I
+     900: new           #68                 // class java/lang/RuntimeException
+     903: dup
+     904: ldc           #109                // String double
+     906: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     909: athrow
+     910: iload         9
+     912: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     915: ldc           #78                 // int 234138581
+     917: if_icmpne     910
+     920: iload         9
+     922: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     925: ldc           #143                // int 71301260
+     927: iload         9
+     929: ixor
+     930: if_icmpne     910
+     933: aload_0
+     934: ldc           #144                // int 1350145273
+     936: iload         9
+     938: ixor
+     939: putfield      #38                 // Field CQMg54U3ie:I
+     942: iload         9
+     944: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     947: ldc           #138                // int 239349991
+     949: if_icmpne     910
+     952: iload         9
+     954: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     957: ldc           #145                // int 1269909795
+     959: iload         9
+     961: ixor
+     962: if_icmpne     910
+     965: aload_0
+     966: ldc           #146                // int 1542149740
+     968: iload         9
+     970: ixor
+     971: putfield      #38                 // Field CQMg54U3ie:I
+     974: iload         9
+     976: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     979: ldc           #140                // int 201520267
+     981: if_icmpne     910
+     984: iload         9
+     986: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     989: ldc           #147                // int 1047179004
+     991: iload         9
+     993: ixor
+     994: if_icmpne     910
+     997: aload_0
+     998: ldc           #148                // int 607639582
+    1000: iload         9
+    1002: ixor
+    1003: putfield      #38                 // Field CQMg54U3ie:I
+    1006: new           #132                // class java/lang/IllegalAccessException
+    1009: dup
+    1010: ldc           #109                // String double
+    1012: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+    1015: athrow
+    Exception table:
+       from    to  target type
+         229   241   269   Class java/io/IOException
+         251   259   269   Class java/io/IOException
+
+  protected void setAstralGuiVisible(boolean, int);
+    Code:
+       0: ldc           #153                // int 2132320641
+       2: ldc           #154                // int 1992046066
+       4: aload_0
+       5: getfield      #38                 // Field CQMg54U3ie:I
+       8: iload_2
+       9: ixor
+      10: ixor
+      11: ixor
+      12: istore        12
+      14: iload         12
+      16: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      19: ldc           #155                // int 93156844
+      21: if_icmpne     420
+      24: ldc           #156                // int 2113292262
+      26: iload         12
+      28: ixor
+      29: istore        12
+      31: aload_0
+      32: astore_3
+      33: aload_3
+      34: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      37: astore        4
+      39: aload         4
+      41: ifnull        151
+      44: iload         12
+      46: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      49: ldc           #157                // int 243690864
+      51: if_icmpne     617
+      54: ldc           #158                // int 868469903
+      56: iload         12
+      58: ixor
+      59: istore        12
+      61: aload_0
+      62: astore        5
+      64: aload         5
+      66: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      69: astore        6
+      71: aload         6
+      73: invokeinterface #85,  1           // InterfaceMethod eu/darkbot/api/game/other/Gui.isVisible:()Z
+      78: istore        7
+      80: iload         7
+      82: iload_1
+      83: if_icmpeq     335
+      86: iload         12
+      88: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      91: ldc           #159                // int 235128285
+      93: if_icmpne     543
+      96: ldc           #160                // int 446741208
+      98: iload         12
+     100: ixor
+     101: istore        12
+     103: aload_0
+     104: astore        8
+     106: aload         8
+     108: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+     111: astore        9
+     113: aload         9
+     115: iload_1
+     116: invokeinterface #164,  2          // InterfaceMethod eu/darkbot/api/game/other/Gui.setVisible:(Z)Z
+     121: istore        10
+     123: iload         12
+     125: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     128: ldc           #165                // int 165344928
+     130: if_icmpne     420
+     133: ldc           #166                // int 1404595934
+     135: iload         12
+     137: ixor
+     138: istore        12
+     140: return
+     141: nop
+     142: nop
+     143: nop
+     144: nop
+     145: nop
+     146: nop
+     147: nop
+     148: nop
+     149: nop
+     150: athrow
+     151: iload         12
+     153: ldc           #168                // int 911070064
+     155: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     158: istore        12
+     160: iload         12
+     162: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     165: ldc           #169                // int 146754994
+     167: if_icmpeq     238
+     170: iload         12
+     172: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     175: ldc           #169                // int 146754994
+     177: if_icmpne     543
+     180: iload         12
+     182: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     185: lookupswitch  { // 4
+
+             146754994: 228
+
+            1124973479: 420
+
+            1401171096: 420
+
+            1575858083: 180
+               default: 420
+          }
+     228: ldc           #170                // int 1643478678
+     230: iload         12
+     232: ixor
+     233: istore        12
+     235: goto          420
+     238: iload         12
+     240: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     243: lookupswitch  { // 4
+
+             146754994: 284
+
+             178232402: 140
+
+            1224275626: 294
+
+            1862515451: 238
+               default: 294
+          }
+     284: ldc           #171                // int 1284951033
+     286: iload         12
+     288: ixor
+     289: istore        12
+     291: goto          140
+     294: iload         12
+     296: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     299: ldc           #167                // int 56922129
+     301: if_icmpne     294
+     304: iload         12
+     306: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     309: ldc           #172                // int 2074473995
+     311: iload         12
+     313: ixor
+     314: if_icmpne     294
+     317: ldc           #173                // int 1119140223
+     319: iload         12
+     321: ixor
+     322: putstatic     #36                 // Field QMHucVC4Eb:I
+     325: new           #73                 // class java/io/IOException
+     328: dup
+     329: ldc           #109                // String double
+     331: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     334: athrow
+     335: iload         12
+     337: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     340: lookupswitch  { // 4
+
+             235128285: 384
+
+             692647434: 335
+
+            1438553190: 543
+
+            1506174246: 391
+               default: 543
+          }
+     384: ldc           #175                // int 110133661
+     386: iload         12
+     388: ixor
+     389: istore        12
+     391: iload         12
+     393: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     396: ldc           #176                // int 46005134
+     398: if_icmpeq     533
+     401: iload         12
+     403: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     406: ldc           #176                // int 46005134
+     408: if_icmpne     617
+     411: iload         12
+     413: ldc           #177                // int 1659625716
+     415: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     418: istore        12
+     420: iload         12
+     422: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     425: ldc           #165                // int 165344928
+     427: if_icmpne     420
+     430: iload         12
+     432: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     435: ldc           #178                // int 980441792
+     437: iload         12
+     439: ixor
+     440: if_icmpne     420
+     443: aload_0
+     444: ldc           #179                // int 1298756446
+     446: iload         12
+     448: ixor
+     449: putfield      #38                 // Field CQMg54U3ie:I
+     452: iload         12
+     454: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     457: ldc           #180                // int 100823946
+     459: if_icmpne     420
+     462: iload         12
+     464: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     467: ldc           #181                // int 1832258964
+     469: iload         12
+     471: ixor
+     472: if_icmpne     420
+     475: aload_0
+     476: ldc           #182                // int 186010307
+     478: iload         12
+     480: ixor
+     481: putfield      #38                 // Field CQMg54U3ie:I
+     484: iload         12
+     486: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     489: ldc           #155                // int 93156844
+     491: if_icmpne     420
+     494: iload         12
+     496: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     499: ldc           #183                // int 823504287
+     501: iload         12
+     503: ixor
+     504: if_icmpne     420
+     507: ldc           #184                // int 1868832317
+     509: iload         12
+     511: ixor
+     512: putstatic     #36                 // Field QMHucVC4Eb:I
+     515: new           #132                // class java/lang/IllegalAccessException
+     518: dup
+     519: invokespecial #185                // Method java/lang/IllegalAccessException."<init>":()V
+     522: athrow
+     523: nop
+     524: nop
+     525: nop
+     526: nop
+     527: nop
+     528: nop
+     529: nop
+     530: nop
+     531: nop
+     532: athrow
+     533: ldc           #186                // int 1334334875
+     535: iload         12
+     537: ixor
+     538: istore        12
+     540: goto          140
+     543: iload         12
+     545: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     548: ldc           #159                // int 235128285
+     550: if_icmpne     543
+     553: iload         12
+     555: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     558: ldc           #187                // int 1687472741
+     560: iload         12
+     562: ixor
+     563: if_icmpne     543
+     566: aload_0
+     567: ldc           #188                // int 2142821129
+     569: iload         12
+     571: ixor
+     572: putfield      #38                 // Field CQMg54U3ie:I
+     575: iload         12
+     577: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     580: ldc           #169                // int 146754994
+     582: if_icmpne     543
+     585: iload         12
+     587: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     590: ldc           #189                // int 200394184
+     592: iload         12
+     594: ixor
+     595: if_icmpne     543
+     598: aload_0
+     599: ldc           #190                // int 1487086437
+     601: iload         12
+     603: ixor
+     604: putfield      #38                 // Field CQMg54U3ie:I
+     607: new           #132                // class java/lang/IllegalAccessException
+     610: dup
+     611: ldc           #109                // String double
+     613: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     616: athrow
+     617: iload         12
+     619: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     622: ldc           #176                // int 46005134
+     624: if_icmpne     617
+     627: iload         12
+     629: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     632: ldc           #191                // int 1384870562
+     634: iload         12
+     636: ixor
+     637: if_icmpne     617
+     640: aload_0
+     641: ldc           #192                // int 1291982790
+     643: iload         12
+     645: ixor
+     646: putfield      #38                 // Field CQMg54U3ie:I
+     649: iload         12
+     651: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     654: ldc           #157                // int 243690864
+     656: if_icmpne     617
+     659: iload         12
+     661: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     664: ldc           #193                // int 216058677
+     666: iload         12
+     668: ixor
+     669: if_icmpne     617
+     672: ldc           #194                // int 60994747
+     674: iload         12
+     676: ixor
+     677: putstatic     #36                 // Field QMHucVC4Eb:I
+     680: new           #132                // class java/lang/IllegalAccessException
+     683: dup
+     684: ldc           #109                // String double
+     686: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     689: athrow
+
+  protected boolean isAstralShipSelectionGuiVisible(int);
+    Code:
+       0: ldc           #196                // int 980672340
+       2: ldc           #197                // int 2035681880
+       4: aload_0
+       5: getfield      #38                 // Field CQMg54U3ie:I
+       8: iload_1
+       9: ixor
+      10: ixor
+      11: ixor
+      12: istore        9
+      14: iload         9
+      16: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      19: ldc           #198                // int 113900734
+      21: if_icmpne     622
+      24: ldc           #199                // int 246025234
+      26: iload         9
+      28: ixor
+      29: istore        9
+      31: aload_0
+      32: astore_2
+      33: aload_2
+      34: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      37: astore_3
+      38: aload_3
+      39: ifnull        391
+      42: iload         9
+      44: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      47: ldc           #200                // int 43394346
+      49: if_icmpne     518
+      52: ldc           #201                // int 2084761437
+      54: iload         9
+      56: ixor
+      57: istore        9
+      59: aload_0
+      60: astore        4
+      62: aload         4
+      64: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      67: astore        5
+      69: aload         5
+      71: invokeinterface #85,  1           // InterfaceMethod eu/darkbot/api/game/other/Gui.isVisible:()Z
+      76: istore        6
+      78: iload         6
+      80: ldc           #202                // int 1976908378
+      82: iload         9
+      84: ixor
+      85: if_icmpeq     252
+      88: iload         9
+      90: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      93: ldc           #203                // int 72176859
+      95: if_icmpne     350
+      98: ldc           #204                // int 305459376
+     100: iload         9
+     102: ixor
+     103: istore        9
+     105: ldc           #205                // int 1742850795
+     107: iload         9
+     109: ixor
+     110: i2b
+     111: istore        7
+     113: iload         9
+     115: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     118: ldc           #206                // int 155524804
+     120: if_icmpne     664
+     123: iload         9
+     125: ldc           #207                // int 1784381916
+     127: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     130: istore        9
+     132: iload         9
+     134: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     137: ldc           #208                // int 177798146
+     139: if_icmpeq     154
+     142: aconst_null
+     143: athrow
+     144: nop
+     145: nop
+     146: nop
+     147: nop
+     148: nop
+     149: nop
+     150: nop
+     151: nop
+     152: nop
+     153: athrow
+     154: new           #73                 // class java/io/IOException
+     157: dup
+     158: invokespecial #97                 // Method java/io/IOException."<init>":()V
+     161: athrow
+     162: nop
+     163: nop
+     164: nop
+     165: nop
+     166: nop
+     167: nop
+     168: nop
+     169: nop
+     170: nop
+     171: athrow
+     172: iload         9
+     174: invokestatic  #101                // Method skidmod/Factory.efuojskrxnitvcvt:(I)I
+     177: lookupswitch  { // 2
+
+            1842502064: 224
+
+            1877893346: 204
+               default: 214
+          }
+     204: ldc           #210                // int 1078951190
+     206: iload         9
+     208: ixor
+     209: istore        9
+     211: goto          231
+     214: new           #73                 // class java/io/IOException
+     217: dup
+     218: ldc           #114                // String Error in hash
+     220: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     223: athrow
+     224: ldc           #211                // int 588348
+     226: iload         9
+     228: ixor
+     229: istore        9
+     231: pop
+     232: iload         9
+     234: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     237: ldc           #212                // int 176831153
+     239: if_icmpne     664
+     242: ldc           #213                // int 1816817488
+     244: iload         9
+     246: ixor
+     247: istore        9
+     249: goto          453
+     252: iload         9
+     254: ldc           #214                // int 1827282472
+     256: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     259: istore        9
+     261: iload         9
+     263: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     266: ldc           #215                // int 15355811
+     268: if_icmpeq     338
+     271: iload         9
+     273: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     276: ldc           #215                // int 15355811
+     278: if_icmpne     664
+     281: iload         9
+     283: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     286: lookupswitch  { // 4
+
+              15355811: 328
+
+             130504355: 622
+
+             383246298: 664
+
+            1996551980: 281
+               default: 622
+          }
+     328: ldc           #216                // int 1194740074
+     330: iload         9
+     332: ixor
+     333: istore        9
+     335: goto          664
+     338: iload         9
+     340: ldc           #217                // int 1750958634
+     342: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     345: istore        9
+     347: goto          428
+     350: iload         9
+     352: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     355: ldc           #203                // int 72176859
+     357: if_icmpne     350
+     360: iload         9
+     362: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     365: ldc           #218                // int 976249465
+     367: iload         9
+     369: ixor
+     370: if_icmpne     350
+     373: ldc           #219                // int 538435968
+     375: iload         9
+     377: ixor
+     378: putstatic     #36                 // Field QMHucVC4Eb:I
+     381: new           #68                 // class java/lang/RuntimeException
+     384: dup
+     385: ldc           #109                // String double
+     387: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     390: athrow
+     391: ldc           #220                // int 1600361180
+     393: iload         9
+     395: ixor
+     396: istore        9
+     398: iload         9
+     400: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     403: ldc           #221                // int 142155212
+     405: if_icmpeq     421
+     408: iload         9
+     410: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     413: ldc           #221                // int 142155212
+     415: if_icmpne     518
+     418: goto          508
+     421: ldc           #222                // int 664199555
+     423: iload         9
+     425: ixor
+     426: istore        9
+     428: ldc           #223                // int 1902290520
+     430: iload         9
+     432: ixor
+     433: i2b
+     434: istore        7
+     436: iload         9
+     438: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     441: ldc           #224                // int 196039464
+     443: if_icmpne     810
+     446: ldc           #225                // int 278558722
+     448: iload         9
+     450: ixor
+     451: istore        9
+     453: iload         7
+     455: ireturn
+     456: nop
+     457: nop
+     458: nop
+     459: nop
+     460: nop
+     461: nop
+     462: nop
+     463: nop
+     464: nop
+     465: athrow
+     466: nop
+     467: nop
+     468: nop
+     469: nop
+     470: nop
+     471: nop
+     472: nop
+     473: nop
+     474: nop
+     475: athrow
+     476: nop
+     477: nop
+     478: nop
+     479: nop
+     480: nop
+     481: nop
+     482: nop
+     483: nop
+     484: nop
+     485: nop
+     486: nop
+     487: nop
+     488: athrow
+     489: nop
+     490: nop
+     491: nop
+     492: nop
+     493: nop
+     494: nop
+     495: nop
+     496: nop
+     497: nop
+     498: nop
+     499: nop
+     500: nop
+     501: nop
+     502: nop
+     503: nop
+     504: nop
+     505: nop
+     506: nop
+     507: athrow
+     508: ldc           #229                // int 150809283
+     510: iload         9
+     512: ixor
+     513: istore        9
+     515: goto          664
+     518: iload         9
+     520: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     523: ldc           #208                // int 177798146
+     525: if_icmpne     518
+     528: iload         9
+     530: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     533: ldc           #230                // int 2037509874
+     535: iload         9
+     537: ixor
+     538: if_icmpne     518
+     541: ldc           #231                // int 1763336180
+     543: iload         9
+     545: ixor
+     546: putstatic     #36                 // Field QMHucVC4Eb:I
+     549: iload         9
+     551: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     554: ldc           #200                // int 43394346
+     556: if_icmpne     518
+     559: iload         9
+     561: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     564: ldc           #232                // int 794491101
+     566: iload         9
+     568: ixor
+     569: if_icmpne     518
+     572: ldc           #233                // int 1203207467
+     574: iload         9
+     576: ixor
+     577: putstatic     #36                 // Field QMHucVC4Eb:I
+     580: iload         9
+     582: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     585: ldc           #221                // int 142155212
+     587: if_icmpne     518
+     590: iload         9
+     592: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     595: ldc           #234                // int 298862141
+     597: iload         9
+     599: ixor
+     600: if_icmpne     518
+     603: aload_0
+     604: ldc           #235                // int 428795883
+     606: iload         9
+     608: ixor
+     609: putfield      #38                 // Field CQMg54U3ie:I
+     612: new           #68                 // class java/lang/RuntimeException
+     615: dup
+     616: ldc           #109                // String double
+     618: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     621: athrow
+     622: iload         9
+     624: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     627: ldc           #198                // int 113900734
+     629: if_icmpne     622
+     632: iload         9
+     634: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     637: ldc           #236                // int 1973975598
+     639: iload         9
+     641: ixor
+     642: if_icmpne     622
+     645: aload_0
+     646: ldc           #237                // int 343196343
+     648: iload         9
+     650: ixor
+     651: putfield      #38                 // Field CQMg54U3ie:I
+     654: new           #73                 // class java/io/IOException
+     657: dup
+     658: ldc           #109                // String double
+     660: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     663: athrow
+     664: iload         9
+     666: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     669: ldc           #215                // int 15355811
+     671: if_icmpne     664
+     674: iload         9
+     676: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     679: ldc           #238                // int 1418553940
+     681: iload         9
+     683: ixor
+     684: if_icmpne     664
+     687: aload_0
+     688: ldc           #239                // int 137510174
+     690: iload         9
+     692: ixor
+     693: putfield      #38                 // Field CQMg54U3ie:I
+     696: iload         9
+     698: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     701: ldc           #206                // int 155524804
+     703: if_icmpne     664
+     706: iload         9
+     708: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     711: ldc           #240                // int 638801338
+     713: iload         9
+     715: ixor
+     716: if_icmpne     664
+     719: aload_0
+     720: ldc           #241                // int 210937515
+     722: iload         9
+     724: ixor
+     725: putfield      #38                 // Field CQMg54U3ie:I
+     728: iload         9
+     730: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     733: ldc           #212                // int 176831153
+     735: if_icmpne     664
+     738: iload         9
+     740: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     743: ldc           #242                // int 1611788888
+     745: iload         9
+     747: ixor
+     748: if_icmpne     664
+     751: aload_0
+     752: ldc           #243                // int 884559022
+     754: iload         9
+     756: ixor
+     757: putfield      #38                 // Field CQMg54U3ie:I
+     760: iload         9
+     762: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     765: ldc           #209                // int 119273099
+     767: if_icmpne     664
+     770: iload         9
+     772: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     775: ldc           #244                // int 1048586636
+     777: iload         9
+     779: ixor
+     780: if_icmpne     664
+     783: aload_0
+     784: ldc           #245                // int 1207493733
+     786: iload         9
+     788: ixor
+     789: putfield      #38                 // Field CQMg54U3ie:I
+     792: new           #68                 // class java/lang/RuntimeException
+     795: dup
+     796: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     799: athrow
+     800: nop
+     801: nop
+     802: nop
+     803: nop
+     804: nop
+     805: nop
+     806: nop
+     807: nop
+     808: nop
+     809: athrow
+     810: iload         9
+     812: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     815: ldc           #246                // int 103947607
+     817: if_icmpne     810
+     820: iload         9
+     822: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     825: ldc           #247                // int 10540191
+     827: iload         9
+     829: ixor
+     830: if_icmpne     810
+     833: aload_0
+     834: ldc           #248                // int 1624335754
+     836: iload         9
+     838: ixor
+     839: putfield      #38                 // Field CQMg54U3ie:I
+     842: iload         9
+     844: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     847: ldc           #224                // int 196039464
+     849: if_icmpne     810
+     852: iload         9
+     854: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     857: ldc           #249                // int 1202518983
+     859: iload         9
+     861: ixor
+     862: if_icmpne     810
+     865: aload_0
+     866: ldc           #250                // int 1209033308
+     868: iload         9
+     870: ixor
+     871: putfield      #38                 // Field CQMg54U3ie:I
+     874: new           #132                // class java/lang/IllegalAccessException
+     877: dup
+     878: ldc           #109                // String double
+     880: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     883: athrow
+    Exception table:
+       from    to  target type
+         132   144   172   Class java/io/IOException
+         154   162   172   Class java/io/IOException
+
+  protected void setShipSelectionGuiVisible(boolean, int);
+    Code:
+       0: ldc           #252                // int 1075771201
+       2: ldc           #253                // int 2068034859
+       4: aload_0
+       5: getfield      #38                 // Field CQMg54U3ie:I
+       8: iload_2
+       9: ixor
+      10: ixor
+      11: ixor
+      12: istore        12
+      14: iload         12
+      16: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      19: ldc           #254                // int 40633907
+      21: if_icmpne     439
+      24: ldc           #255                // int 508382973
+      26: iload         12
+      28: ixor
+      29: istore        12
+      31: aload_0
+      32: astore_3
+      33: aload_3
+      34: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      37: astore        4
+      39: aload         4
+      41: ifnull        158
+      44: iload         12
+      46: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      49: ldc_w         #256                // int 104982783
+      52: if_icmpne     695
+      55: ldc_w         #257                // int 1913781129
+      58: iload         12
+      60: ixor
+      61: istore        12
+      63: aload_0
+      64: astore        5
+      66: aload         5
+      68: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      71: astore        6
+      73: aload         6
+      75: invokeinterface #85,  1           // InterfaceMethod eu/darkbot/api/game/other/Gui.isVisible:()Z
+      80: istore        7
+      82: iload         7
+      84: iload_1
+      85: if_icmpeq     305
+      88: iload         12
+      90: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      93: ldc_w         #258                // int 155192632
+      96: if_icmpne     439
+      99: ldc_w         #259                // int 1325205917
+     102: iload         12
+     104: ixor
+     105: istore        12
+     107: aload_0
+     108: astore        8
+     110: aload         8
+     112: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+     115: astore        9
+     117: aload         9
+     119: iload_1
+     120: invokeinterface #164,  2          // InterfaceMethod eu/darkbot/api/game/other/Gui.setVisible:(Z)Z
+     125: istore        10
+     127: iload         12
+     129: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     132: ldc_w         #260                // int 128524229
+     135: if_icmpne     439
+     138: ldc_w         #261                // int 1781681423
+     141: iload         12
+     143: ixor
+     144: istore        12
+     146: return
+     147: nop
+     148: nop
+     149: nop
+     150: nop
+     151: nop
+     152: nop
+     153: nop
+     154: nop
+     155: nop
+     156: nop
+     157: athrow
+     158: iload         12
+     160: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     163: lookupswitch  { // 4
+
+             104982783: 204
+
+             865086785: 237
+
+            1330270921: 212
+
+            1415005493: 158
+               default: 237
+          }
+     204: ldc_w         #263                // int 317784172
+     207: iload         12
+     209: ixor
+     210: istore        12
+     212: iload         12
+     214: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     217: ldc_w         #264                // int 168348212
+     220: if_icmpeq     281
+     223: iload         12
+     225: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     228: ldc_w         #264                // int 168348212
+     231: if_icmpne     237
+     234: goto          294
+     237: iload         12
+     239: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     242: ldc_w         #264                // int 168348212
+     245: if_icmpne     237
+     248: iload         12
+     250: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     253: ldc_w         #265                // int 487121348
+     256: iload         12
+     258: ixor
+     259: if_icmpne     237
+     262: ldc_w         #266                // int 464181516
+     265: iload         12
+     267: ixor
+     268: putstatic     #36                 // Field QMHucVC4Eb:I
+     271: new           #132                // class java/lang/IllegalAccessException
+     274: dup
+     275: ldc           #109                // String double
+     277: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     280: athrow
+     281: iload         12
+     283: ldc_w         #267                // int 1143979895
+     286: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     289: istore        12
+     291: goto          146
+     294: ldc_w         #268                // int 1244220237
+     297: iload         12
+     299: ixor
+     300: istore        12
+     302: goto          439
+     305: iload         12
+     307: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     310: lookupswitch  { // 4
+
+             155192632: 352
+
+             788025985: 363
+
+            1208664743: 305
+
+            1832514577: 407
+               default: 363
+          }
+     352: ldc_w         #269                // int 971101450
+     355: iload         12
+     357: ixor
+     358: istore        12
+     360: goto          407
+     363: iload         12
+     365: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     368: ldc_w         #262                // int 236057866
+     371: if_icmpne     363
+     374: iload         12
+     376: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     379: ldc_w         #270                // int 1976454226
+     382: iload         12
+     384: ixor
+     385: if_icmpne     363
+     388: ldc_w         #271                // int 776603929
+     391: iload         12
+     393: ixor
+     394: putstatic     #36                 // Field QMHucVC4Eb:I
+     397: new           #73                 // class java/io/IOException
+     400: dup
+     401: ldc           #109                // String double
+     403: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     406: athrow
+     407: iload         12
+     409: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     412: ldc_w         #272                // int 108715069
+     415: if_icmpeq     638
+     418: iload         12
+     420: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     423: ldc_w         #272                // int 108715069
+     426: if_icmpne     439
+     429: iload         12
+     431: ldc_w         #273                // int 321414562
+     434: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     437: istore        12
+     439: iload         12
+     441: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     444: ldc_w         #272                // int 108715069
+     447: if_icmpne     439
+     450: iload         12
+     452: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     455: ldc_w         #274                // int 1950562852
+     458: iload         12
+     460: ixor
+     461: if_icmpne     439
+     464: ldc_w         #275                // int 1790864125
+     467: iload         12
+     469: ixor
+     470: putstatic     #36                 // Field QMHucVC4Eb:I
+     473: iload         12
+     475: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     478: ldc_w         #258                // int 155192632
+     481: if_icmpne     439
+     484: iload         12
+     486: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     489: ldc_w         #276                // int 566423476
+     492: iload         12
+     494: ixor
+     495: if_icmpne     439
+     498: aload_0
+     499: ldc_w         #277                // int 436492724
+     502: iload         12
+     504: ixor
+     505: putfield      #38                 // Field CQMg54U3ie:I
+     508: iload         12
+     510: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     513: ldc           #254                // int 40633907
+     515: if_icmpne     439
+     518: iload         12
+     520: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     523: ldc_w         #278                // int 701809060
+     526: iload         12
+     528: ixor
+     529: if_icmpne     439
+     532: ldc_w         #279                // int 1741079503
+     535: iload         12
+     537: ixor
+     538: putstatic     #36                 // Field QMHucVC4Eb:I
+     541: iload         12
+     543: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     546: ldc_w         #260                // int 128524229
+     549: if_icmpne     439
+     552: iload         12
+     554: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     557: ldc_w         #280                // int 506833280
+     560: iload         12
+     562: ixor
+     563: if_icmpne     439
+     566: ldc_w         #281                // int 2012803211
+     569: iload         12
+     571: ixor
+     572: putstatic     #36                 // Field QMHucVC4Eb:I
+     575: new           #68                 // class java/lang/RuntimeException
+     578: dup
+     579: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     582: athrow
+     583: nop
+     584: nop
+     585: nop
+     586: nop
+     587: nop
+     588: nop
+     589: nop
+     590: nop
+     591: nop
+     592: nop
+     593: athrow
+     594: nop
+     595: nop
+     596: nop
+     597: nop
+     598: nop
+     599: nop
+     600: nop
+     601: nop
+     602: nop
+     603: nop
+     604: athrow
+     605: nop
+     606: nop
+     607: nop
+     608: nop
+     609: nop
+     610: nop
+     611: nop
+     612: nop
+     613: nop
+     614: nop
+     615: nop
+     616: nop
+     617: nop
+     618: athrow
+     619: nop
+     620: nop
+     621: nop
+     622: nop
+     623: nop
+     624: nop
+     625: nop
+     626: nop
+     627: nop
+     628: nop
+     629: nop
+     630: nop
+     631: nop
+     632: nop
+     633: nop
+     634: nop
+     635: nop
+     636: nop
+     637: athrow
+     638: iload         12
+     640: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     643: lookupswitch  { // 4
+
+             108715069: 684
+
+             290803411: 638
+
+            1083458745: 146
+
+            1528395553: 695
+               default: 695
+          }
+     684: ldc_w         #285                // int 489591192
+     687: iload         12
+     689: ixor
+     690: istore        12
+     692: goto          146
+     695: iload         12
+     697: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     700: ldc_w         #256                // int 104982783
+     703: if_icmpne     695
+     706: iload         12
+     708: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     711: ldc_w         #286                // int 1102649545
+     714: iload         12
+     716: ixor
+     717: if_icmpne     695
+     720: ldc_w         #287                // int 255483280
+     723: iload         12
+     725: ixor
+     726: putstatic     #36                 // Field QMHucVC4Eb:I
+     729: new           #132                // class java/lang/IllegalAccessException
+     732: dup
+     733: ldc           #109                // String double
+     735: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     738: athrow
+
+  protected void chooseItem(int, boolean, int);
+    Code:
+       0: ldc_w         #290                // int 1844929869
+       3: ldc_w         #291                // int 321470858
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_3
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        8
+      16: iload         8
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #292                // int 175425003
+      24: if_icmpne     113
+      27: ldc_w         #293                // int 2119654492
+      30: iload         8
+      32: ixor
+      33: istore        8
+      35: aload_0
+      36: astore        4
+      38: aload         4
+      40: iload_1
+      41: ldc_w         #294                // int 167280067
+      44: invokevirtual #298                // Method getItemToSelect:(II)Lcom/deemeplus/utils/DivContainer;
+      47: astore        5
+      49: iload         8
+      51: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      54: ldc_w         #299                // int 246419769
+      57: if_icmpne     224
+      60: ldc_w         #300                // int 66665571
+      63: iload         8
+      65: ixor
+      66: istore        8
+      68: aload_0
+      69: astore        6
+      71: aload         6
+      73: aload         5
+      75: iload_2
+      76: ldc_w         #301                // int 535643916
+      79: invokevirtual #305                // Method clickInItem:(Lcom/deemeplus/utils/DivContainer;ZI)V
+      82: iload         8
+      84: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      87: ldc_w         #306                // int 17503816
+      90: if_icmpne     113
+      93: ldc_w         #307                // int 186382671
+      96: iload         8
+      98: ixor
+      99: istore        8
+     101: return
+     102: nop
+     103: nop
+     104: nop
+     105: nop
+     106: nop
+     107: nop
+     108: nop
+     109: nop
+     110: nop
+     111: nop
+     112: athrow
+     113: iload         8
+     115: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     118: ldc_w         #306                // int 17503816
+     121: if_icmpne     113
+     124: iload         8
+     126: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     129: ldc_w         #309                // int 2006604028
+     132: iload         8
+     134: ixor
+     135: if_icmpne     113
+     138: aload_0
+     139: ldc_w         #310                // int 555813697
+     142: iload         8
+     144: ixor
+     145: putfield      #38                 // Field CQMg54U3ie:I
+     148: iload         8
+     150: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     153: ldc_w         #308                // int 241876021
+     156: if_icmpne     113
+     159: iload         8
+     161: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     164: ldc_w         #311                // int 1158947714
+     167: iload         8
+     169: ixor
+     170: if_icmpne     113
+     173: ldc_w         #312                // int 1449506965
+     176: iload         8
+     178: ixor
+     179: putstatic     #36                 // Field QMHucVC4Eb:I
+     182: iload         8
+     184: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     187: ldc_w         #292                // int 175425003
+     190: if_icmpne     113
+     193: iload         8
+     195: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     198: ldc_w         #313                // int 1757946641
+     201: iload         8
+     203: ixor
+     204: if_icmpne     113
+     207: ldc_w         #314                // int 1759812310
+     210: iload         8
+     212: ixor
+     213: putstatic     #36                 // Field QMHucVC4Eb:I
+     216: new           #68                 // class java/lang/RuntimeException
+     219: dup
+     220: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     223: athrow
+     224: iload         8
+     226: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     229: ldc_w         #299                // int 246419769
+     232: if_icmpne     224
+     235: iload         8
+     237: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     240: ldc_w         #315                // int 156611102
+     243: iload         8
+     245: ixor
+     246: if_icmpne     224
+     249: aload_0
+     250: ldc_w         #316                // int 990649084
+     253: iload         8
+     255: ixor
+     256: putfield      #38                 // Field CQMg54U3ie:I
+     259: new           #132                // class java/lang/IllegalAccessException
+     262: dup
+     263: ldc           #109                // String double
+     265: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     268: athrow
+
+  protected void chooseShip(int, boolean, int);
+    Code:
+       0: ldc_w         #320                // int 1767279496
+       3: ldc_w         #321                // int 455437213
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_3
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        8
+      16: iload         8
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #322                // int 10577155
+      24: if_icmpne     113
+      27: ldc_w         #323                // int 1191625758
+      30: iload         8
+      32: ixor
+      33: istore        8
+      35: aload_0
+      36: astore        4
+      38: aload         4
+      40: iload_1
+      41: ldc_w         #324                // int 724020333
+      44: invokevirtual #327                // Method getShipToSelect:(II)Lcom/deemeplus/utils/DivContainer;
+      47: astore        5
+      49: iload         8
+      51: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      54: ldc_w         #328                // int 182152765
+      57: if_icmpne     113
+      60: ldc_w         #329                // int 396627756
+      63: iload         8
+      65: ixor
+      66: istore        8
+      68: aload_0
+      69: astore        6
+      71: aload         6
+      73: aload         5
+      75: iload_2
+      76: ldc_w         #330                // int 942350349
+      79: invokevirtual #333                // Method clickInItemAstralSelection:(Lcom/deemeplus/utils/DivContainer;ZI)V
+      82: iload         8
+      84: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      87: ldc_w         #334                // int 186419167
+      90: if_icmpne     113
+      93: ldc_w         #335                // int 969293158
+      96: iload         8
+      98: ixor
+      99: istore        8
+     101: return
+     102: nop
+     103: nop
+     104: nop
+     105: nop
+     106: nop
+     107: nop
+     108: nop
+     109: nop
+     110: nop
+     111: nop
+     112: athrow
+     113: iload         8
+     115: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     118: ldc_w         #334                // int 186419167
+     121: if_icmpne     113
+     124: iload         8
+     126: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     129: ldc_w         #337                // int 1301787079
+     132: iload         8
+     134: ixor
+     135: if_icmpne     113
+     138: ldc_w         #338                // int 2065540149
+     141: iload         8
+     143: ixor
+     144: putstatic     #36                 // Field QMHucVC4Eb:I
+     147: iload         8
+     149: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     152: ldc_w         #322                // int 10577155
+     155: if_icmpne     113
+     158: iload         8
+     160: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     163: ldc_w         #339                // int 84017135
+     166: iload         8
+     168: ixor
+     169: if_icmpne     113
+     172: aload_0
+     173: ldc_w         #340                // int 1545423278
+     176: iload         8
+     178: ixor
+     179: putfield      #38                 // Field CQMg54U3ie:I
+     182: iload         8
+     184: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     187: ldc_w         #328                // int 182152765
+     190: if_icmpne     113
+     193: iload         8
+     195: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     198: ldc_w         #341                // int 274154309
+     201: iload         8
+     203: ixor
+     204: if_icmpne     113
+     207: ldc_w         #342                // int 1907589062
+     210: iload         8
+     212: ixor
+     213: putstatic     #36                 // Field QMHucVC4Eb:I
+     216: new           #132                // class java/lang/IllegalAccessException
+     219: dup
+     220: invokespecial #185                // Method java/lang/IllegalAccessException."<init>":()V
+     223: athrow
+     224: nop
+     225: nop
+     226: nop
+     227: nop
+     228: nop
+     229: nop
+     230: nop
+     231: nop
+     232: nop
+     233: nop
+     234: athrow
+     235: nop
+     236: nop
+     237: nop
+     238: nop
+     239: nop
+     240: nop
+     241: nop
+     242: nop
+     243: nop
+     244: nop
+     245: nop
+     246: nop
+     247: nop
+     248: athrow
+     249: nop
+     250: nop
+     251: nop
+     252: nop
+     253: nop
+     254: nop
+     255: nop
+     256: nop
+     257: nop
+     258: nop
+     259: nop
+     260: nop
+     261: nop
+     262: nop
+     263: nop
+     264: nop
+     265: nop
+     266: nop
+     267: athrow
+
+  protected void clickInItem(com.deemeplus.utils.DivContainer, boolean, int);
+    Code:
+       0: ldc_w         #345                // int 1697405577
+       3: ldc_w         #346                // int 1526579470
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_3
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        8
+      16: iload         8
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #347                // int 237008206
+      24: if_icmpne     91
+      27: ldc_w         #348                // int 949954267
+      30: iload         8
+      32: ixor
+      33: istore        8
+      35: aload_0
+      36: astore        4
+      38: aload_0
+      39: astore        5
+      41: aload         5
+      43: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      46: astore        6
+      48: aload         4
+      50: aload         6
+      52: aload_1
+      53: iload_2
+      54: ldc_w         #349                // int 1290583414
+      57: invokevirtual #353                // Method clickInGui:(Leu/darkbot/api/game/other/Gui;Lcom/deemeplus/utils/DivContainer;ZI)V
+      60: iload         8
+      62: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      65: ldc_w         #354                // int 261500138
+      68: if_icmpne     91
+      71: ldc_w         #355                // int 468181143
+      74: iload         8
+      76: ixor
+      77: istore        8
+      79: return
+      80: nop
+      81: nop
+      82: nop
+      83: nop
+      84: nop
+      85: nop
+      86: nop
+      87: nop
+      88: nop
+      89: nop
+      90: athrow
+      91: iload         8
+      93: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      96: ldc_w         #356                // int 53603453
+      99: if_icmpne     91
+     102: iload         8
+     104: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     107: ldc_w         #357                // int 2023694619
+     110: iload         8
+     112: ixor
+     113: if_icmpne     91
+     116: aload_0
+     117: ldc_w         #358                // int 632973419
+     120: iload         8
+     122: ixor
+     123: putfield      #38                 // Field CQMg54U3ie:I
+     126: iload         8
+     128: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     131: ldc_w         #354                // int 261500138
+     134: if_icmpne     91
+     137: iload         8
+     139: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     142: ldc_w         #359                // int 1449022397
+     145: iload         8
+     147: ixor
+     148: if_icmpne     91
+     151: aload_0
+     152: ldc_w         #360                // int 1733576754
+     155: iload         8
+     157: ixor
+     158: putfield      #38                 // Field CQMg54U3ie:I
+     161: iload         8
+     163: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     166: ldc_w         #347                // int 237008206
+     169: if_icmpne     91
+     172: iload         8
+     174: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     177: ldc_w         #361                // int 326049013
+     180: iload         8
+     182: ixor
+     183: if_icmpne     91
+     186: ldc_w         #362                // int 1197089150
+     189: iload         8
+     191: ixor
+     192: putstatic     #36                 // Field QMHucVC4Eb:I
+     195: new           #68                 // class java/lang/RuntimeException
+     198: dup
+     199: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     202: athrow
+
+  protected void clickInItemAstralSelection(com.deemeplus.utils.DivContainer, boolean, int);
+    Code:
+       0: ldc_w         #363                // int 1550177791
+       3: ldc_w         #364                // int 486223509
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_3
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        8
+      16: iload         8
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #365                // int 162114725
+      24: if_icmpne     91
+      27: ldc_w         #366                // int 1191872883
+      30: iload         8
+      32: ixor
+      33: istore        8
+      35: aload_0
+      36: astore        4
+      38: aload_0
+      39: astore        5
+      41: aload         5
+      43: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      46: astore        6
+      48: aload         4
+      50: aload         6
+      52: aload_1
+      53: iload_2
+      54: ldc_w         #349                // int 1290583414
+      57: invokevirtual #353                // Method clickInGui:(Leu/darkbot/api/game/other/Gui;Lcom/deemeplus/utils/DivContainer;ZI)V
+      60: iload         8
+      62: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      65: ldc_w         #367                // int 187528930
+      68: if_icmpne     91
+      71: ldc_w         #368                // int 79917867
+      74: iload         8
+      76: ixor
+      77: istore        8
+      79: return
+      80: nop
+      81: nop
+      82: nop
+      83: nop
+      84: nop
+      85: nop
+      86: nop
+      87: nop
+      88: nop
+      89: nop
+      90: athrow
+      91: iload         8
+      93: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      96: ldc_w         #367                // int 187528930
+      99: if_icmpne     91
+     102: iload         8
+     104: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     107: ldc_w         #370                // int 953410615
+     110: iload         8
+     112: ixor
+     113: if_icmpne     91
+     116: ldc_w         #371                // int 2124141659
+     119: iload         8
+     121: ixor
+     122: putstatic     #36                 // Field QMHucVC4Eb:I
+     125: iload         8
+     127: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     130: ldc_w         #369                // int 48999777
+     133: if_icmpne     91
+     136: iload         8
+     138: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     141: ldc_w         #372                // int 1702771561
+     144: iload         8
+     146: ixor
+     147: if_icmpne     91
+     150: ldc_w         #373                // int 1898563857
+     153: iload         8
+     155: ixor
+     156: putstatic     #36                 // Field QMHucVC4Eb:I
+     159: iload         8
+     161: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     164: ldc_w         #365                // int 162114725
+     167: if_icmpne     91
+     170: iload         8
+     172: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     175: ldc_w         #374                // int 815630388
+     178: iload         8
+     180: ixor
+     181: if_icmpne     91
+     184: ldc_w         #375                // int 1173465202
+     187: iload         8
+     189: ixor
+     190: putstatic     #36                 // Field QMHucVC4Eb:I
+     193: new           #132                // class java/lang/IllegalAccessException
+     196: dup
+     197: invokespecial #185                // Method java/lang/IllegalAccessException."<init>":()V
+     200: athrow
+
+  protected void clickInGui(eu.darkbot.api.game.other.Gui, com.deemeplus.utils.DivContainer, boolean, int);
+    Code:
+       0: ldc_w         #376                // int 1814812364
+       3: ldc_w         #377                // int 1377643040
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload         4
+      12: ixor
+      13: ixor
+      14: ixor
+      15: istore        18
+      17: iload         18
+      19: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      22: ldc_w         #378                // int 247235992
+      25: if_icmpne     229
+      28: ldc_w         #379                // int 1436020961
+      31: iload         18
+      33: ixor
+      34: istore        18
+      36: iload_3
+      37: ldc_w         #380                // int 660725185
+      40: iload         18
+      42: ixor
+      43: if_icmpeq     117
+      46: iload         18
+      48: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      51: ldc_w         #381                // int 206420676
+      54: if_icmpne     669
+      57: ldc_w         #382                // int 376790085
+      60: iload         18
+      62: ixor
+      63: istore        18
+      65: aload_2
+      66: ldc_w         #383                // int 1235272712
+      69: invokevirtual #387                // Method com/deemeplus/utils/DivContainer.getRandomX:(I)D
+      72: dstore        5
+      74: dload         5
+      76: d2i
+      77: istore        7
+      79: aload_2
+      80: ldc_w         #388                // int 646875175
+      83: invokevirtual #391                // Method com/deemeplus/utils/DivContainer.getRandomY:(I)D
+      86: dstore        11
+      88: dload         11
+      90: d2i
+      91: istore        13
+      93: aload_1
+      94: iload         7
+      96: iload         13
+      98: invokeinterface #395,  3          // InterfaceMethod eu/darkbot/api/game/other/Gui.click:(II)V
+     103: iload         18
+     105: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     108: ldc_w         #396                // int 253201403
+     111: if_icmpne     512
+     114: goto          176
+     117: iload         18
+     119: ldc_w         #397                // int 1532425549
+     122: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     125: istore        18
+     127: iload         18
+     129: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     132: ldc_w         #398                // int 11182776
+     135: if_icmpeq     152
+     138: iload         18
+     140: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     143: ldc_w         #398                // int 11182776
+     146: if_icmpne     669
+     149: goto          165
+     152: iload         18
+     154: ldc_w         #399                // int 743705144
+     157: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     160: istore        18
+     162: goto          443
+     165: ldc_w         #400                // int 1733099304
+     168: iload         18
+     170: ixor
+     171: istore        18
+     173: goto          669
+     176: iload         18
+     178: ldc_w         #401                // int 1776807279
+     181: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     184: istore        18
+     186: iload         18
+     188: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     191: ldc_w         #402                // int 207092724
+     194: if_icmpeq     210
+     197: aconst_null
+     198: athrow
+     199: nop
+     200: nop
+     201: nop
+     202: nop
+     203: nop
+     204: nop
+     205: nop
+     206: nop
+     207: nop
+     208: nop
+     209: athrow
+     210: new           #68                 // class java/lang/RuntimeException
+     213: dup
+     214: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     217: athrow
+     218: nop
+     219: nop
+     220: nop
+     221: nop
+     222: nop
+     223: nop
+     224: nop
+     225: nop
+     226: nop
+     227: nop
+     228: athrow
+     229: iload         18
+     231: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     234: ldc_w         #402                // int 207092724
+     237: if_icmpne     229
+     240: iload         18
+     242: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     245: ldc_w         #404                // int 1850781650
+     248: iload         18
+     250: ixor
+     251: if_icmpne     229
+     254: ldc_w         #405                // int 762940552
+     257: iload         18
+     259: ixor
+     260: putstatic     #36                 // Field QMHucVC4Eb:I
+     263: iload         18
+     265: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     268: ldc_w         #378                // int 247235992
+     271: if_icmpne     229
+     274: iload         18
+     276: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     279: ldc_w         #406                // int 157479629
+     282: iload         18
+     284: ixor
+     285: if_icmpne     229
+     288: aload_0
+     289: ldc_w         #407                // int 2146043923
+     292: iload         18
+     294: ixor
+     295: putfield      #38                 // Field CQMg54U3ie:I
+     298: new           #73                 // class java/io/IOException
+     301: dup
+     302: ldc           #109                // String double
+     304: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     307: athrow
+     308: iload         18
+     310: invokestatic  #101                // Method skidmod/Factory.efuojskrxnitvcvt:(I)I
+     313: lookupswitch  { // 2
+
+            -946116774: 363
+
+             666446665: 340
+               default: 353
+          }
+     340: iload         18
+     342: ldc_w         #408                // int 1147535941
+     345: invokestatic  #43                 // Method rwurrwdaddxgwsuy:(II)I
+     348: istore        18
+     350: goto          371
+     353: new           #132                // class java/lang/IllegalAccessException
+     356: dup
+     357: ldc           #114                // String Error in hash
+     359: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     362: athrow
+     363: ldc_w         #409                // int 945966023
+     366: iload         18
+     368: ixor
+     369: istore        18
+     371: pop
+     372: iload         18
+     374: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     377: ldc_w         #410                // int 186211188
+     380: if_icmpne     669
+     383: iload         18
+     385: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     388: lookupswitch  { // 4
+
+             104964854: 500
+
+             186211188: 432
+
+             689374310: 383
+
+            2008991874: 512
+               default: 512
+          }
+     432: ldc_w         #411                // int 1351960381
+     435: iload         18
+     437: ixor
+     438: istore        18
+     440: goto          500
+     443: aload_2
+     444: ldc_w         #412                // int 1044616711
+     447: invokevirtual #415                // Method com/deemeplus/utils/DivContainer.getCenterX:(I)D
+     450: dstore        8
+     452: dload         8
+     454: d2i
+     455: istore        10
+     457: aload_2
+     458: ldc_w         #416                // int 325251713
+     461: invokevirtual #419                // Method com/deemeplus/utils/DivContainer.getCenterY:(I)D
+     464: dstore        14
+     466: dload         14
+     468: d2i
+     469: istore        16
+     471: aload_1
+     472: iload         10
+     474: iload         16
+     476: invokeinterface #395,  3          // InterfaceMethod eu/darkbot/api/game/other/Gui.click:(II)V
+     481: iload         18
+     483: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     486: ldc_w         #420                // int 197149535
+     489: if_icmpne     591
+     492: ldc_w         #421                // int 1617380005
+     495: iload         18
+     497: ixor
+     498: istore        18
+     500: return
+     501: nop
+     502: nop
+     503: nop
+     504: nop
+     505: nop
+     506: nop
+     507: nop
+     508: nop
+     509: nop
+     510: nop
+     511: athrow
+     512: iload         18
+     514: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     517: ldc_w         #396                // int 253201403
+     520: if_icmpne     512
+     523: iload         18
+     525: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     528: ldc_w         #423                // int 309348521
+     531: iload         18
+     533: ixor
+     534: if_icmpne     512
+     537: aload_0
+     538: ldc_w         #424                // int 1933250978
+     541: iload         18
+     543: ixor
+     544: putfield      #38                 // Field CQMg54U3ie:I
+     547: iload         18
+     549: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     552: ldc_w         #422                // int 218647076
+     555: if_icmpne     512
+     558: iload         18
+     560: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     563: ldc_w         #425                // int 2139037735
+     566: iload         18
+     568: ixor
+     569: if_icmpne     512
+     572: ldc_w         #426                // int 202811175
+     575: iload         18
+     577: ixor
+     578: putstatic     #36                 // Field QMHucVC4Eb:I
+     581: new           #68                 // class java/lang/RuntimeException
+     584: dup
+     585: ldc           #109                // String double
+     587: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     590: athrow
+     591: iload         18
+     593: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     596: ldc_w         #420                // int 197149535
+     599: if_icmpne     591
+     602: iload         18
+     604: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     607: ldc_w         #427                // int 1593587718
+     610: iload         18
+     612: ixor
+     613: if_icmpne     591
+     616: ldc_w         #428                // int 1363165694
+     619: iload         18
+     621: ixor
+     622: putstatic     #36                 // Field QMHucVC4Eb:I
+     625: iload         18
+     627: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     630: ldc_w         #403                // int 127859852
+     633: if_icmpne     591
+     636: iload         18
+     638: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     641: ldc_w         #429                // int 729582934
+     644: iload         18
+     646: ixor
+     647: if_icmpne     591
+     650: ldc_w         #430                // int 1707146937
+     653: iload         18
+     655: ixor
+     656: putstatic     #36                 // Field QMHucVC4Eb:I
+     659: new           #68                 // class java/lang/RuntimeException
+     662: dup
+     663: ldc           #109                // String double
+     665: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     668: athrow
+     669: iload         18
+     671: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     674: ldc_w         #431                // int 88074934
+     677: if_icmpne     669
+     680: iload         18
+     682: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     685: ldc_w         #432                // int 991140837
+     688: iload         18
+     690: ixor
+     691: if_icmpne     669
+     694: ldc_w         #433                // int 9005216
+     697: iload         18
+     699: ixor
+     700: putstatic     #36                 // Field QMHucVC4Eb:I
+     703: iload         18
+     705: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     708: ldc_w         #398                // int 11182776
+     711: if_icmpne     669
+     714: iload         18
+     716: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     719: ldc_w         #434                // int 503750267
+     722: iload         18
+     724: ixor
+     725: if_icmpne     669
+     728: ldc_w         #435                // int 2008601410
+     731: iload         18
+     733: ixor
+     734: putstatic     #36                 // Field QMHucVC4Eb:I
+     737: iload         18
+     739: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     742: ldc_w         #381                // int 206420676
+     745: if_icmpne     669
+     748: iload         18
+     750: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     753: ldc_w         #436                // int 1722662425
+     756: iload         18
+     758: ixor
+     759: if_icmpne     669
+     762: aload_0
+     763: ldc_w         #437                // int 2094318789
+     766: iload         18
+     768: ixor
+     769: putfield      #38                 // Field CQMg54U3ie:I
+     772: iload         18
+     774: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     777: ldc_w         #410                // int 186211188
+     780: if_icmpne     669
+     783: iload         18
+     785: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     788: ldc_w         #438                // int 505141505
+     791: iload         18
+     793: ixor
+     794: if_icmpne     669
+     797: aload_0
+     798: ldc_w         #439                // int 601872999
+     801: iload         18
+     803: ixor
+     804: putfield      #38                 // Field CQMg54U3ie:I
+     807: new           #68                 // class java/lang/RuntimeException
+     810: dup
+     811: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     814: athrow
+     815: nop
+     816: nop
+     817: nop
+     818: nop
+     819: nop
+     820: nop
+     821: nop
+     822: nop
+     823: nop
+     824: nop
+     825: athrow
+    Exception table:
+       from    to  target type
+         186   199   308   Class java/lang/RuntimeException
+         210   218   308   Class java/lang/RuntimeException
+
+  protected void clickAcceptButtonInShipSelection(int);
+    Code:
+       0: ldc_w         #442                // int 2005124023
+       3: ldc_w         #443                // int 615658042
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_1
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        39
+      16: iload         39
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #444                // int 60189520
+      24: if_icmpne     273
+      27: ldc_w         #445                // int 2048375485
+      30: iload         39
+      32: ixor
+      33: istore        39
+      35: aload_0
+      36: astore_2
+      37: aload_2
+      38: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      41: astore        6
+      43: aload         6
+      45: invokeinterface #449,  1          // InterfaceMethod eu/darkbot/api/game/other/Gui.getWidth:()D
+      50: dstore        7
+      52: ldc2_w        #450                // double 20.0d
+      55: dstore_3
+      56: dload         7
+      58: dload_3
+      59: dsub
+      60: dstore        9
+      62: aload_0
+      63: astore        25
+      65: aload         25
+      67: getfield      #65                 // Field rnd:Ljava/util/Random;
+      70: astore        26
+      72: ldc_w         #452                // int 648485409
+      75: iload         39
+      77: ixor
+      78: i2b
+      79: istore        5
+      81: aload         26
+      83: iload         5
+      85: invokevirtual #455                // Method java/util/Random.nextInt:(I)I
+      88: istore        27
+      90: iload         27
+      92: i2d
+      93: dstore        28
+      95: dload         9
+      97: dload         28
+      99: dsub
+     100: dstore        11
+     102: dload         11
+     104: d2i
+     105: istore        13
+     107: iload         39
+     109: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     112: ldc_w         #456                // int 182707266
+     115: if_icmpne     419
+     118: ldc_w         #457                // int 295999024
+     121: iload         39
+     123: ixor
+     124: istore        39
+     126: aload_0
+     127: astore        14
+     129: aload         14
+     131: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+     134: astore        15
+     136: aload         15
+     138: invokeinterface #460,  1          // InterfaceMethod eu/darkbot/api/game/other/Gui.getHeight:()D
+     143: dstore        16
+     145: ldc2_w        #450                // double 20.0d
+     148: dstore        30
+     150: dload         16
+     152: dload         30
+     154: dsub
+     155: dstore        18
+     157: aload_0
+     158: astore        32
+     160: aload         32
+     162: getfield      #65                 // Field rnd:Ljava/util/Random;
+     165: astore        33
+     167: ldc_w         #461                // int 922979425
+     170: iload         39
+     172: ixor
+     173: i2b
+     174: istore        37
+     176: aload         33
+     178: iload         37
+     180: invokevirtual #455                // Method java/util/Random.nextInt:(I)I
+     183: istore        34
+     185: iload         34
+     187: i2d
+     188: dstore        35
+     190: dload         18
+     192: dload         35
+     194: dsub
+     195: dstore        20
+     197: dload         20
+     199: d2i
+     200: istore        22
+     202: iload         39
+     204: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     207: ldc_w         #462                // int 177657633
+     210: if_icmpne     273
+     213: ldc_w         #463                // int 73776604
+     216: iload         39
+     218: ixor
+     219: istore        39
+     221: aload_0
+     222: astore        23
+     224: aload         23
+     226: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+     229: astore        24
+     231: aload         24
+     233: iload         13
+     235: iload         22
+     237: invokeinterface #395,  3          // InterfaceMethod eu/darkbot/api/game/other/Gui.click:(II)V
+     242: iload         39
+     244: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     247: ldc_w         #464                // int 60175185
+     250: if_icmpne     273
+     253: ldc_w         #465                // int 1803453940
+     256: iload         39
+     258: ixor
+     259: istore        39
+     261: return
+     262: nop
+     263: nop
+     264: nop
+     265: nop
+     266: nop
+     267: nop
+     268: nop
+     269: nop
+     270: nop
+     271: nop
+     272: athrow
+     273: iload         39
+     275: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     278: ldc_w         #444                // int 60189520
+     281: if_icmpne     273
+     284: iload         39
+     286: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     289: ldc_w         #467                // int 1376282206
+     292: iload         39
+     294: ixor
+     295: if_icmpne     273
+     298: ldc_w         #468                // int 1661352374
+     301: iload         39
+     303: ixor
+     304: putstatic     #36                 // Field QMHucVC4Eb:I
+     307: iload         39
+     309: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     312: ldc_w         #464                // int 60175185
+     315: if_icmpne     273
+     318: iload         39
+     320: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     323: ldc_w         #469                // int 1078448209
+     326: iload         39
+     328: ixor
+     329: if_icmpne     273
+     332: aload_0
+     333: ldc_w         #470                // int 2147190812
+     336: iload         39
+     338: ixor
+     339: putfield      #38                 // Field CQMg54U3ie:I
+     342: iload         39
+     344: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     347: ldc_w         #462                // int 177657633
+     350: if_icmpne     273
+     353: iload         39
+     355: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     358: ldc_w         #471                // int 868397510
+     361: iload         39
+     363: ixor
+     364: if_icmpne     273
+     367: aload_0
+     368: ldc_w         #472                // int 793994960
+     371: iload         39
+     373: ixor
+     374: putfield      #38                 // Field CQMg54U3ie:I
+     377: iload         39
+     379: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     382: ldc_w         #466                // int 179275116
+     385: if_icmpne     273
+     388: iload         39
+     390: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     393: ldc_w         #473                // int 1849406339
+     396: iload         39
+     398: ixor
+     399: if_icmpne     273
+     402: ldc_w         #474                // int 2046872427
+     405: iload         39
+     407: ixor
+     408: putstatic     #36                 // Field QMHucVC4Eb:I
+     411: new           #132                // class java/lang/IllegalAccessException
+     414: dup
+     415: invokespecial #185                // Method java/lang/IllegalAccessException."<init>":()V
+     418: athrow
+     419: iload         39
+     421: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     424: ldc_w         #456                // int 182707266
+     427: if_icmpne     419
+     430: iload         39
+     432: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     435: ldc_w         #475                // int 1933670037
+     438: iload         39
+     440: ixor
+     441: if_icmpne     419
+     444: ldc_w         #476                // int 1394664105
+     447: iload         39
+     449: ixor
+     450: putstatic     #36                 // Field QMHucVC4Eb:I
+     453: new           #68                 // class java/lang/RuntimeException
+     456: dup
+     457: ldc           #109                // String double
+     459: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     462: athrow
+
+  private com.deemeplus.utils.DivContainer getItemToSelect(int, int);
+    Code:
+       0: ldc_w         #477                // int 1926823882
+       3: ldc_w         #478                // int 1867665805
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_2
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        32
+      16: iload         32
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #479                // int 125273814
+      24: if_icmpne     537
+      27: ldc_w         #480                // int 1111756758
+      30: iload         32
+      32: ixor
+      33: istore        32
+      35: aload_0
+      36: astore_3
+      37: aload_3
+      38: ldc_w         #481                // int 1559354951
+      41: invokevirtual #485                // Method getItemSelection:(I)Lcom/deemeplus/utils/DivContainer;
+      44: astore        5
+      46: iload         32
+      48: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      51: ldc_w         #486                // int 114548955
+      54: if_icmpne     459
+      57: ldc_w         #487                // int 323498211
+      60: iload         32
+      62: ixor
+      63: istore        32
+      65: ldc_w         #488                // int 1163034627
+      68: iload         32
+      70: ixor
+      71: i2b
+      72: istore        6
+      74: iload         32
+      76: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      79: ldc_w         #489                // int 105880903
+      82: if_icmpne     537
+      85: ldc_w         #490                // int 1417880199
+      88: iload         32
+      90: ixor
+      91: istore        32
+      93: aload         5
+      95: ldc_w         #491                // int 1109363703
+      98: invokevirtual #493                // Method com/deemeplus/utils/DivContainer.getWidth:(I)D
+     101: dstore        7
+     103: dload         7
+     105: d2i
+     106: istore        9
+     108: ldc_w         #494                // int 298951311
+     111: iload         32
+     113: ixor
+     114: i2b
+     115: istore        4
+     117: iload         9
+     119: iload         4
+     121: idiv
+     122: istore        10
+     124: iload         32
+     126: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     129: ldc_w         #495                // int 42351422
+     132: if_icmpne     345
+     135: ldc_w         #496                // int 565471420
+     138: iload         32
+     140: ixor
+     141: istore        32
+     143: iload         10
+     145: iload_1
+     146: imul
+     147: istore        11
+     149: iload         11
+     151: iload         6
+     153: iadd
+     154: istore        12
+     156: iload         32
+     158: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     161: ldc_w         #497                // int 231016408
+     164: if_icmpne     345
+     167: ldc_w         #498                // int 618562738
+     170: iload         32
+     172: ixor
+     173: istore        32
+     175: iload         12
+     177: iload         10
+     179: iadd
+     180: istore        13
+     182: iload         13
+     184: iload         6
+     186: isub
+     187: istore        14
+     189: iload         32
+     191: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     194: ldc_w         #499                // int 137034912
+     197: if_icmpne     537
+     200: ldc_w         #500                // int 321337078
+     203: iload         32
+     205: ixor
+     206: istore        32
+     208: new           #318                // class com/deemeplus/utils/DivContainer
+     211: astore        15
+     213: aload         5
+     215: ldc_w         #501                // int 404938149
+     218: invokevirtual #504                // Method com/deemeplus/utils/DivContainer.getInitPosX:(I)D
+     221: dstore        16
+     223: iload         12
+     225: i2d
+     226: dstore        20
+     228: dload         16
+     230: dload         20
+     232: dadd
+     233: dstore        18
+     235: aload         5
+     237: ldc_w         #505                // int 638783209
+     240: invokevirtual #508                // Method com/deemeplus/utils/DivContainer.getInitPosY:(I)D
+     243: dstore        22
+     245: iload         32
+     247: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     250: ldc_w         #509                // int 119715696
+     253: if_icmpne     537
+     256: ldc_w         #510                // int 438879047
+     259: iload         32
+     261: ixor
+     262: istore        32
+     264: aload         5
+     266: ldc_w         #501                // int 404938149
+     269: invokevirtual #504                // Method com/deemeplus/utils/DivContainer.getInitPosX:(I)D
+     272: dstore        24
+     274: iload         14
+     276: i2d
+     277: dstore        28
+     279: dload         24
+     281: dload         28
+     283: dadd
+     284: dstore        26
+     286: aload         5
+     288: ldc_w         #511                // int 1548021488
+     291: invokevirtual #514                // Method com/deemeplus/utils/DivContainer.getEndPosY:(I)D
+     294: dstore        30
+     296: aload         15
+     298: dload         18
+     300: dload         22
+     302: dload         26
+     304: dload         30
+     306: ldc_w         #515                // int 1703909899
+     309: invokespecial #518                // Method com/deemeplus/utils/DivContainer."<init>":(DDDDI)V
+     312: iload         32
+     314: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     317: ldc_w         #519                // int 160315142
+     320: if_icmpne     459
+     323: ldc_w         #520                // int 1766890079
+     326: iload         32
+     328: ixor
+     329: istore        32
+     331: aload         15
+     333: areturn
+     334: nop
+     335: nop
+     336: nop
+     337: nop
+     338: nop
+     339: nop
+     340: nop
+     341: nop
+     342: nop
+     343: nop
+     344: athrow
+     345: iload         32
+     347: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     350: ldc_w         #497                // int 231016408
+     353: if_icmpne     345
+     356: iload         32
+     358: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     361: ldc_w         #522                // int 1233178020
+     364: iload         32
+     366: ixor
+     367: if_icmpne     345
+     370: ldc_w         #523                // int 412706924
+     373: iload         32
+     375: ixor
+     376: putstatic     #36                 // Field QMHucVC4Eb:I
+     379: iload         32
+     381: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     384: ldc_w         #495                // int 42351422
+     387: if_icmpne     345
+     390: iload         32
+     392: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     395: ldc_w         #524                // int 484363410
+     398: iload         32
+     400: ixor
+     401: if_icmpne     345
+     404: aload_0
+     405: ldc_w         #525                // int 2057904031
+     408: iload         32
+     410: ixor
+     411: putfield      #38                 // Field CQMg54U3ie:I
+     414: iload         32
+     416: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     419: ldc_w         #521                // int 41579557
+     422: if_icmpne     345
+     425: iload         32
+     427: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     430: ldc_w         #526                // int 1268108060
+     433: iload         32
+     435: ixor
+     436: if_icmpne     345
+     439: aload_0
+     440: ldc_w         #527                // int 443465055
+     443: iload         32
+     445: ixor
+     446: putfield      #38                 // Field CQMg54U3ie:I
+     449: new           #73                 // class java/io/IOException
+     452: dup
+     453: ldc           #109                // String double
+     455: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     458: athrow
+     459: iload         32
+     461: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     464: ldc_w         #519                // int 160315142
+     467: if_icmpne     459
+     470: iload         32
+     472: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     475: ldc_w         #528                // int 678941172
+     478: iload         32
+     480: ixor
+     481: if_icmpne     459
+     484: ldc_w         #529                // int 370197729
+     487: iload         32
+     489: ixor
+     490: putstatic     #36                 // Field QMHucVC4Eb:I
+     493: iload         32
+     495: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     498: ldc_w         #486                // int 114548955
+     501: if_icmpne     459
+     504: iload         32
+     506: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     509: ldc_w         #530                // int 1671223998
+     512: iload         32
+     514: ixor
+     515: if_icmpne     459
+     518: ldc_w         #531                // int 715588062
+     521: iload         32
+     523: ixor
+     524: putstatic     #36                 // Field QMHucVC4Eb:I
+     527: new           #68                 // class java/lang/RuntimeException
+     530: dup
+     531: ldc           #109                // String double
+     533: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     536: athrow
+     537: iload         32
+     539: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     542: ldc_w         #479                // int 125273814
+     545: if_icmpne     537
+     548: iload         32
+     550: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     553: ldc_w         #532                // int 1584803059
+     556: iload         32
+     558: ixor
+     559: if_icmpne     537
+     562: aload_0
+     563: ldc_w         #533                // int 1157383594
+     566: iload         32
+     568: ixor
+     569: putfield      #38                 // Field CQMg54U3ie:I
+     572: iload         32
+     574: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     577: ldc_w         #499                // int 137034912
+     580: if_icmpne     537
+     583: iload         32
+     585: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     588: ldc_w         #534                // int 471094025
+     591: iload         32
+     593: ixor
+     594: if_icmpne     537
+     597: aload_0
+     598: ldc_w         #535                // int 1763788983
+     601: iload         32
+     603: ixor
+     604: putfield      #38                 // Field CQMg54U3ie:I
+     607: iload         32
+     609: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     612: ldc_w         #509                // int 119715696
+     615: if_icmpne     537
+     618: iload         32
+     620: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     623: ldc_w         #536                // int 1566449715
+     626: iload         32
+     628: ixor
+     629: if_icmpne     537
+     632: aload_0
+     633: ldc_w         #537                // int 1589400364
+     636: iload         32
+     638: ixor
+     639: putfield      #38                 // Field CQMg54U3ie:I
+     642: iload         32
+     644: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     647: ldc_w         #489                // int 105880903
+     650: if_icmpne     537
+     653: iload         32
+     655: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     658: ldc_w         #538                // int 268034052
+     661: iload         32
+     663: ixor
+     664: if_icmpne     537
+     667: aload_0
+     668: ldc_w         #539                // int 1091388070
+     671: iload         32
+     673: ixor
+     674: putfield      #38                 // Field CQMg54U3ie:I
+     677: new           #68                 // class java/lang/RuntimeException
+     680: dup
+     681: invokespecial #69                 // Method java/lang/RuntimeException."<init>":()V
+     684: athrow
+
+  private com.deemeplus.utils.DivContainer getItemSelection(int);
+    Code:
+       0: ldc_w         #540                // int 1881093139
+       3: ldc_w         #541                // int 1157128039
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_1
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        28
+      16: iload         28
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #542                // int 166882627
+      24: if_icmpne     468
+      27: ldc_w         #543                // int 505197842
+      30: iload         28
+      32: ixor
+      33: istore        28
+      35: ldc_w         #544                // int 1982229731
+      38: iload         28
+      40: ixor
+      41: i2b
+      42: istore_2
+      43: iload         28
+      45: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      48: ldc_w         #545                // int 82445386
+      51: if_icmpne     379
+      54: ldc_w         #546                // int 1331262494
+      57: iload         28
+      59: ixor
+      60: istore        28
+      62: ldc_w         #547                // int 964630737
+      65: iload         28
+      67: ixor
+      68: i2b
+      69: istore        4
+      71: iload         28
+      73: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      76: ldc_w         #548                // int 258344702
+      79: if_icmpne     468
+      82: ldc_w         #549                // int 785437596
+      85: iload         28
+      87: ixor
+      88: istore        28
+      90: aload_0
+      91: astore        5
+      93: aload         5
+      95: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+      98: astore        6
+     100: aload         6
+     102: invokeinterface #449,  1          // InterfaceMethod eu/darkbot/api/game/other/Gui.getWidth:()D
+     107: dstore        7
+     109: dload         7
+     111: d2i
+     112: istore        9
+     114: ldc_w         #550                // int 397396763
+     117: iload         28
+     119: ixor
+     120: i2b
+     121: istore_3
+     122: iload_2
+     123: iload_3
+     124: imul
+     125: istore        19
+     127: iload         9
+     129: iload         19
+     131: isub
+     132: istore        10
+     134: iload         28
+     136: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     139: ldc_w         #551                // int 233082415
+     142: if_icmpne     290
+     145: ldc_w         #552                // int 163742761
+     148: iload         28
+     150: ixor
+     151: istore        28
+     153: ldc_w         #553                // int 1913261656
+     156: iload         28
+     158: ixor
+     159: istore        28
+     161: iload_2
+     162: iload         10
+     164: iadd
+     165: istore        11
+     167: iload         28
+     169: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     172: ldc_w         #554                // int 34104030
+     175: if_icmpne     424
+     178: ldc_w         #555                // int 1237227967
+     181: iload         28
+     183: ixor
+     184: istore        28
+     186: aload_0
+     187: astore        12
+     189: aload         12
+     191: getfield      #54                 // Field astralGui:Leu/darkbot/api/game/other/Gui;
+     194: astore        13
+     196: aload         13
+     198: invokeinterface #460,  1          // InterfaceMethod eu/darkbot/api/game/other/Gui.getHeight:()D
+     203: dstore        14
+     205: dload         14
+     207: d2i
+     208: istore        16
+     210: iload         16
+     212: iload         4
+     214: isub
+     215: istore        17
+     217: iload         28
+     219: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     222: ldc_w         #556                // int 156643833
+     225: if_icmpne     468
+     228: ldc_w         #557                // int 1903094013
+     231: iload         28
+     233: ixor
+     234: istore        28
+     236: new           #318                // class com/deemeplus/utils/DivContainer
+     239: astore        18
+     241: iload_2
+     242: i2d
+     243: dstore        20
+     245: iload         4
+     247: i2d
+     248: dstore        22
+     250: iload         11
+     252: i2d
+     253: dstore        24
+     255: iload         17
+     257: i2d
+     258: dstore        26
+     260: aload         18
+     262: dload         20
+     264: dload         22
+     266: dload         24
+     268: dload         26
+     270: ldc_w         #515                // int 1703909899
+     273: invokespecial #518                // Method com/deemeplus/utils/DivContainer."<init>":(DDDDI)V
+     276: aload         18
+     278: areturn
+     279: nop
+     280: nop
+     281: nop
+     282: nop
+     283: nop
+     284: nop
+     285: nop
+     286: nop
+     287: nop
+     288: nop
+     289: athrow
+     290: iload         28
+     292: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     295: ldc_w         #551                // int 233082415
+     298: if_icmpne     290
+     301: iload         28
+     303: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     306: ldc_w         #559                // int 1989426845
+     309: iload         28
+     311: ixor
+     312: if_icmpne     290
+     315: aload_0
+     316: ldc_w         #560                // int 1876215672
+     319: iload         28
+     321: ixor
+     322: putfield      #38                 // Field CQMg54U3ie:I
+     325: new           #132                // class java/lang/IllegalAccessException
+     328: dup
+     329: ldc           #109                // String double
+     331: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     334: athrow
+     335: nop
+     336: nop
+     337: nop
+     338: nop
+     339: nop
+     340: nop
+     341: nop
+     342: nop
+     343: nop
+     344: nop
+     345: athrow
+     346: nop
+     347: nop
+     348: nop
+     349: nop
+     350: nop
+     351: nop
+     352: nop
+     353: nop
+     354: nop
+     355: nop
+     356: nop
+     357: nop
+     358: nop
+     359: athrow
+     360: nop
+     361: nop
+     362: nop
+     363: nop
+     364: nop
+     365: nop
+     366: nop
+     367: nop
+     368: nop
+     369: nop
+     370: nop
+     371: nop
+     372: nop
+     373: nop
+     374: nop
+     375: nop
+     376: nop
+     377: nop
+     378: athrow
+     379: iload         28
+     381: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     384: ldc_w         #545                // int 82445386
+     387: if_icmpne     379
+     390: iload         28
+     392: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     395: ldc_w         #563                // int 1231685204
+     398: iload         28
+     400: ixor
+     401: if_icmpne     379
+     404: aload_0
+     405: ldc_w         #564                // int 914092397
+     408: iload         28
+     410: ixor
+     411: putfield      #38                 // Field CQMg54U3ie:I
+     414: new           #132                // class java/lang/IllegalAccessException
+     417: dup
+     418: ldc           #109                // String double
+     420: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     423: athrow
+     424: iload         28
+     426: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     429: ldc_w         #554                // int 34104030
+     432: if_icmpne     424
+     435: iload         28
+     437: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     440: ldc_w         #565                // int 1333450761
+     443: iload         28
+     445: ixor
+     446: if_icmpne     424
+     449: ldc_w         #566                // int 507372343
+     452: iload         28
+     454: ixor
+     455: putstatic     #36                 // Field QMHucVC4Eb:I
+     458: new           #68                 // class java/lang/RuntimeException
+     461: dup
+     462: ldc           #109                // String double
+     464: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     467: athrow
+     468: iload         28
+     470: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     473: ldc_w         #542                // int 166882627
+     476: if_icmpne     468
+     479: iload         28
+     481: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     484: ldc_w         #567                // int 987690728
+     487: iload         28
+     489: ixor
+     490: if_icmpne     468
+     493: ldc_w         #568                // int 149436137
+     496: iload         28
+     498: ixor
+     499: putstatic     #36                 // Field QMHucVC4Eb:I
+     502: iload         28
+     504: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     507: ldc_w         #548                // int 258344702
+     510: if_icmpne     468
+     513: iload         28
+     515: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     518: ldc_w         #569                // int 1213710077
+     521: iload         28
+     523: ixor
+     524: if_icmpne     468
+     527: aload_0
+     528: ldc_w         #570                // int 1363384791
+     531: iload         28
+     533: ixor
+     534: putfield      #38                 // Field CQMg54U3ie:I
+     537: iload         28
+     539: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     542: ldc_w         #556                // int 156643833
+     545: if_icmpne     468
+     548: iload         28
+     550: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     553: ldc_w         #571                // int 212064457
+     556: iload         28
+     558: ixor
+     559: if_icmpne     468
+     562: aload_0
+     563: ldc_w         #572                // int 558032874
+     566: iload         28
+     568: ixor
+     569: putfield      #38                 // Field CQMg54U3ie:I
+     572: new           #73                 // class java/io/IOException
+     575: dup
+     576: invokespecial #97                 // Method java/io/IOException."<init>":()V
+     579: athrow
+
+  private com.deemeplus.utils.DivContainer getShipToSelect(int, int);
+    Code:
+       0: ldc_w         #573                // int 81908980
+       3: ldc_w         #574                // int 1549520383
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_2
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        32
+      16: iload         32
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #575                // int 2680235
+      24: if_icmpne     547
+      27: ldc_w         #576                // int 1731166197
+      30: iload         32
+      32: ixor
+      33: istore        32
+      35: aload_0
+      36: astore_3
+      37: aload_3
+      38: ldc_w         #577                // int 872908907
+      41: invokevirtual #580                // Method getShipSelection:(I)Lcom/deemeplus/utils/DivContainer;
+      44: astore        5
+      46: iload         32
+      48: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      51: ldc_w         #581                // int 133395825
+      54: if_icmpne     345
+      57: ldc_w         #582                // int 9454226
+      60: iload         32
+      62: ixor
+      63: istore        32
+      65: ldc_w         #583                // int 336520376
+      68: iload         32
+      70: ixor
+      71: i2b
+      72: istore        6
+      74: iload         32
+      76: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      79: ldc_w         #584                // int 115134244
+      82: if_icmpne     468
+      85: ldc_w         #585                // int 1552925276
+      88: iload         32
+      90: ixor
+      91: istore        32
+      93: aload         5
+      95: ldc_w         #491                // int 1109363703
+      98: invokevirtual #493                // Method com/deemeplus/utils/DivContainer.getWidth:(I)D
+     101: dstore        7
+     103: dload         7
+     105: d2i
+     106: istore        9
+     108: ldc_w         #586                // int 1216423651
+     111: iload         32
+     113: ixor
+     114: i2b
+     115: istore        4
+     117: iload         9
+     119: iload         4
+     121: idiv
+     122: istore        10
+     124: iload         32
+     126: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     129: ldc_w         #587                // int 209351646
+     132: if_icmpne     547
+     135: ldc_w         #588                // int 1023562972
+     138: iload         32
+     140: ixor
+     141: istore        32
+     143: iload         10
+     145: iload_1
+     146: imul
+     147: istore        11
+     149: iload         11
+     151: iload         6
+     153: iadd
+     154: istore        12
+     156: iload         32
+     158: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     161: ldc_w         #589                // int 61790417
+     164: if_icmpne     390
+     167: ldc_w         #590                // int 1097282256
+     170: iload         32
+     172: ixor
+     173: istore        32
+     175: iload         12
+     177: iload         10
+     179: iadd
+     180: istore        13
+     182: iload         13
+     184: iload         6
+     186: isub
+     187: istore        14
+     189: iload         32
+     191: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     194: ldc_w         #591                // int 108661027
+     197: if_icmpne     468
+     200: ldc_w         #592                // int 1492522572
+     203: iload         32
+     205: ixor
+     206: istore        32
+     208: new           #318                // class com/deemeplus/utils/DivContainer
+     211: astore        15
+     213: aload         5
+     215: ldc_w         #501                // int 404938149
+     218: invokevirtual #504                // Method com/deemeplus/utils/DivContainer.getInitPosX:(I)D
+     221: dstore        16
+     223: iload         12
+     225: i2d
+     226: dstore        20
+     228: dload         16
+     230: dload         20
+     232: dadd
+     233: dstore        18
+     235: aload         5
+     237: ldc_w         #505                // int 638783209
+     240: invokevirtual #508                // Method com/deemeplus/utils/DivContainer.getInitPosY:(I)D
+     243: dstore        22
+     245: iload         32
+     247: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     250: ldc_w         #593                // int 23325681
+     253: if_icmpne     547
+     256: ldc_w         #594                // int 217224524
+     259: iload         32
+     261: ixor
+     262: istore        32
+     264: aload         5
+     266: ldc_w         #501                // int 404938149
+     269: invokevirtual #504                // Method com/deemeplus/utils/DivContainer.getInitPosX:(I)D
+     272: dstore        24
+     274: iload         14
+     276: i2d
+     277: dstore        28
+     279: dload         24
+     281: dload         28
+     283: dadd
+     284: dstore        26
+     286: aload         5
+     288: ldc_w         #511                // int 1548021488
+     291: invokevirtual #514                // Method com/deemeplus/utils/DivContainer.getEndPosY:(I)D
+     294: dstore        30
+     296: aload         15
+     298: dload         18
+     300: dload         22
+     302: dload         26
+     304: dload         30
+     306: ldc_w         #515                // int 1703909899
+     309: invokespecial #518                // Method com/deemeplus/utils/DivContainer."<init>":(DDDDI)V
+     312: iload         32
+     314: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     317: ldc_w         #595                // int 196287351
+     320: if_icmpne     390
+     323: ldc_w         #596                // int 1104873611
+     326: iload         32
+     328: ixor
+     329: istore        32
+     331: aload         15
+     333: areturn
+     334: nop
+     335: nop
+     336: nop
+     337: nop
+     338: nop
+     339: nop
+     340: nop
+     341: nop
+     342: nop
+     343: nop
+     344: athrow
+     345: iload         32
+     347: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     350: ldc_w         #581                // int 133395825
+     353: if_icmpne     345
+     356: iload         32
+     358: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     361: ldc_w         #598                // int 325116268
+     364: iload         32
+     366: ixor
+     367: if_icmpne     345
+     370: aload_0
+     371: ldc_w         #599                // int 202808704
+     374: iload         32
+     376: ixor
+     377: putfield      #38                 // Field CQMg54U3ie:I
+     380: new           #73                 // class java/io/IOException
+     383: dup
+     384: ldc           #109                // String double
+     386: invokespecial #174                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     389: athrow
+     390: iload         32
+     392: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     395: ldc_w         #595                // int 196287351
+     398: if_icmpne     390
+     401: iload         32
+     403: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     406: ldc_w         #600                // int 1717022794
+     409: iload         32
+     411: ixor
+     412: if_icmpne     390
+     415: ldc_w         #601                // int 166144426
+     418: iload         32
+     420: ixor
+     421: putstatic     #36                 // Field QMHucVC4Eb:I
+     424: iload         32
+     426: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     429: ldc_w         #589                // int 61790417
+     432: if_icmpne     390
+     435: iload         32
+     437: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     440: ldc_w         #602                // int 489568486
+     443: iload         32
+     445: ixor
+     446: if_icmpne     390
+     449: ldc_w         #603                // int 797073646
+     452: iload         32
+     454: ixor
+     455: putstatic     #36                 // Field QMHucVC4Eb:I
+     458: new           #132                // class java/lang/IllegalAccessException
+     461: dup
+     462: ldc           #109                // String double
+     464: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     467: athrow
+     468: iload         32
+     470: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     473: ldc_w         #584                // int 115134244
+     476: if_icmpne     468
+     479: iload         32
+     481: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     484: ldc_w         #604                // int 2122959461
+     487: iload         32
+     489: ixor
+     490: if_icmpne     468
+     493: ldc_w         #605                // int 752679144
+     496: iload         32
+     498: ixor
+     499: putstatic     #36                 // Field QMHucVC4Eb:I
+     502: iload         32
+     504: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     507: ldc_w         #591                // int 108661027
+     510: if_icmpne     468
+     513: iload         32
+     515: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     518: ldc_w         #606                // int 1389117772
+     521: iload         32
+     523: ixor
+     524: if_icmpne     468
+     527: aload_0
+     528: ldc_w         #607                // int 2137037674
+     531: iload         32
+     533: ixor
+     534: putfield      #38                 // Field CQMg54U3ie:I
+     537: new           #68                 // class java/lang/RuntimeException
+     540: dup
+     541: ldc           #109                // String double
+     543: invokespecial #112                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     546: athrow
+     547: iload         32
+     549: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     552: ldc_w         #575                // int 2680235
+     555: if_icmpne     547
+     558: iload         32
+     560: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     563: ldc_w         #608                // int 703851058
+     566: iload         32
+     568: ixor
+     569: if_icmpne     547
+     572: aload_0
+     573: ldc_w         #609                // int 1906031833
+     576: iload         32
+     578: ixor
+     579: putfield      #38                 // Field CQMg54U3ie:I
+     582: iload         32
+     584: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     587: ldc_w         #597                // int 6552369
+     590: if_icmpne     547
+     593: iload         32
+     595: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     598: ldc_w         #610                // int 321696263
+     601: iload         32
+     603: ixor
+     604: if_icmpne     547
+     607: aload_0
+     608: ldc_w         #611                // int 1948194327
+     611: iload         32
+     613: ixor
+     614: putfield      #38                 // Field CQMg54U3ie:I
+     617: iload         32
+     619: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     622: ldc_w         #593                // int 23325681
+     625: if_icmpne     547
+     628: iload         32
+     630: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     633: ldc_w         #612                // int 632015761
+     636: iload         32
+     638: ixor
+     639: if_icmpne     547
+     642: ldc_w         #613                // int 1589842082
+     645: iload         32
+     647: ixor
+     648: putstatic     #36                 // Field QMHucVC4Eb:I
+     651: iload         32
+     653: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     656: ldc_w         #587                // int 209351646
+     659: if_icmpne     547
+     662: iload         32
+     664: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     667: ldc_w         #614                // int 2119155848
+     670: iload         32
+     672: ixor
+     673: if_icmpne     547
+     676: aload_0
+     677: ldc_w         #615                // int 1380288763
+     680: iload         32
+     682: ixor
+     683: putfield      #38                 // Field CQMg54U3ie:I
+     686: new           #132                // class java/lang/IllegalAccessException
+     689: dup
+     690: invokespecial #185                // Method java/lang/IllegalAccessException."<init>":()V
+     693: athrow
+
+  private com.deemeplus.utils.DivContainer getShipSelection(int);
+    Code:
+       0: ldc_w         #616                // int 391099138
+       3: ldc_w         #617                // int 638182629
+       6: aload_0
+       7: getfield      #38                 // Field CQMg54U3ie:I
+      10: iload_1
+      11: ixor
+      12: ixor
+      13: ixor
+      14: istore        21
+      16: iload         21
+      18: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      21: ldc_w         #618                // int 85384559
+      24: if_icmpne     367
+      27: ldc_w         #619                // int 1591191666
+      30: iload         21
+      32: ixor
+      33: istore        21
+      35: ldc_w         #620                // int 1538923477
+      38: iload         21
+      40: ixor
+      41: i2s
+      42: istore_2
+      43: iload         21
+      45: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      48: ldc_w         #621                // int 28888937
+      51: if_icmpne     221
+      54: ldc_w         #622                // int 1700995281
+      57: iload         21
+      59: ixor
+      60: istore        21
+      62: ldc_w         #623                // int 1054424019
+      65: iload         21
+      67: ixor
+      68: i2b
+      69: istore        4
+      71: iload         21
+      73: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+      76: ldc_w         #624                // int 163896745
+      79: if_icmpne     221
+      82: ldc_w         #625                // int 1552278548
+      85: iload         21
+      87: ixor
+      88: istore        21
+      90: aload_0
+      91: astore        5
+      93: aload         5
+      95: getfield      #59                 // Field astralShipSelectionGui:Leu/darkbot/api/game/other/Gui;
+      98: astore        6
+     100: aload         6
+     102: invokeinterface #449,  1          // InterfaceMethod eu/darkbot/api/game/other/Gui.getWidth:()D
+     107: dstore        7
+     109: iload_2
+     110: i2d
+     111: dstore        13
+     113: dload         7
+     115: dload         13
+     117: dsub
+     118: dstore        9
+     120: iload         21
+     122: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     125: ldc_w         #626                // int 244552533
+     128: if_icmpne     367
+     131: ldc_w         #627                // int 761452036
+     134: iload         21
+     136: ixor
+     137: istore        21
+     139: ldc_w         #628                // int 1329465823
+     142: iload         21
+     144: ixor
+     145: i2b
+     146: istore_3
+     147: iload         4
+     149: iload_3
+     150: iadd
+     151: istore        11
+     153: iload         21
+     155: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     158: ldc_w         #629                // int 159939919
+     161: if_icmpne     221
+     164: ldc_w         #630                // int 1284553368
+     167: iload         21
+     169: ixor
+     170: istore        21
+     172: new           #318                // class com/deemeplus/utils/DivContainer
+     175: astore        12
+     177: iload_2
+     178: i2d
+     179: dstore        15
+     181: iload         4
+     183: i2d
+     184: dstore        17
+     186: iload         11
+     188: i2d
+     189: dstore        19
+     191: aload         12
+     193: dload         15
+     195: dload         17
+     197: dload         9
+     199: dload         19
+     201: ldc_w         #515                // int 1703909899
+     204: invokespecial #518                // Method com/deemeplus/utils/DivContainer."<init>":(DDDDI)V
+     207: aload         12
+     209: areturn
+     210: nop
+     211: nop
+     212: nop
+     213: nop
+     214: nop
+     215: nop
+     216: nop
+     217: nop
+     218: nop
+     219: nop
+     220: athrow
+     221: iload         21
+     223: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     226: ldc_w         #631                // int 57918533
+     229: if_icmpne     221
+     232: iload         21
+     234: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     237: ldc_w         #632                // int 1765711697
+     240: iload         21
+     242: ixor
+     243: if_icmpne     221
+     246: aload_0
+     247: ldc_w         #633                // int 1017479975
+     250: iload         21
+     252: ixor
+     253: putfield      #38                 // Field CQMg54U3ie:I
+     256: iload         21
+     258: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     261: ldc_w         #621                // int 28888937
+     264: if_icmpne     221
+     267: iload         21
+     269: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     272: ldc_w         #634                // int 136506398
+     275: iload         21
+     277: ixor
+     278: if_icmpne     221
+     281: ldc_w         #635                // int 880954651
+     284: iload         21
+     286: ixor
+     287: putstatic     #36                 // Field QMHucVC4Eb:I
+     290: iload         21
+     292: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     295: ldc_w         #629                // int 159939919
+     298: if_icmpne     221
+     301: iload         21
+     303: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     306: ldc_w         #636                // int 1729150806
+     309: iload         21
+     311: ixor
+     312: if_icmpne     221
+     315: aload_0
+     316: ldc_w         #637                // int 2120491017
+     319: iload         21
+     321: ixor
+     322: putfield      #38                 // Field CQMg54U3ie:I
+     325: iload         21
+     327: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     330: ldc_w         #624                // int 163896745
+     333: if_icmpne     221
+     336: iload         21
+     338: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     341: ldc_w         #638                // int 798050230
+     344: iload         21
+     346: ixor
+     347: if_icmpne     221
+     350: ldc_w         #639                // int 650992777
+     353: iload         21
+     355: ixor
+     356: putstatic     #36                 // Field QMHucVC4Eb:I
+     359: new           #73                 // class java/io/IOException
+     362: dup
+     363: invokespecial #97                 // Method java/io/IOException."<init>":()V
+     366: athrow
+     367: iload         21
+     369: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     372: ldc_w         #626                // int 244552533
+     375: if_icmpne     367
+     378: iload         21
+     380: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     383: ldc_w         #640                // int 1615768244
+     386: iload         21
+     388: ixor
+     389: if_icmpne     367
+     392: ldc_w         #641                // int 1552640182
+     395: iload         21
+     397: ixor
+     398: putstatic     #36                 // Field QMHucVC4Eb:I
+     401: iload         21
+     403: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     406: ldc_w         #618                // int 85384559
+     409: if_icmpne     367
+     412: iload         21
+     414: invokestatic  #30                 // Method skidmod/Factory.jarwsmbhjwbijwmk:(I)I
+     417: ldc_w         #642                // int 1622723037
+     420: iload         21
+     422: ixor
+     423: if_icmpne     367
+     426: ldc_w         #643                // int 1032699936
+     429: iload         21
+     431: ixor
+     432: putstatic     #36                 // Field QMHucVC4Eb:I
+     435: new           #132                // class java/lang/IllegalAccessException
+     438: dup
+     439: ldc           #109                // String double
+     441: invokespecial #133                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     444: athrow
+
+  static {};
+    Code:
+       0: bipush        18
+       2: anewarray     #646                // class java/lang/String
+       5: putstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+       8: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      11: iconst_0
+      12: ldc_w         #650                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔúÇÔíÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      15: aastore
+      16: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      19: iconst_1
+      20: ldc_w         #652                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔóÇÔúÂÔú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔúäÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      23: aastore
+      24: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      27: iconst_2
+      28: ldc_w         #654                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔóÇÔú┐Ôú┐Ôú┐Ôá┐ÔáƒÔáøÔá╗Ôú┐ÔáåÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      31: aastore
+      32: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      35: iconst_3
+      36: ldc_w         #656                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔó©Ôú┐Ôú┐Ôú┐ÔúåÔúÇÔúÇÔáÇÔú┐ÔáéÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      39: aastore
+      40: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      43: iconst_4
+      44: ldc_w         #658                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔó©Ôá╗Ôú┐Ôú┐Ôú┐ÔáàÔáøÔáïÔáêÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      47: aastore
+      48: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      51: iconst_5
+      52: ldc_w         #660                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÿÔó╝Ôú┐Ôú┐Ôú┐ÔúâÔááÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      55: aastore
+      56: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      59: bipush        6
+      61: ldc_w         #662                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔú┐Ôú┐ÔúƒÔí┐ÔáâÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      64: aastore
+      65: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      68: bipush        7
+      70: ldc_w         #664                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔúøÔúøÔú½ÔíäÔáÇÔó©ÔúªÔúÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      73: aastore
+      74: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      77: bipush        8
+      79: ldc_w         #666                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔóÇÔúáÔú┤Ôú¥ÔíåÔá©Ôú┐Ôú┐Ôú┐ÔíÀÔáéÔá¿Ôú┐Ôú┐Ôú┐Ôú┐ÔúÂÔúªÔúñÔúÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      82: aastore
+      83: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      86: bipush        9
+      88: ldc_w         #668                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔúñÔú¥Ôú┐Ôú┐Ôú┐Ôú┐ÔíçÔóÇÔú┐Ôí┐ÔáïÔá?ÔóÇÔíÂÔá¬ÔúëÔó©Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔúçÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+      91: aastore
+      92: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+      95: bipush        10
+      97: ldc_w         #670                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔóÇÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôí?Ôó©Ôú┐ÔúÀÔú┐Ôú┐ÔúÀÔúªÔíÖÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôí?ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     100: aastore
+     101: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     104: bipush        11
+     106: ldc_w         #672                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáêÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔúçÔó©Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔúÀÔúªÔú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔíçÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     109: aastore
+     110: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     113: bipush        12
+     115: ldc_w         #674                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔóáÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔíçÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     118: aastore
+     119: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     122: bipush        13
+     124: ldc_w         #676                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔó©Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔúäÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     127: aastore
+     128: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     131: bipush        14
+     133: ldc_w         #678                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔá©Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     136: aastore
+     137: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     140: bipush        15
+     142: ldc_w         #680                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔúáÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôí┐ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     145: aastore
+     146: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     149: bipush        16
+     151: ldc_w         #682                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐ÔáâÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     154: aastore
+     155: getstatic     #648                // Field nothing_to_see_here:[Ljava/lang/String;
+     158: bipush        17
+     160: ldc_w         #684                // String ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔó╣Ôú┐ÔúÁÔú¥Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú┐Ôú»Ôí?ÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇÔáÇ
+     163: aastore
+     164: ldc_w         #685                // int 1099543591
+     167: ldc_w         #686                // int 1964375043
+     170: ldc_w         #688                // String exaitretxdrktjdc
+     173: invokestatic  #694                // Method com/deemeplus/ofus.get:(Ljava/lang/String;)I
+     176: ixor
+     177: ixor
+     178: istore        6
+     180: new           #62                 // class java/util/Random
+     183: dup
+     184: ldc2_w        #695                // long -5537756562146126415l
+     187: invokespecial #699                // Method java/util/Random."<init>":(J)V
+     190: invokevirtual #702                // Method java/util/Random.nextInt:()I
+     193: istore_3
+     194: ldc_w         #703                // int -21041143
+     197: iload_3
+     198: ixor
+     199: putstatic     #36                 // Field QMHucVC4Eb:I
+     202: return
+     203: nop
+     204: nop
+     205: nop
+     206: nop
+     207: nop
+     208: nop
+     209: nop
+     210: nop
+     211: nop
+     212: nop
+     213: nop
+     214: nop
+     215: nop
+     216: nop
+     217: nop
+     218: nop
+     219: nop
+     220: nop
+     221: athrow
+     222: nop
+     223: nop
+     224: nop
+     225: nop
+     226: nop
+     227: nop
+     228: nop
+     229: nop
+     230: nop
+     231: nop
+     232: athrow
+     233: nop
+     234: nop
+     235: nop
+     236: nop
+     237: nop
+     238: nop
+     239: nop
+     240: nop
+     241: nop
+     242: nop
+     243: nop
+     244: nop
+     245: nop
+     246: athrow
+     247: nop
+     248: nop
+     249: nop
+     250: nop
+     251: nop
+     252: nop
+     253: nop
+     254: nop
+     255: nop
+     256: nop
+     257: nop
+     258: nop
+     259: nop
+     260: nop
+     261: nop
+     262: nop
+     263: athrow
+
+  private static java.lang.String thisIsAInsaneEncryptionMethod(byte[], int);
+    Code:
+       0: iload_1
+       1: invokestatic  #715                // Method java/lang/Integer.toString:(I)Ljava/lang/String;
+       4: astore        4
+       6: aload         4
+       8: invokevirtual #719                // Method java/lang/String.getBytes:()[B
+      11: astore        5
+      13: bipush        93
+      15: istore        6
+      17: iload         6
+      19: newarray       byte
+      21: astore        7
+      23: iconst_0
+      24: istore_2
+      25: bipush        25
+      27: istore_3
+      28: aload         7
+      30: iload_2
+      31: iload_3
+      32: bastore
+      33: iconst_1
+      34: istore        11
+      36: bipush        95
+      38: istore        109
+      40: aload         7
+      42: iload         11
+      44: iload         109
+      46: bastore
+      47: iconst_2
+      48: istore        12
+      50: bipush        40
+      52: istore        110
+      54: aload         7
+      56: iload         12
+      58: iload         110
+      60: bastore
+      61: iconst_3
+      62: istore        13
+      64: bipush        19
+      66: istore        111
+      68: aload         7
+      70: iload         13
+      72: iload         111
+      74: bastore
+      75: iconst_4
+      76: istore        14
+      78: bipush        72
+      80: istore        112
+      82: aload         7
+      84: iload         14
+      86: iload         112
+      88: bastore
+      89: iconst_5
+      90: istore        15
+      92: bipush        12
+      94: istore        113
+      96: aload         7
+      98: iload         15
+     100: iload         113
+     102: bastore
+     103: bipush        6
+     105: istore        16
+     107: bipush        52
+     109: istore        114
+     111: aload         7
+     113: iload         16
+     115: iload         114
+     117: bastore
+     118: bipush        7
+     120: istore        17
+     122: bipush        11
+     124: istore        115
+     126: aload         7
+     128: iload         17
+     130: iload         115
+     132: bastore
+     133: bipush        8
+     135: istore        18
+     137: bipush        108
+     139: istore        116
+     141: aload         7
+     143: iload         18
+     145: iload         116
+     147: bastore
+     148: bipush        9
+     150: istore        19
+     152: bipush        98
+     154: istore        117
+     156: aload         7
+     158: iload         19
+     160: iload         117
+     162: bastore
+     163: bipush        10
+     165: istore        20
+     167: bipush        60
+     169: istore        118
+     171: aload         7
+     173: iload         20
+     175: iload         118
+     177: bastore
+     178: bipush        11
+     180: istore        21
+     182: bipush        51
+     184: istore        119
+     186: aload         7
+     188: iload         21
+     190: iload         119
+     192: bastore
+     193: bipush        12
+     195: istore        22
+     197: bipush        125
+     199: istore        120
+     201: aload         7
+     203: iload         22
+     205: iload         120
+     207: bastore
+     208: bipush        13
+     210: istore        23
+     212: bipush        6
+     214: istore        121
+     216: aload         7
+     218: iload         23
+     220: iload         121
+     222: bastore
+     223: bipush        14
+     225: istore        24
+     227: bipush        100
+     229: istore        122
+     231: aload         7
+     233: iload         24
+     235: iload         122
+     237: bastore
+     238: bipush        15
+     240: istore        25
+     242: bipush        57
+     244: istore        123
+     246: aload         7
+     248: iload         25
+     250: iload         123
+     252: bastore
+     253: bipush        16
+     255: istore        26
+     257: bipush        105
+     259: istore        124
+     261: aload         7
+     263: iload         26
+     265: iload         124
+     267: bastore
+     268: bipush        17
+     270: istore        27
+     272: bipush        42
+     274: istore        125
+     276: aload         7
+     278: iload         27
+     280: iload         125
+     282: bastore
+     283: bipush        18
+     285: istore        28
+     287: bipush        84
+     289: istore        126
+     291: aload         7
+     293: iload         28
+     295: iload         126
+     297: bastore
+     298: bipush        19
+     300: istore        29
+     302: bipush        58
+     304: istore        127
+     306: aload         7
+     308: iload         29
+     310: iload         127
+     312: bastore
+     313: bipush        20
+     315: istore        30
+     317: bipush        75
+     319: istore        128
+     321: aload         7
+     323: iload         30
+     325: iload         128
+     327: bastore
+     328: bipush        21
+     330: istore        31
+     332: bipush        33
+     334: istore        129
+     336: aload         7
+     338: iload         31
+     340: iload         129
+     342: bastore
+     343: bipush        22
+     345: istore        32
+     347: bipush        49
+     349: istore        130
+     351: aload         7
+     353: iload         32
+     355: iload         130
+     357: bastore
+     358: bipush        23
+     360: istore        33
+     362: bipush        125
+     364: istore        131
+     366: aload         7
+     368: iload         33
+     370: iload         131
+     372: bastore
+     373: bipush        24
+     375: istore        34
+     377: bipush        69
+     379: istore        132
+     381: aload         7
+     383: iload         34
+     385: iload         132
+     387: bastore
+     388: bipush        25
+     390: istore        35
+     392: bipush        77
+     394: istore        133
+     396: aload         7
+     398: iload         35
+     400: iload         133
+     402: bastore
+     403: bipush        26
+     405: istore        36
+     407: bipush        6
+     409: istore        134
+     411: aload         7
+     413: iload         36
+     415: iload         134
+     417: bastore
+     418: bipush        27
+     420: istore        37
+     422: bipush        48
+     424: istore        135
+     426: aload         7
+     428: iload         37
+     430: iload         135
+     432: bastore
+     433: bipush        28
+     435: istore        38
+     437: bipush        17
+     439: istore        136
+     441: aload         7
+     443: iload         38
+     445: iload         136
+     447: bastore
+     448: bipush        29
+     450: istore        39
+     452: bipush        78
+     454: istore        137
+     456: aload         7
+     458: iload         39
+     460: iload         137
+     462: bastore
+     463: bipush        30
+     465: istore        40
+     467: bipush        65
+     469: istore        138
+     471: aload         7
+     473: iload         40
+     475: iload         138
+     477: bastore
+     478: bipush        31
+     480: istore        41
+     482: iconst_4
+     483: istore        139
+     485: aload         7
+     487: iload         41
+     489: iload         139
+     491: bastore
+     492: bipush        32
+     494: istore        42
+     496: bipush        86
+     498: istore        140
+     500: aload         7
+     502: iload         42
+     504: iload         140
+     506: bastore
+     507: bipush        33
+     509: istore        43
+     511: bipush        47
+     513: istore        141
+     515: aload         7
+     517: iload         43
+     519: iload         141
+     521: bastore
+     522: bipush        34
+     524: istore        44
+     526: iconst_4
+     527: istore        142
+     529: aload         7
+     531: iload         44
+     533: iload         142
+     535: bastore
+     536: bipush        35
+     538: istore        45
+     540: bipush        125
+     542: istore        143
+     544: aload         7
+     546: iload         45
+     548: iload         143
+     550: bastore
+     551: bipush        36
+     553: istore        46
+     555: bipush        23
+     557: istore        144
+     559: aload         7
+     561: iload         46
+     563: iload         144
+     565: bastore
+     566: bipush        37
+     568: istore        47
+     570: bipush        124
+     572: istore        145
+     574: aload         7
+     576: iload         47
+     578: iload         145
+     580: bastore
+     581: bipush        38
+     583: istore        48
+     585: bipush        27
+     587: istore        146
+     589: aload         7
+     591: iload         48
+     593: iload         146
+     595: bastore
+     596: bipush        39
+     598: istore        49
+     600: bipush        44
+     602: istore        147
+     604: aload         7
+     606: iload         49
+     608: iload         147
+     610: bastore
+     611: bipush        40
+     613: istore        50
+     615: bipush        93
+     617: istore        148
+     619: aload         7
+     621: iload         50
+     623: iload         148
+     625: bastore
+     626: bipush        41
+     628: istore        51
+     630: bipush        111
+     632: istore        149
+     634: aload         7
+     636: iload         51
+     638: iload         149
+     640: bastore
+     641: bipush        42
+     643: istore        52
+     645: bipush        26
+     647: istore        150
+     649: aload         7
+     651: iload         52
+     653: iload         150
+     655: bastore
+     656: bipush        43
+     658: istore        53
+     660: bipush        64
+     662: istore        151
+     664: aload         7
+     666: iload         53
+     668: iload         151
+     670: bastore
+     671: bipush        44
+     673: istore        54
+     675: bipush        41
+     677: istore        152
+     679: aload         7
+     681: iload         54
+     683: iload         152
+     685: bastore
+     686: bipush        45
+     688: istore        55
+     690: bipush        21
+     692: istore        153
+     694: aload         7
+     696: iload         55
+     698: iload         153
+     700: bastore
+     701: bipush        46
+     703: istore        56
+     705: bipush        65
+     707: istore        154
+     709: aload         7
+     711: iload         56
+     713: iload         154
+     715: bastore
+     716: bipush        47
+     718: istore        57
+     720: bipush        101
+     722: istore        155
+     724: aload         7
+     726: iload         57
+     728: iload         155
+     730: bastore
+     731: bipush        48
+     733: istore        58
+     735: bipush        74
+     737: istore        156
+     739: aload         7
+     741: iload         58
+     743: iload         156
+     745: bastore
+     746: bipush        49
+     748: istore        59
+     750: bipush        24
+     752: istore        157
+     754: aload         7
+     756: iload         59
+     758: iload         157
+     760: bastore
+     761: bipush        50
+     763: istore        60
+     765: bipush        38
+     767: istore        158
+     769: aload         7
+     771: iload         60
+     773: iload         158
+     775: bastore
+     776: bipush        51
+     778: istore        61
+     780: bipush        116
+     782: istore        159
+     784: aload         7
+     786: iload         61
+     788: iload         159
+     790: bastore
+     791: bipush        52
+     793: istore        62
+     795: bipush        32
+     797: istore        160
+     799: aload         7
+     801: iload         62
+     803: iload         160
+     805: bastore
+     806: bipush        53
+     808: istore        63
+     810: bipush        114
+     812: istore        161
+     814: aload         7
+     816: iload         63
+     818: iload         161
+     820: bastore
+     821: bipush        54
+     823: istore        64
+     825: bipush        75
+     827: istore        162
+     829: aload         7
+     831: iload         64
+     833: iload         162
+     835: bastore
+     836: bipush        55
+     838: istore        65
+     840: bipush        96
+     842: istore        163
+     844: aload         7
+     846: iload         65
+     848: iload         163
+     850: bastore
+     851: bipush        56
+     853: istore        66
+     855: bipush        29
+     857: istore        164
+     859: aload         7
+     861: iload         66
+     863: iload         164
+     865: bastore
+     866: bipush        57
+     868: istore        67
+     870: bipush        107
+     872: istore        165
+     874: aload         7
+     876: iload         67
+     878: iload         165
+     880: bastore
+     881: bipush        58
+     883: istore        68
+     885: bipush        113
+     887: istore        166
+     889: aload         7
+     891: iload         68
+     893: iload         166
+     895: bastore
+     896: bipush        59
+     898: istore        69
+     900: bipush        69
+     902: istore        167
+     904: aload         7
+     906: iload         69
+     908: iload         167
+     910: bastore
+     911: bipush        60
+     913: istore        70
+     915: bipush        95
+     917: istore        168
+     919: aload         7
+     921: iload         70
+     923: iload         168
+     925: bastore
+     926: bipush        61
+     928: istore        71
+     930: bipush        97
+     932: istore        169
+     934: aload         7
+     936: iload         71
+     938: iload         169
+     940: bastore
+     941: bipush        62
+     943: istore        72
+     945: bipush        63
+     947: istore        170
+     949: aload         7
+     951: iload         72
+     953: iload         170
+     955: bastore
+     956: bipush        63
+     958: istore        73
+     960: iconst_1
+     961: istore        171
+     963: aload         7
+     965: iload         73
+     967: iload         171
+     969: bastore
+     970: bipush        64
+     972: istore        74
+     974: bipush        100
+     976: istore        172
+     978: aload         7
+     980: iload         74
+     982: iload         172
+     984: bastore
+     985: bipush        65
+     987: istore        75
+     989: bipush        79
+     991: istore        173
+     993: aload         7
+     995: iload         75
+     997: iload         173
+     999: bastore
+    1000: bipush        66
+    1002: istore        76
+    1004: bipush        78
+    1006: istore        174
+    1008: aload         7
+    1010: iload         76
+    1012: iload         174
+    1014: bastore
+    1015: bipush        67
+    1017: istore        77
+    1019: bipush        76
+    1021: istore        175
+    1023: aload         7
+    1025: iload         77
+    1027: iload         175
+    1029: bastore
+    1030: bipush        68
+    1032: istore        78
+    1034: bipush        24
+    1036: istore        176
+    1038: aload         7
+    1040: iload         78
+    1042: iload         176
+    1044: bastore
+    1045: bipush        69
+    1047: istore        79
+    1049: bipush        77
+    1051: istore        177
+    1053: aload         7
+    1055: iload         79
+    1057: iload         177
+    1059: bastore
+    1060: bipush        70
+    1062: istore        80
+    1064: bipush        36
+    1066: istore        178
+    1068: aload         7
+    1070: iload         80
+    1072: iload         178
+    1074: bastore
+    1075: bipush        71
+    1077: istore        81
+    1079: bipush        88
+    1081: istore        179
+    1083: aload         7
+    1085: iload         81
+    1087: iload         179
+    1089: bastore
+    1090: bipush        72
+    1092: istore        82
+    1094: bipush        69
+    1096: istore        180
+    1098: aload         7
+    1100: iload         82
+    1102: iload         180
+    1104: bastore
+    1105: bipush        73
+    1107: istore        83
+    1109: bipush        67
+    1111: istore        181
+    1113: aload         7
+    1115: iload         83
+    1117: iload         181
+    1119: bastore
+    1120: bipush        74
+    1122: istore        84
+    1124: bipush        81
+    1126: istore        182
+    1128: aload         7
+    1130: iload         84
+    1132: iload         182
+    1134: bastore
+    1135: bipush        75
+    1137: istore        85
+    1139: bipush        58
+    1141: istore        183
+    1143: aload         7
+    1145: iload         85
+    1147: iload         183
+    1149: bastore
+    1150: bipush        76
+    1152: istore        86
+    1154: bipush        104
+    1156: istore        184
+    1158: aload         7
+    1160: iload         86
+    1162: iload         184
+    1164: bastore
+    1165: bipush        77
+    1167: istore        87
+    1169: bipush        48
+    1171: istore        185
+    1173: aload         7
+    1175: iload         87
+    1177: iload         185
+    1179: bastore
+    1180: bipush        78
+    1182: istore        88
+    1184: bipush        97
+    1186: istore        186
+    1188: aload         7
+    1190: iload         88
+    1192: iload         186
+    1194: bastore
+    1195: bipush        79
+    1197: istore        89
+    1199: bipush        112
+    1201: istore        187
+    1203: aload         7
+    1205: iload         89
+    1207: iload         187
+    1209: bastore
+    1210: bipush        80
+    1212: istore        90
+    1214: bipush        124
+    1216: istore        188
+    1218: aload         7
+    1220: iload         90
+    1222: iload         188
+    1224: bastore
+    1225: bipush        81
+    1227: istore        91
+    1229: bipush        64
+    1231: istore        189
+    1233: aload         7
+    1235: iload         91
+    1237: iload         189
+    1239: bastore
+    1240: bipush        82
+    1242: istore        92
+    1244: bipush        54
+    1246: istore        190
+    1248: aload         7
+    1250: iload         92
+    1252: iload         190
+    1254: bastore
+    1255: bipush        83
+    1257: istore        93
+    1259: bipush        35
+    1261: istore        191
+    1263: aload         7
+    1265: iload         93
+    1267: iload         191
+    1269: bastore
+    1270: bipush        84
+    1272: istore        94
+    1274: bipush        46
+    1276: istore        192
+    1278: aload         7
+    1280: iload         94
+    1282: iload         192
+    1284: bastore
+    1285: bipush        85
+    1287: istore        95
+    1289: bipush        21
+    1291: istore        193
+    1293: aload         7
+    1295: iload         95
+    1297: iload         193
+    1299: bastore
+    1300: bipush        86
+    1302: istore        96
+    1304: bipush        92
+    1306: istore        194
+    1308: aload         7
+    1310: iload         96
+    1312: iload         194
+    1314: bastore
+    1315: bipush        87
+    1317: istore        97
+    1319: bipush        69
+    1321: istore        195
+    1323: aload         7
+    1325: iload         97
+    1327: iload         195
+    1329: bastore
+    1330: bipush        88
+    1332: istore        98
+    1334: bipush        11
+    1336: istore        196
+    1338: aload         7
+    1340: iload         98
+    1342: iload         196
+    1344: bastore
+    1345: bipush        89
+    1347: istore        99
+    1349: bipush        97
+    1351: istore        197
+    1353: aload         7
+    1355: iload         99
+    1357: iload         197
+    1359: bastore
+    1360: bipush        90
+    1362: istore        100
+    1364: iconst_1
+    1365: istore        198
+    1367: aload         7
+    1369: iload         100
+    1371: iload         198
+    1373: bastore
+    1374: bipush        91
+    1376: istore        101
+    1378: bipush        81
+    1380: istore        199
+    1382: aload         7
+    1384: iload         101
+    1386: iload         199
+    1388: bastore
+    1389: bipush        92
+    1391: istore        102
+    1393: bipush        43
+    1395: istore        200
+    1397: aload         7
+    1399: iload         102
+    1401: iload         200
+    1403: bastore
+    1404: iconst_0
+    1405: istore        8
+    1407: aload_0
+    1408: arraylength
+    1409: istore        10
+    1411: iload         8
+    1413: iload         10
+    1415: if_icmpge     1513
+    1418: aload_0
+    1419: iload         8
+    1421: baload
+    1422: istore        103
+    1424: aload         5
+    1426: arraylength
+    1427: istore        206
+    1429: iload         8
+    1431: iload         206
+    1433: irem
+    1434: istore        204
+    1436: aload         5
+    1438: iload         204
+    1440: baload
+    1441: istore        201
+    1443: iload         103
+    1445: iload         201
+    1447: ixor
+    1448: istore        104
+    1450: iload         104
+    1452: i2b
+    1453: istore        105
+    1455: aload_0
+    1456: iload         8
+    1458: iload         105
+    1460: bastore
+    1461: aload_0
+    1462: iload         8
+    1464: baload
+    1465: istore        106
+    1467: aload         7
+    1469: arraylength
+    1470: istore        207
+    1472: iload         8
+    1474: iload         207
+    1476: irem
+    1477: istore        205
+    1479: aload         7
+    1481: iload         205
+    1483: baload
+    1484: istore        202
+    1486: iload         106
+    1488: iload         202
+    1490: ixor
+    1491: istore        107
+    1493: iload         107
+    1495: i2b
+    1496: istore        108
+    1498: aload_0
+    1499: iload         8
+    1501: iload         108
+    1503: bastore
+    1504: iload         8
+    1506: iconst_1
+    1507: iadd
+    1508: istore        8
+    1510: goto          1407
+    1513: new           #646                // class java/lang/String
+    1516: astore        9
+    1518: getstatic     #725                // Field java/nio/charset/StandardCharsets.UTF_16:Ljava/nio/charset/Charset;
+    1521: astore        203
+    1523: aload         9
+    1525: aload_0
+    1526: aload         203
+    1528: invokespecial #728                // Method java/lang/String."<init>":([BLjava/nio/charset/Charset;)V
+    1531: aload         9
+    1533: areturn
+
+  private static int rwurrwdaddxgwsuy(int, int);
+    Code:
+       0: iload_1
+       1: iload_0
+       2: ixor
+       3: ireturn
+}

@@ -124,5 +124,6 @@ public interface IDarkBotAPI extends WindowAPI, MemoryAPI {
     void setQuality(GameAPI.Handler.GameQuality quality);
 
     long lastInternetReadTime();
+    long lastClientReadTime();
     //</editor-fold>
 }

@@ -10,11 +10,15 @@ import java.util.stream.Collectors;
 
 public class PidSelector extends JComboBox<Integer> {
 
+    private final Map<Integer, String> procs;
+
     public PidSelector(GameAPI.Window.Proc[] procs) {
         super(Arrays.stream(procs).map(GameAPI.Window.Proc::getPid).toArray(Integer[]::new));
 
-        setRenderer(new PidRenderer(Arrays.stream(procs)
-                .collect(Collectors.toMap(GameAPI.Window.Proc::getPid, GameAPI.Window.Proc::getName))));
+        this.procs = Arrays.stream(procs)
+                .collect(Collectors.toMap(GameAPI.Window.Proc::getPid, GameAPI.Window.Proc::getName));
+
+        setRenderer(new PidRenderer(this.procs));
 
         setEditable(true);
     }
@@ -24,6 +28,17 @@ public class PidSelector extends JComboBox<Integer> {
         if (pid == null) return null;
         if (pid instanceof String) return Integer.parseInt((String) pid);
         return (Integer) pid;
+    }
+
+    public String getSelectedProcessName() {
+        Integer pid;
+        try {
+            pid = getPid();
+        } catch (NumberFormatException e) {
+            return "unknown";
+        }
+        if (pid == null) return "unknown";
+        return procs.getOrDefault(pid, "unknown");
     }
 
     private static class PidRenderer extends DefaultListCellRenderer {

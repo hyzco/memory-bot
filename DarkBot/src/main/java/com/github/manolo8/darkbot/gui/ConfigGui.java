@@ -38,7 +38,7 @@ public class ConfigGui extends JFrame {
     private final Lazy<Boolean> stateChange = new Lazy.NoCache<>();
 
     public ConfigGui(Main main) throws HeadlessException {
-        super("DarkBot Configuration");
+        super("Hak Clan SE - Configuration");
         this.main = main;
 
         getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_SHOW_ICON, false);
