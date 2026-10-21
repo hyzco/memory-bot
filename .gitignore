@@ -18,3 +18,12 @@ hs_err_pid*.log
 
 # Stray compiled class files at repo root
 /*.class
+/T.java
+
+# Scratch decompile/analysis dirs
+tmp_*/
+temp_fix/
+
+# IDE build output (Gradle output lives in DarkBot/build/)
+DarkBot/bin/
+DarkBot/build.log
