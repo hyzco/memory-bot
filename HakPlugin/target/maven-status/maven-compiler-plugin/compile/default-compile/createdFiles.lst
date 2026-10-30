@@ -1,0 +1,17 @@
+com\deeme\modules\astral\AstralGate$RewardCategory.class
+com\deeme\modules\astral\AstralGate.class
+com\deeme\modules\astral\NearestShipLocker.class
+com\deeme\modules\astral\AstralMediator.class
+com\deeme\modules\astral\AstralMediator$Rect.class
+com\deeme\modules\astral\AstralGate$EmptyAstralGateAPI.class
+com\deeme\modules\astral\AstralPlusConfig.class
+com\deeme\modules\astral\AstralGate$1.class
+com\deeme\modules\astral\NearestShipLockerConfig.class
+com\deeme\modules\astral\NearestShipLocker$BoolConsumer.class
+com\deeme\modules\astral\PortalInfo.class
+com\deeme\modules\astral\BestAmmoConfig.class
+com\deeme\modules\astral\AstralConfig.class
+com\deeme\modules\astral\ItemInfo.class
+com\deeme\modules\astral\AvailableShips.class
+com\deeme\modules\astral\AstralGate$RewardChoice.class
+com\deeme\modules\astral\CustomItemPriority.class

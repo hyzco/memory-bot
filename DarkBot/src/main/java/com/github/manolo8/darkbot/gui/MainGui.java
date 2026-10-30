@@ -1,0 +1,209 @@
+package com.github.manolo8.darkbot.gui;
+
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.ui.FlatRootPaneUI;
+import com.formdev.flatlaf.ui.FlatTitlePane;
+import com.github.manolo8.darkbot.Main;
+import com.github.manolo8.darkbot.config.Config;
+import com.github.manolo8.darkbot.core.api.Capability;
+import com.github.manolo8.darkbot.gui.components.ExitConfirmation;
+import com.github.manolo8.darkbot.gui.titlebar.MainTitleBar;
+import com.github.manolo8.darkbot.gui.utils.UIUtils;
+import com.github.manolo8.darkbot.gui.utils.window.WindowUtils;
+import eu.darkbot.api.config.ConfigSetting;
+import lombok.Getter;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.function.Consumer;
+
+public class MainGui extends JFrame {
+
+    private final Main main;
+    private final ConfigGui configGui;
+
+    private MainTitleBar titleBar;
+    private ExitConfirmation exitConfirmation;
+    @Getter private MapDrawer mapDrawer;
+
+    // When using the Astral control UI, this window is redundant with the embedded game view,
+    // so block any attempt (ours or a plugin's) to show it except through the explicit toggle.
+    private final boolean astralUiActive;
+
+    public static final Image ICON = com.github.manolo8.darkbot.gui.utils.AppIcon.create(256);
+    public static final int DEFAULT_WIDTH = 640, DEFAULT_HEIGHT = 480;
+    private int lastTick;
+
+    public MainGui(Main main, boolean visibleOnStart) throws HeadlessException {
+        super("Hak Clan SE");
+        getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_SHOW_ICON, false);
+        getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_SHOW_TITLE, false);
+
+        // FlatLaf repaints the entire TitlePane on any change within its bounds
+        // so the custom border color is painted correctly when embedded menu is invisible
+        // we don't need this behavior, which affects performance
+        getRootPane().setUI(new FlatRootPaneUI() {
+            @Override
+            protected FlatTitlePane createTitlePane() {
+                return new FlatTitlePane(getRootPane()) {
+                    @Override
+                    protected void menuBarChanged() {
+                        menuBarPlaceholder.invalidate();
+                    }
+                };
+            }
+        });
+
+        this.configGui = new ConfigGui(main);
+        this.configGui.setIconImage(ICON);
+
+        this.main = main;
+        this.astralUiActive = main.params.useAstralUi();
+
+        ToolTipManager.sharedInstance().setInitialDelay(350);
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        Config.BotSettings.BotGui guiConfig = main.config.BOT_SETTINGS.BOT_GUI;
+        WindowUtils.setWindowSize(this, guiConfig.SAVE_GUI_POS, guiConfig.MAIN_GUI_WINDOW);
+
+        setIconImage(ICON);
+
+        setComponentPosition();
+        titleBar.setInfo("Hak Clan SE " + Main.VERSION);
+
+        setVisible(visibleOnStart);
+
+        if (visibleOnStart) {
+            setAlwaysOnTop(true);
+            toFront();
+            requestFocus();
+        }
+        setAlwaysOnTop(main.config.BOT_SETTINGS.BOT_GUI.ALWAYS_ON_TOP);
+
+        if (Main.API.hasCapability(Capability.WINDOW_POSITION)) {
+            addComponentListener(new ComponentAdapter() {
+                public void componentMoved(ComponentEvent e) {
+                    if (main.config.BOT_SETTINGS.API_CONFIG.attachToBot)
+                        Main.API.setPosition((int) getBounds().getMaxX() - 15, (int) getBounds().getMinY());
+                }
+            });
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                main.pluginHandler.PLUGIN_CLASS_LOADER.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            main.configManager.saveConfig();
+        }));
+    }
+
+    public ConfigGui getConfigGui() {
+        return configGui;
+    }
+
+    public boolean isHidden() {
+        return !isVisible() || getState() == ICONIFIED;
+    }
+
+    @Override
+    public void setVisible(boolean visible) {
+        if (visible && astralUiActive) {
+            System.out.println("MainGui: ignoring setVisible(true) while Astral UI is active " +
+                    "(this window is redundant with the embedded game view); use the \"Show Main UI\" " +
+                    "button or setVisibleFromAstralToggle() to show it deliberately");
+            return;
+        }
+        super.setVisible(visible);
+    }
+
+    /** Bypasses the Astral-UI suppression in {@link #setVisible(boolean)} for the explicit user toggle. */
+    public void setVisibleFromAstralToggle(boolean visible) {
+        super.setVisible(visible);
+    }
+
+    private void setComponentPosition() {
+        setJMenuBar(titleBar = new MainTitleBar(main, this));
+
+        setLayout(new BorderLayout());
+        add(exitConfirmation = new ExitConfirmation(), BorderLayout.NORTH);
+        add(mapDrawer = new MapDrawer(main), BorderLayout.CENTER);
+    }
+
+    public void addConfigVisibilityListener(Consumer<Boolean> listener) {
+        configGui.addVisibilityListener(listener);
+    }
+
+    public void toggleConfig() {
+        boolean open = !configGui.isVisible();
+        configGui.setVisible(open);
+        if (open) {
+            configGui.setState(NORMAL); // bring the window if was minimized
+            configGui.setAlwaysOnTop(this.isAlwaysOnTop());
+            configGui.toFront();
+        }
+    }
+
+    public void setCustomConfig(@Nullable ConfigSetting.Parent<?> config) {
+        configGui.setCustomConfig(config);
+    }
+
+    public void updateConfigTreeListeners() {
+        configGui.updateConfigTreeListeners();
+    }
+
+    public void updateConfiguration() {
+        mapDrawer.setup(main);
+        configGui.setComponentData();
+    }
+
+    @Override
+    public void setTitle(String title) {
+        if (!Objects.equals(getTitle(), title)) super.setTitle(title);
+    }
+
+    private static final long MAP_REPAINT_INTERVAL_NS = 33_000_000L;
+    private long lastMapRepaint;
+
+    public void tick() {
+        if (main.config.MISCELLANEOUS.USERNAME_ON_TITLE) {
+            if (main.hero.playerInfo.username != null) setTitle("Hak Clan SE - " + main.hero.playerInfo.username);
+        }
+        else setTitle("Hak Clan SE");
+
+        // Painting holds the bot's update lock on the EDT, so repainting every tick (~60+/s) steals time from the bot.
+        // ~30 fps is smooth to the eye and leaves the lock free for game logic the rest of the time.
+        long now = System.nanoTime();
+        if ((lastTick++ % main.config.BOT_SETTINGS.MAP_DISPLAY.REFRESH_DELAY) == 0
+                && now - lastMapRepaint >= MAP_REPAINT_INTERVAL_NS) {
+            lastMapRepaint = now;
+            mapDrawer.repaint();
+        }
+    }
+
+    @Override
+    protected void processWindowEvent(final WindowEvent e) {
+        super.processWindowEvent(e);
+
+        if (e.getID() == WindowEvent.WINDOW_CLOSING) {
+            // if is minimized close without confirmation
+            if (main.config.BOT_SETTINGS.BOT_GUI.CONFIRM_EXIT && getState() == NORMAL) {
+                toFront(); // bring to front if possible
+                exitConfirmation.setVisible(true);
+            }
+            else {
+                System.out.println("Exit button pressed, exiting");
+                System.exit(0);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,29 @@
+# Secrets (tracked historically, now untracked going forward)
+credentials.json
+creds.txt
+
+# Large local deploy/backup artifacts - do not version these
+DarkBot_Deploy/
+HAK_KLAN_DARKBOT/
+HAK_KLAN_DARKBOT.zip
+
+# Scratch snapshot dirs from a previous upstream-diff attempt
+.copilot-darkbot-custom/
+.copilot-upstream-darkbot/
+
+# Logs and crash dumps
+logs/
+hs_err_pid*.log
+*.log
+
+# Stray compiled class files at repo root
+/*.class
+/T.java
+
+# Scratch decompile/analysis dirs
+tmp_*/
+temp_fix/
+
+# IDE build output (Gradle output lives in DarkBot/build/)
+DarkBot/bin/
+DarkBot/build.log
