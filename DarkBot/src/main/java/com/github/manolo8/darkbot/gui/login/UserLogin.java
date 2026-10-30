@@ -12,11 +12,12 @@ public class UserLogin extends JPanel implements LoginScreen {
     private final JTextField username = new JTextField(16), password = new JPasswordField(16);
 
     public UserLogin() {
-        super(new MigLayout("wrap 2", "[]8px:push[]", "push[][]push"));
-        add(new JLabel(I18n.get("gui.login.user_pass.username")));
-        add(username);
-        add(new JLabel(I18n.get("gui.login.user_pass.password")));
-        add(password);
+        super(new MigLayout("wrap 1, fillx, ins 16 8 8 8", "[grow,fill]", "[]10[]"));
+        username.putClientProperty("JTextField.placeholderText", I18n.get("gui.login.user_pass.username"));
+        password.putClientProperty("JTextField.placeholderText", I18n.get("gui.login.user_pass.password"));
+        password.putClientProperty("JTextField.showRevealButton", true);
+        add(username, "h 38!");
+        add(password, "h 38!");
     }
 
     public UserLogin(String username, String password) {

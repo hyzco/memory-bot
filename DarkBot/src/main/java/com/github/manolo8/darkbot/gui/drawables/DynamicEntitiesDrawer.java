@@ -1,5 +1,6 @@
 package com.github.manolo8.darkbot.gui.drawables;
 
+import com.github.manolo8.darkbot.core.entities.Entity;
 import com.github.manolo8.darkbot.extensions.features.Feature;
 import eu.darkbot.api.config.ConfigSetting;
 import eu.darkbot.api.config.types.DisplayFlag;
@@ -211,7 +212,15 @@ public class DynamicEntitiesDrawer implements Drawable {
     }
 
     private void drawHeroTarget(MapGraphics mg) {
-        Lockable target = hero.getLocalTarget();
+        Lockable local = hero.getLocalTarget();
+        Lockable picked = local;
+
+        // A ship picked by hand in the game isn't the bot's local target; show what the game has selected too.
+        if (picked == null || !picked.isValid()) {
+            eu.darkbot.api.game.entities.Entity selected = hero.getTarget();
+            if (selected instanceof Lockable) picked = (Lockable) selected;
+        }
+        final Lockable target = picked;
 
         if (target != null && target.isValid()) {
             if (target instanceof Movable) {
@@ -235,6 +244,12 @@ public class DynamicEntitiesDrawer implements Drawable {
     private void drawEntity(MapGraphics mg, Locatable entity, double size, boolean fill, boolean target) {
         if (!target && entity == hero.getLocalTarget()) return; // don't paint entity from loop if is a target
         if (fill) size += 1;
+
+        java.awt.Graphics2D g = mg.getGraphics2D();
+        java.awt.Composite old = g.getComposite();
+        g.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, 0.16f));
+        mg.drawOvalCentered(entity, size + 9, true);
+        g.setComposite(old);
 
         if (roundEntities.getValue())
             mg.drawOvalCentered(entity, size + 2, fill);

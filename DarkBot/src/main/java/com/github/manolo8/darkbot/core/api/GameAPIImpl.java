@@ -70,6 +70,9 @@ public class GameAPIImpl<
 
     private final MapManager mapManager;
 
+    private KekkaPlayerProxyServer proxyServer;
+    private boolean proxyPublished;
+
     public GameAPIImpl(StartupParams params,
                        W window, H handler, M memory, E extraMemoryReader, I interaction, D direct,
                        Capability... capabilityArr) {
@@ -103,8 +106,10 @@ public class GameAPIImpl<
 
         if (hasCapability(Capability.PROXY)) {
             ConfigSetting<Boolean> useProxy = config.requireConfig("bot_settings.api_config.use_proxy");
-            if (useProxy.getValue() || OSUtil.isWindows7OrLess())
-                new KekkaPlayerProxyServer(handler).start();
+            if (useProxy.getValue() || OSUtil.isWindows7OrLess()) {
+                proxyServer = new KekkaPlayerProxyServer(handler);
+                proxyServer.start();
+            }
         }
 
         if (hasCapability(Capability.HANDLER_FLASH_PATH) && OSUtil.isWindows()) {
@@ -264,7 +269,13 @@ public class GameAPIImpl<
             becomeValidTimer.disarm();
         }
 
-        if (!autoHidden && isValid && params.getAutoHide()) {
+        if (isValid && proxyServer != null && !proxyPublished) {
+            proxyPublished = true;
+            handler.setLocalProxy(proxyServer.getPort());
+        }
+
+        // In Astral UI the game window is docked inside our own window; hiding it would blank the view.
+        if (!autoHidden && isValid && params.getAutoHide() && !params.useAstralUi()) {
             setVisible(false, Main.INSTANCE.config.BOT_SETTINGS.API_CONFIG.FULLY_HIDE_API);
             autoHidden = true;
         }
@@ -518,9 +529,18 @@ public class GameAPIImpl<
         }
     }
 
+    private long lastMoveLog;
+
     @Override
     public void moveShip(Locatable destination) {
-        if (mapManager.mapClick(false)) {
+        boolean clicked = mapManager.mapClick(false);
+        long now = System.currentTimeMillis();
+        if (now - lastMoveLog > 1500) {
+            lastMoveLog = now;
+            System.out.println("moveShip -> " + (int) destination.getX() + "," + (int) destination.getY()
+                    + " mapClick=" + clicked);
+        }
+        if (clicked) {
             direct.moveShip(destination);
         }
     }

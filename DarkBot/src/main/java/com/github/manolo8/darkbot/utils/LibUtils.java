@@ -8,7 +8,6 @@ public class LibUtils {
     private static Path FLASH_OCX_PATH = null;
 
     public static void loadLibrary(String library) {
-        LibSetup.downloadLib(library + getExtension());
 
         Path libraryPath = getLibraryPath(library);
         if (Files.exists(libraryPath))
@@ -27,7 +26,6 @@ public class LibUtils {
 
     public static Path getSharedLibrary(String library) {
         Path lib = OSUtil.getDataPath("lib", library);
-        LibSetup.downloadLib(lib);
 
         return lib;
     }

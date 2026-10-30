@@ -38,7 +38,7 @@ public class TrayButton extends TitleBarButton<JFrame> {
     }
 
     private TrayIcon createTrayIcon() {
-        TrayIcon icon = new TrayIcon(MainGui.ICON, "DarkBot");
+        TrayIcon icon = new TrayIcon(MainGui.ICON, "HAK Clan Bot");
         icon.setImageAutoSize(true);
 
         icon.addActionListener(l -> {
@@ -65,11 +65,11 @@ public class TrayButton extends TitleBarButton<JFrame> {
     private void rebuildPopup() {
         popupMenu.removeAll();
 
-        JMenuItem title = new JMenuItem("DarkBot", UIUtils.getIcon("icon"));
+        JMenuItem title = new JMenuItem("HAK Clan Bot", new javax.swing.ImageIcon(com.github.manolo8.darkbot.gui.utils.AppIcon.create(16)));
         JMenuItem quit = new JMenuItem(I18n.get("gui.tray_menu.quit"));
 
         title.setEnabled(false);
-        title.setDisabledIcon(UIUtils.getIcon("icon"));
+        title.setDisabledIcon(new javax.swing.ImageIcon(com.github.manolo8.darkbot.gui.utils.AppIcon.create(16)));
         quit.addActionListener(l -> {
             System.out.println("Tray icon exit button pressed, exiting");
             System.exit(0);

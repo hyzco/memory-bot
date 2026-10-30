@@ -258,7 +258,11 @@ public class GuiManager implements Manager, GameScreenAPI {
     }
 
     private void checkInvalid() {
-        if (System.currentTimeMillis() - validTime > 90_000 + (main.hero.map.id == -1 ? 180_000 : 0)) {
+        // Shortened the "no map resolved yet" grace period from 180s to 30s (total 90s->120s was
+        // 90s->270s) - this is exactly the case hit by the detectPepper startup freeze, where the
+        // game never progresses past an unresolved map at all, so there's little value in waiting
+        // nearly 4.5 minutes before auto-recovering.
+        if (System.currentTimeMillis() - validTime > (main.hero.map.id == -1 ? 60_000 : 90_000)) {
             triggerRefresh("Triggering refresh: gui manger was invalid for too long. " +
                     "(Make sure your hp fills up, equip an auto-repair CPU if you're missing one)", true);
         }

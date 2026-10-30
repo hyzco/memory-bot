@@ -2,6 +2,7 @@ package eu.darkbot.api;
 
 import com.github.manolo8.darkbot.core.api.GameAPI;
 import com.github.manolo8.darkbot.core.manager.MapManager;
+import com.github.manolo8.darkbot.gui.utils.window.NativeWindowEmbedder;
 import com.github.manolo8.darkbot.utils.LibUtils;
 import com.github.manolo8.darkbot.utils.OSUtil;
 import com.github.manolo8.darkbot.utils.Time;
@@ -160,6 +161,8 @@ public class RunnerKekkaPlayer implements GameAPI.Window, GameAPI.Handler, API.S
             memory.openProcess(pid);
             interaction.attach(pid);
             System.out.println("RunnerKekkaPlayer attached to pid " + pid);
+
+            NativeWindowEmbedder.embedAsync(pid);
         } catch (IOException e) {
             pid = 0;
             interaction.attach(0);

@@ -28,6 +28,24 @@ public class PluginClassLoader extends URLClassLoader {
             .map(PluginClassLoader::toMatcher)
             .collect(Collectors.toList());
 
+    private static final Map<String, String> REDIRECTS = Map.ofEntries(
+            Map.entry("eu/darkbot/popcorn/def/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("eu/darkbot/popcorn/don/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("eu/darkbot/leanon00/e/m", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("eu/darkbot/leanon00/e/u", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("com/punikekk/d", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("eu/darkbot/leanon00/e/g", "com/github/manolo8/darkbot/extensions/util/g"),
+            Map.entry("eu/darkbot/leanon00/e/o", "com/github/manolo8/darkbot/extensions/util/g"),
+            Map.entry("eu/darkbot/leanon00/e/h", "com/github/manolo8/darkbot/extensions/util/h"),
+            Map.entry("eu/darkbot/leanon00/e/p", "com/github/manolo8/darkbot/extensions/util/h"),
+            Map.entry("com/deeme/types/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
+            Map.entry("com/deemeplus/utils/Backpage", "com/github/manolo8/darkbot/extensions/util/DeemePlusBackpage"),
+            // PenguinPlugin: checkAuthenticity returns AuthAPI (not void) — needs separate compat shim
+            Map.entry("eu/darkbot/marek/penguin/utils/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierCheckerCompat"),
+            // LeanPlugin non-obfuscated VerifierChecker
+            Map.entry("eu/darkbot/leanon00/utils/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker")
+    );
+
     private static Predicate<String> toMatcher(String pattern) {
         if (pattern.endsWith("*")) {
             String start = pattern.substring(0, pattern.length() - 1);
@@ -49,6 +67,15 @@ public class PluginClassLoader extends URLClassLoader {
         if (PROTECTED.stream().anyMatch(p -> p.test(name)))
             throw new ClassNotFoundException(name + " is a protected class");
 
+        String internalName = name.replace('.', '/');
+        String redirect = REDIRECTS.get(internalName);
+        if (redirect != null) {
+            Class<?> loaded = findLoadedClass(name);
+            if (loaded == null) loaded = defineStub(name, internalName, redirect);
+            if (resolve) resolveClass(loaded);
+            return loaded;
+        }
+
         if (isPluginClass(name)) {
             Class<?> loaded = findLoadedClass(name);
             if (loaded != null) {
@@ -64,21 +91,7 @@ public class PluginClassLoader extends URLClassLoader {
                     ClassReader reader = new ClassReader(classStream);
                     ClassWriter writer = new ClassWriter(reader, 0);
 
-                        SimpleRemapper combinedRemapper = new SimpleRemapper(Map.ofEntries(
-                            Map.entry("eu/darkbot/popcorn/def/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("eu/darkbot/popcorn/don/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("eu/darkbot/leanon00/e/m", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("eu/darkbot/leanon00/e/u", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("com/punikekk/d", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("eu/darkbot/leanon00/e/g", "com/github/manolo8/darkbot/extensions/util/g"),
-                            Map.entry("eu/darkbot/leanon00/e/o", "com/github/manolo8/darkbot/extensions/util/g"),
-                            Map.entry("eu/darkbot/leanon00/e/h", "com/github/manolo8/darkbot/extensions/util/h"),
-                            Map.entry("eu/darkbot/leanon00/e/p", "com/github/manolo8/darkbot/extensions/util/h"),
-                            Map.entry("com/deeme/types/VerifierChecker", "com/github/manolo8/darkbot/extensions/util/VerifierChecker"),
-                            Map.entry("com/deemeplus/utils/Backpage", "com/github/manolo8/darkbot/extensions/util/DeemePlusBackpage")
-                        ));
-
-                    ClassRemapper remapper = new ClassRemapper(writer, combinedRemapper);
+                    ClassRemapper remapper = new ClassRemapper(writer, new SimpleRemapper(REDIRECTS));
                     reader.accept(remapper, 0);
 
                     byte[] newBytecode = writer.toByteArray();
@@ -94,12 +107,29 @@ public class PluginClassLoader extends URLClassLoader {
         return super.loadClass(name, resolve);
     }
 
+    private Class<?> defineStub(String name, String internalName, String target) throws ClassNotFoundException {
+        try (InputStream stream = PluginClassLoader.class.getClassLoader()
+                .getResourceAsStream(target + ".class")) {
+            if (stream == null) throw new ClassNotFoundException(target);
+
+            ClassReader reader = new ClassReader(stream);
+            ClassWriter writer = new ClassWriter(reader, 0);
+            reader.accept(new ClassRemapper(writer, new SimpleRemapper(Map.of(target, internalName))), 0);
+
+            byte[] bytes = writer.toByteArray();
+            return defineClass(name, bytes, 0, bytes.length);
+        } catch (IOException e) {
+            throw new ClassNotFoundException("Failed to load stub " + target, e);
+        }
+    }
+
     private boolean isPluginClass(String name) {
         return name.startsWith("eu.darkbot.plugins")
                 || name.contains("popcorn")
                 || name.contains("punikekk")
                 || name.contains("leanon00")
-                || name.contains("deeme");
+                || name.contains("deeme")
+                || name.contains("marek");
     }
 
     @Override

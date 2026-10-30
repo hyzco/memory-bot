@@ -272,7 +272,7 @@ public class AstralGate implements Module, Configurable<AstralConfig> {
                 return;
             }
 
-            if (config.autoChoose && !isDesiredShipLoaded()) {
+            if (config.autoChoose && !isDesiredShipLoaded() && !shipChosen) {
                 status = "Opening ship selection " + desiredShipLabel()
                         + " (current " + currentShipLabel() + ")";
                 shipChosen = false;
@@ -1113,7 +1113,7 @@ public class AstralGate implements Module, Configurable<AstralConfig> {
                 && ship.isValid()
                 && !ship.isInvisible()
                 && !ship.isBlacklisted()
-                && ship.getHealth().getHp() > 0
+                && ship.getHealth().getHp() != 0  // != 0 handles int overflow: game uses long for HP, so large values read as negative int are still alive
                 && (ship instanceof Npc || isAstralHostileShip(ship));
     }
 

@@ -11,11 +11,11 @@ public class SidLogin extends JPanel implements LoginScreen {
     private final JTextField sv = new JTextField(4), sid = new JTextField(16);
 
     public SidLogin() {
-        super(new MigLayout("wrap 2", "[]8px:push[]", "push[][]push"));
-        add(new JLabel(I18n.get("gui.login.sid.server")));
-        add(sv);
-        add(new JLabel(I18n.get("gui.login.sid.sid")));
-        add(sid);
+        super(new MigLayout("wrap 1, fillx, ins 16 8 8 8", "[grow,fill]", "[]10[]"));
+        sv.putClientProperty("JTextField.placeholderText", I18n.get("gui.login.sid.server"));
+        sid.putClientProperty("JTextField.placeholderText", I18n.get("gui.login.sid.sid"));
+        add(sv, "h 38!");
+        add(sid, "h 38!");
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.formdev.flatlaf.ui.FlatNativeWindowBorder;
 import com.formdev.flatlaf.util.SystemInfo;
 import com.github.manolo8.darkbot.extensions.plugins.PluginClassLoader;
 import com.github.manolo8.darkbot.gui.MainGui;
-import com.github.manolo8.darkbot.utils.LibSetup;
 import com.github.manolo8.darkbot.utils.LogUtils;
 import com.github.manolo8.darkbot.utils.StartupParams;
 import eu.darkbot.util.Popups;
@@ -48,6 +47,20 @@ public class Bot {
             // Load necessary native libraries
             FlatNativeWindowBorder.isSupported();
 
+            // "Midnight violet" identity palette: near-black navy surfaces, violet accent.
+            java.util.Map<String, String> palette = new java.util.HashMap<>();
+            palette.put("@background", "#11131A");
+            palette.put("@foreground", "#E8EAF2");
+            palette.put("@accentColor", "#8B5CF6");
+            palette.put("@selectionBackground", "#4C3A94");
+            palette.put("@selectionForeground", "#FFFFFF");
+            palette.put("@componentBackground", "#171A24");
+            palette.put("@buttonBackground", "#1E2232");
+            palette.put("@menuBackground", "#0D0F15");
+            palette.put("@borderColor", "#2A2F42");
+            palette.put("@disabledForeground", "#5B6178");
+            com.formdev.flatlaf.FlatLaf.setGlobalExtraDefaults(palette);
+
             UIManager.setLookAndFeel(new DarkLaf());
 
             // Modern rounded UI
@@ -57,21 +70,21 @@ public class Bot {
             UIManager.put("TextComponent.arc", 8);
             UIManager.put("CheckBox.arc", 4);
 
-            // Accent color — cyan/teal
-            Color accent = new Color(0x00B8D4);
+            // Accent color - violet
+            Color accent = new Color(0x8B5CF6);
             UIManager.put("Component.focusColor", accent);
             UIManager.put("TabbedPane.underlineColor", accent);
             UIManager.put("ProgressBar.foreground", accent);
             UIManager.put("Slider.thumbColor", accent);
-            UIManager.put("Slider.trackColor", new Color(0x3A3F47));
+            UIManager.put("Slider.trackColor", new Color(0x2A2F42));
 
             // Selection
-            UIManager.put("List.selectionBackground", new Color(0x0D47A1));
-            UIManager.put("Table.selectionBackground", new Color(0x0D47A1));
-            UIManager.put("Tree.selectionBackground", new Color(0x0D47A1));
+            UIManager.put("List.selectionBackground", new Color(0x4C3A94));
+            UIManager.put("Table.selectionBackground", new Color(0x4C3A94));
+            UIManager.put("Tree.selectionBackground", new Color(0x4C3A94));
 
             // Softer background tones
-            UIManager.put("Table.alternateRowColor", new Color(0x2A2E35));
+            UIManager.put("Table.alternateRowColor", new Color(0x151824));
 
             UIManager.put("Button.default.boldText", false);
             UIManager.put("Table.cellFocusColor", new Color(0, 0, 0, 160));
@@ -102,7 +115,6 @@ public class Bot {
             e.printStackTrace();
         }
 
-        LibSetup.setupLibraries();
         StartupParams params = new StartupParams(args);
 
         System.out.println("Starting Hak Clan SE " + Main.VERSION);

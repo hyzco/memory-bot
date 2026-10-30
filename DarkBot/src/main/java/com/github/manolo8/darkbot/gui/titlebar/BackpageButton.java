@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
-public class BackpageButton extends TitleBarButton<MainGui> {
+public class BackpageButton extends TitleBarButton<MainGui> implements BackpageTask.Host {
 
     private final Main main;
     private final JProgressBar progressBar = new JProgressBar(0, 50);

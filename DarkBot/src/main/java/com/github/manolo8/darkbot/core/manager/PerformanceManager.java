@@ -82,7 +82,8 @@ public class PerformanceManager implements Manager, Listener, API.Singleton {
     }
 
     private void setMinTickTime(int minTickTime) {
-        this.minTickTime = shouldEnable() ? minTickTime : 15;
+        // Tick as soon as the previous one is done (the loop already stretches the pause to the real tick cost).
+        this.minTickTime = Math.min(shouldEnable() ? minTickTime : 15, 8);
     }
 
     private void updateRender(boolean disable) {

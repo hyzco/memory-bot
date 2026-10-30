@@ -306,6 +306,12 @@ public class MapManager implements Manager, StarSystemAPI {
     //   Slot[248] _-73v::_-X5l
     //   Slot[256] _-J4u::_-4L
 
+    private boolean clientSizeFallbackLogged;
+
+    private static boolean isSaneClientSize(int w, int h) {
+        return w >= 100 && w <= 16384 && h >= 100 && h <= 16384;
+    }
+
     private boolean is3DView;
     private void updateBounds() {
         long temp = API.readLong(viewAddressStatic);
@@ -319,6 +325,20 @@ public class MapManager implements Manager, StarSystemAPI {
 
         clientWidth = API.readInt(boundsAddress + 0xA8);
         clientHeight = API.readInt(boundsAddress + 0xAC);
+        if (!isSaneClientSize(clientWidth, clientHeight)) {
+            // This game build keeps the stage size elsewhere (the offsets read pointer garbage). The hosted game
+            // window's client area is the same size, so use that instead of feeding garbage into clicks.
+            int[] window = com.github.manolo8.darkbot.gui.utils.window.NativeWindowEmbedder.getClientSize();
+            if (window != null) {
+                if (!clientSizeFallbackLogged) {
+                    clientSizeFallbackLogged = true;
+                    System.out.println("MapManager: client size read from memory was invalid (" + clientWidth + "x"
+                            + clientHeight + "), using game window size " + window[0] + "x" + window[1]);
+                }
+                clientWidth = window[0];
+                clientHeight = window[1];
+            }
+        }
 
         long updated = API.readLong(boundsAddress + (is3DView ? 320 : 280));
         updated = API.readLong(updated + 112);

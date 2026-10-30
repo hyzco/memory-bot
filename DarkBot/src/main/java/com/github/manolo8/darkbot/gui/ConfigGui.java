@@ -113,4 +113,19 @@ public class ConfigGui extends JFrame {
         stateChange.add(event);
     }
 
+    /**
+     * Pulls this frame's menu bar + tab content out into a standalone panel, so it can be embedded
+     * as a tab elsewhere (the singular Astral GUI) instead of shown as its own top-level window.
+     * This frame itself is never shown again once this is called.
+     */
+    public JComponent getEmbeddableContent() {
+        JPanel panel = new JPanel(new BorderLayout());
+        JMenuBar bar = getJMenuBar();
+        setJMenuBar(null);
+        panel.add(bar, BorderLayout.NORTH);
+        panel.add(tabbedPane, BorderLayout.CENTER);
+        stateChange.send(true);
+        return panel;
+    }
+
 }

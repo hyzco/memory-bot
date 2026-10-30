@@ -36,10 +36,19 @@ public class BackpageTask extends Thread {
 
     private static final Timer VERSION_CHECK_TIMER = Timer.get(Time.HOUR * 12);
 
-    private final Main main;
-    private final BackpageButton button;
+    /** What the task needs from whatever started it: a way to disable itself and show download progress. */
+    public interface Host {
+        void setEnabled(boolean enabled);
 
-    public BackpageTask(Main main, BackpageButton button) {
+        JProgressBar addProgressBar();
+
+        void removeProgressBar();
+    }
+
+    private final Main main;
+    private final Host button;
+
+    public BackpageTask(Main main, Host button) {
         setDaemon(true);
         this.main = main;
         this.button = button;

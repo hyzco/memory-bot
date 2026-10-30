@@ -22,9 +22,11 @@ public class BotInstaller implements API.Singleton {
         return bytesToMainApplication.clone();
     }
 
-    private static final long INVALID_TIMEOUT_WITH_READ = 180_000;
-    private static final long INVALID_TIMEOUT_NO_READ = 300_000;
-    private static final int MAX_INVALID_TIMEOUT_HITS = 2;
+    // Shortened from 180s/300s/2 hits (up to ~6min total) so a frozen initial load self-heals in
+    // under a minute instead of requiring a manual relaunch.
+    private static final long INVALID_TIMEOUT_WITH_READ = 45_000;
+    private static final long INVALID_TIMEOUT_NO_READ = 60_000;
+    private static final int MAX_INVALID_TIMEOUT_HITS = 1;
 
     public static long SCRIPT_OBJECT_VTABLE, STRING_OBJECT_VTABLE;
     public final Lazy<Long> mainApplicationAddress = new Lazy<>();
@@ -113,29 +115,54 @@ public class BotInstaller implements API.Singleton {
      * Attempts to install, returns if the bot is still invalid
      * @return True if invalid and should retry, false otherwise.
      */
+    private long lastPatternFailLog = 0;
+
     private boolean tryInstall() {
         if (!API.isValid()) return true;
         long temp;
 
-        if ((temp = API.searchPattern(bytesToMainApplication)) == 0) return true;
+        if ((temp = API.searchPattern(bytesToMainApplication)) == 0) {
+            if (System.currentTimeMillis() - lastPatternFailLog > 5000) {
+                lastPatternFailLog = System.currentTimeMillis();
+                System.out.println("BotInstaller: bytesToMainApplication pattern not found in process memory yet " +
+                        "(this is the core address resolution everything else depends on)");
+            }
+            return true;
+        }
+        System.out.println("BotInstaller: bytesToMainApplication pattern found at " + temp);
         this.mainApplicationAddress.send(temp - 228);
         BotInstaller.SEP = API.readInt(mainApplicationAddress.get() + 4);
 
-        if ((temp = API.searchClassClosure(this::settingsPattern)) == 0) return true;
+        if ((temp = API.searchClassClosure(this::settingsPattern)) == 0) {
+            System.out.println("BotInstaller: settingsPattern not found, aborting install");
+            return true;
+        }
         this.settingsAddress.send(temp);
 
-        if ((temp = API.readLong(mainApplicationAddress.get() + 1344)) == 0) return true;
+        if ((temp = API.readLong(mainApplicationAddress.get() + 1344)) == 0) {
+            System.out.println("BotInstaller: mainAddress read (mainApplicationAddress+1344) was 0, aborting install");
+            return true;
+        }
         this.mainAddress.send(temp);
 
-        if ((temp = API.readLong(mainAddress.get() + 504)) == 0) return true;
+        if ((temp = API.readLong(mainAddress.get() + 504)) == 0) {
+            System.out.println("BotInstaller: screenManagerAddress read (mainAddress+504) was 0, aborting install");
+            return true;
+        }
         this.screenManagerAddress.send(temp);
 
-        if ((temp = API.readLong(mainAddress.get() + 512)) == 0) return true;
+        if ((temp = API.readLong(mainAddress.get() + 512)) == 0) {
+            System.out.println("BotInstaller: guiManagerAddress read (mainAddress+512) was 0, aborting install");
+            return true;
+        }
         this.guiManagerAddress.send(temp);
 
         SCRIPT_OBJECT_VTABLE = API.readLong(screenManagerAddress.get());
         // vtable -> traits -> core -> string cache -> cpp_vtable
         STRING_OBJECT_VTABLE = API.readLong(screenManagerAddress.get(), 0x10, 0x28, 0x8, 0x3e8, 0x0);
+        System.out.println("BotInstaller: install succeeded. mainAddress=" + mainAddress.get()
+                + " screenManagerAddress=" + screenManagerAddress.get()
+                + " guiManagerAddress=" + guiManagerAddress.get());
 
         //reset address
         this.heroInfoAddress.send(0L);

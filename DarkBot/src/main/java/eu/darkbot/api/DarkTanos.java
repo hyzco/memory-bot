@@ -1,13 +1,11 @@
 package eu.darkbot.api;
 
 import com.github.manolo8.darkbot.core.api.GameAPI;
-import com.github.manolo8.darkbot.utils.LibSetup;
 import com.github.manolo8.darkbot.utils.LibUtils;
 
 public class DarkTanos implements GameAPI.Window, GameAPI.Handler, GameAPI.Memory, GameAPI.Interaction, API.Singleton {
 
     static {
-        LibSetup.downloadLib("libdo_lib.so");
         LibUtils.loadLibrary("DarkTanos");
     }
 

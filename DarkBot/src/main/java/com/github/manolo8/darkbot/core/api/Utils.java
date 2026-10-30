@@ -13,21 +13,59 @@ import java.util.Set;
 public class Utils {
     public static final String SELECT_MAP_ASSET = "MapAssetNotificationTRY_TO_SELECT_MAPASSET";
 
+    /** Map-units per screen pixel when the game's view bounds can't be read (2D view at default zoom is ~1:1). */
+    public static final double FALLBACK_UNITS_PER_PIXEL = 1.0;
+    /** Roughly the delay between the bot reading a position and the game processing the click. */
+    private static final double CLICK_LEAD_SECONDS = 0.1;
+
+    /**
+     * The map area currently visible in the game window as {x, y, width, height}. Normally read from game memory;
+     * some game builds keep it elsewhere (reads come back as zeros), so then it is estimated as the window area
+     * centered on the hero. Null if neither is usable.
+     */
+    public static double[] viewRect() {
+        RectangleImpl vb = Main.INSTANCE.mapManager.viewBounds.polygon.getBounds();
+        double bw = vb.getWidth(), bh = vb.getHeight();
+        if (bw > 100 && bw < 100_000 && bh > 100 && bh < 100_000) return new double[]{vb.getX(), vb.getY(), bw, bh};
+
+        int cw = MapManager.clientWidth, ch = MapManager.clientHeight;
+        if (cw < 100 || cw > 16384 || ch < 100 || ch > 16384) return null;
+        double hx = Main.INSTANCE.hero.locationInfo.now.x, hy = Main.INSTANCE.hero.locationInfo.now.y;
+        if (Double.isNaN(hx) || Double.isNaN(hy)) return null;
+        double w = cw * FALLBACK_UNITS_PER_PIXEL, h = ch * FALLBACK_UNITS_PER_PIXEL;
+        return new double[]{hx - w / 2, hy - h / 2, w, h};
+    }
+
     public static SelectEntityClick createSelectEntityClick(Entity entity) {
-        RectangleImpl viewBounds = Main.INSTANCE.mapManager.viewBounds.polygon.getBounds();
-        double bx = viewBounds.getX(), by = viewBounds.getY();
-        double bw = viewBounds.getWidth(), bh = viewBounds.getHeight();
+        double[] view = viewRect();
+        if (view == null) throw new IllegalStateException("Game view size unknown");
+        double bx = view[0], by = view[1], bw = view[2], bh = view[3];
         int cw = MapManager.clientWidth, ch = MapManager.clientHeight;
 
-        int entityScreenX = softClamp(translate(entity.getX() - bx, bw, cw), cw);
-        int entityScreenY = softClamp(translate(entity.getY() - by, bh, ch), ch);
+        // Aim where the ship will be when the click lands (click + game round trip), not where it was last seen.
+        double ex = entity.getX(), ey = entity.getY();
+        if (entity instanceof com.github.manolo8.darkbot.core.entities.Ship) {
+            com.github.manolo8.darkbot.core.entities.Ship ship = (com.github.manolo8.darkbot.core.entities.Ship) entity;
+            java.util.Optional<eu.darkbot.api.game.other.Location> dest = ship.getDestination();
+            if (dest.isPresent()) {
+                double dx = dest.get().getX() - ex, dy = dest.get().getY() - ey, len = Math.sqrt(dx * dx + dy * dy);
+                if (len > 1) {
+                    double lead = Math.min(len, ship.getSpeed() * CLICK_LEAD_SECONDS);
+                    ex += dx / len * lead;
+                    ey += dy / len * lead;
+                }
+            }
+        }
 
-        double angle = entity.angleTo(viewBounds.getCenterX(), viewBounds.getCenterY())
-                + (Math.random() - 0.5) * MathUtils.HALF_PI;
-        double dist = Math.random() * entity.clickable.defRadius;
+        int entityScreenX = softClamp(translate(ex - bx, bw, cw), cw);
+        int entityScreenY = softClamp(translate(ey - by, bh, ch), ch);
 
-        int diffX = translate(-Math.cos(angle) * dist, bw, cw);
-        int diffY = translate(-Math.sin(angle) * dist, bh, ch);
+        // Near-center aim with a little jitter: a miss costs a whole retry, which is far slower than precision.
+        double angle = Math.random() * MathUtils.TAU;
+        double dist = Math.random() * 0.25 * entity.clickable.defRadius;
+
+        int diffX = translate(Math.cos(angle) * dist, bw, cw);
+        int diffY = translate(Math.sin(angle) * dist, bh, ch);
 
         return new SelectEntityClick(
                 entityScreenX + diffX,

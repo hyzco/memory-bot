@@ -32,7 +32,11 @@ public class MainGui extends JFrame {
     private ExitConfirmation exitConfirmation;
     @Getter private MapDrawer mapDrawer;
 
-    public static final Image ICON = UIUtils.getImage("icon");
+    // When using the Astral control UI, this window is redundant with the embedded game view,
+    // so block any attempt (ours or a plugin's) to show it except through the explicit toggle.
+    private final boolean astralUiActive;
+
+    public static final Image ICON = com.github.manolo8.darkbot.gui.utils.AppIcon.create(256);
     public static final int DEFAULT_WIDTH = 640, DEFAULT_HEIGHT = 480;
     private int lastTick;
 
@@ -60,6 +64,7 @@ public class MainGui extends JFrame {
         this.configGui.setIconImage(ICON);
 
         this.main = main;
+        this.astralUiActive = main.params.useAstralUi();
 
         ToolTipManager.sharedInstance().setInitialDelay(350);
 
@@ -109,6 +114,22 @@ public class MainGui extends JFrame {
         return !isVisible() || getState() == ICONIFIED;
     }
 
+    @Override
+    public void setVisible(boolean visible) {
+        if (visible && astralUiActive) {
+            System.out.println("MainGui: ignoring setVisible(true) while Astral UI is active " +
+                    "(this window is redundant with the embedded game view); use the \"Show Main UI\" " +
+                    "button or setVisibleFromAstralToggle() to show it deliberately");
+            return;
+        }
+        super.setVisible(visible);
+    }
+
+    /** Bypasses the Astral-UI suppression in {@link #setVisible(boolean)} for the explicit user toggle. */
+    public void setVisibleFromAstralToggle(boolean visible) {
+        super.setVisible(visible);
+    }
+
     private void setComponentPosition() {
         setJMenuBar(titleBar = new MainTitleBar(main, this));
 
@@ -149,13 +170,21 @@ public class MainGui extends JFrame {
         if (!Objects.equals(getTitle(), title)) super.setTitle(title);
     }
 
+    private static final long MAP_REPAINT_INTERVAL_NS = 33_000_000L;
+    private long lastMapRepaint;
+
     public void tick() {
         if (main.config.MISCELLANEOUS.USERNAME_ON_TITLE) {
             if (main.hero.playerInfo.username != null) setTitle("Hak Clan SE - " + main.hero.playerInfo.username);
         }
         else setTitle("Hak Clan SE");
 
-        if ((lastTick++ % main.config.BOT_SETTINGS.MAP_DISPLAY.REFRESH_DELAY) == 0) {
+        // Painting holds the bot's update lock on the EDT, so repainting every tick (~60+/s) steals time from the bot.
+        // ~30 fps is smooth to the eye and leaves the lock free for game logic the rest of the time.
+        long now = System.nanoTime();
+        if ((lastTick++ % main.config.BOT_SETTINGS.MAP_DISPLAY.REFRESH_DELAY) == 0
+                && now - lastMapRepaint >= MAP_REPAINT_INTERVAL_NS) {
+            lastMapRepaint = now;
             mapDrawer.repaint();
         }
     }

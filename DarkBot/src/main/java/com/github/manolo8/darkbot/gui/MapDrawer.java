@@ -135,6 +135,8 @@ public class MapDrawer extends JPanel {
                             portalMenu.show(MapDrawer.this, e.getX(), e.getY());
                         }
                     } else {
+                        System.out.println("Map click -> move to " + (int) loc.getX() + "," + (int) loc.getY()
+                                + " (bot running=" + main.isRunning() + ")");
                         main.hero.drive.move(loc);
                         lastMapClick = System.currentTimeMillis();
                     }
@@ -251,6 +253,9 @@ public class MapDrawer extends JPanel {
         protected final ConfigSetting<ColorScheme.Fonts> fonts;
         protected final ConfigSetting<Set<DisplayFlag>> displayFlags;
         protected final ConfigSetting<Double> mapZoom;
+        protected final ConfigSetting<Boolean> neonTheme;
+
+        private java.awt.image.BufferedImage neonBackground;
 
         protected final Rectangle2D rect = new Rectangle2D.Double();
         protected final Ellipse2D ellipse = new Ellipse2D.Double();
@@ -271,6 +276,7 @@ public class MapDrawer extends JPanel {
             this.fonts = config.requireConfig("bot_settings.map_display.cs.fonts");
             this.displayFlags = config.requireConfig("bot_settings.map_display.toggle");
             this.mapZoom = config.requireConfig("bot_settings.map_display.map_zoom");
+            this.neonTheme = config.requireConfig("bot_settings.map_display.neon_theme");
         }
 
         public void setup(Graphics graphics, int width, int height) {
@@ -298,6 +304,7 @@ public class MapDrawer extends JPanel {
                 getGraphics2D().fillRect(0, 0, width, height);
                 setColor("background");
                 getGraphics2D().fillRect(offsetX, offsetY, w, h);
+                paintNeonBackground(offsetX, offsetY, w, h);
                 setColor("unknown");
                 getGraphics2D().drawRect(offsetX, offsetY, w, h);
             } else {
@@ -306,6 +313,7 @@ public class MapDrawer extends JPanel {
 
                 setColor("background");
                 getGraphics2D().fillRect(0, 0, width, height);
+                paintNeonBackground(0, 0, width, height);
             }
 
             setSubPixelAccuracy(true);
@@ -378,9 +386,115 @@ public class MapDrawer extends JPanel {
             return displayFlags.getValue().contains(legacyFlag);
         }
 
+        private static final java.util.Map<String, Color> NEON = new java.util.HashMap<>();
+        static {
+            NEON.put("background", new Color(0x05060F));
+            NEON.put("radiation", new Color(0x14082B));
+            NEON.put("unknown", new Color(0x4B3A9A));
+            NEON.put("hero", new Color(0x00F5D4));
+            NEON.put("going", new Color(0x00E5FF));
+            NEON.put("enemies", new Color(0xFF2E88));
+            NEON.put("allies", new Color(0x39FF14));
+            NEON.put("npcs", new Color(0xFFB300));
+            NEON.put("boxes", new Color(0xFFEA00));
+            NEON.put("portals", new Color(0xB388FF));
+            NEON.put("target", new Color(0xFF1744));
+            NEON.put("text", new Color(0xE3E8FF));
+            NEON.put("text_dark", new Color(0x9AA8E8));
+            NEON.put("pet", new Color(0x00E5FF));
+            NEON.put("pet_in", new Color(0x00B8D4));
+            NEON.put("space_balls", new Color(0xB388FF));
+            NEON.put("mines", new Color(0xFF5252));
+            NEON.put("barrier_border", new Color(0xFF2E88));
+            NEON.put("ping", new Color(0x00E5FF));
+            NEON.put("ping_border", new Color(0x7C4DFF));
+            NEON.put("health", new Color(0x00E676));
+            NEON.put("shield", new Color(0x40C4FF));
+            NEON.put("nano_hull", new Color(0x7C4DFF));
+            NEON.put("fuel", new Color(0xFFAB00));
+            NEON.put("safety", new Color(0x00B8D4));
+            NEON.put("low_relays", new Color(0xB388FF));
+            NEON.put("other_entities", new Color(0x9FA8DA));
+            NEON.put("bases", new Color(0x7C4DFF));
+            NEON.put("base_spots", new Color(0x5E35B1));
+        }
+
         @Override
         public Color getColor(String color) {
+            if (neonTheme.getValue()) {
+                Color neon = NEON.get(color);
+                if (neon != null) return neon;
+            }
             return config.getConfigValue(cs, color);
+        }
+
+        /** Deep-space backdrop (gradient, nebula glow, stars, neon grid), rendered once per size and reused. */
+        private void paintNeonBackground(int x, int y, int w, int h) {
+            if (!neonTheme.getValue() || w < 8 || h < 8) return;
+
+            if (neonBackground == null || neonBackground.getWidth() != w || neonBackground.getHeight() != h)
+                neonBackground = buildNeonBackground(w, h);
+
+            Composite old = g2.getComposite();
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+            g2.drawImage(neonBackground, x, y, null);
+            g2.setComposite(old);
+        }
+
+        private static java.awt.image.BufferedImage buildNeonBackground(int w, int h) {
+            java.awt.image.BufferedImage img = new java.awt.image.BufferedImage(w, h, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = img.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            g.setPaint(new GradientPaint(0, 0, new Color(0x04050C), 0, h, new Color(0x0A0D26)));
+            g.fillRect(0, 0, w, h);
+
+            // nebula glows: violet bottom-left, cyan top-right
+            g.setPaint(new java.awt.RadialGradientPaint(w * 0.12f, h * 0.95f, Math.max(w, h) * 0.65f,
+                    new float[]{0f, 1f}, new Color[]{new Color(124, 77, 255, 85), new Color(124, 77, 255, 0)}));
+            g.fillRect(0, 0, w, h);
+            g.setPaint(new java.awt.RadialGradientPaint(w * 0.92f, h * 0.08f, Math.max(w, h) * 0.55f,
+                    new float[]{0f, 1f}, new Color[]{new Color(0, 229, 255, 55), new Color(0, 229, 255, 0)}));
+            g.fillRect(0, 0, w, h);
+
+            // faint neon grid
+            for (int gx = 0; gx < w; gx += 40) {
+                g.setColor(new Color(108, 92, 231, gx % 200 == 0 ? 34 : 14));
+                g.drawLine(gx, 0, gx, h);
+            }
+            for (int gy = 0; gy < h; gy += 40) {
+                g.setColor(new Color(108, 92, 231, gy % 200 == 0 ? 34 : 14));
+                g.drawLine(0, gy, w, gy);
+            }
+
+            // stars (deterministic so the field doesn't flicker between resizes)
+            java.util.Random rnd = new java.util.Random(7L);
+            int stars = Math.max(40, (w * h) / 2200);
+            Color[] tint = {new Color(255, 255, 255), new Color(170, 220, 255), new Color(200, 170, 255)};
+            for (int i = 0; i < stars; i++) {
+                int sx = rnd.nextInt(w), sy = rnd.nextInt(h);
+                int alpha = 70 + rnd.nextInt(185);
+                Color t = tint[rnd.nextInt(tint.length)];
+                g.setColor(new Color(t.getRed(), t.getGreen(), t.getBlue(), alpha));
+                if (rnd.nextInt(14) == 0) {
+                    g.fillOval(sx - 1, sy - 1, 3, 3);
+                    g.setColor(new Color(t.getRed(), t.getGreen(), t.getBlue(), 40));
+                    g.fillOval(sx - 3, sy - 3, 7, 7);
+                } else {
+                    g.fillRect(sx, sy, 1, 1);
+                }
+            }
+
+            // soft vignette
+            g.setPaint(new java.awt.RadialGradientPaint(w / 2f, h / 2f, Math.max(w, h) * 0.75f,
+                    new float[]{0.55f, 1f}, new Color[]{new Color(0, 0, 0, 0), new Color(0, 0, 0, 150)}));
+            g.fillRect(0, 0, w, h);
+
+            // neon frame
+            g.setColor(new Color(124, 77, 255, 120));
+            g.drawRect(0, 0, w - 1, h - 1);
+            g.dispose();
+            return img;
         }
 
         @Override

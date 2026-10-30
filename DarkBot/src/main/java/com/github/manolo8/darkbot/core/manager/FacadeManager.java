@@ -134,6 +134,8 @@ public class FacadeManager implements Manager, eu.darkbot.api.API.Singleton, Npc
         });
     }
 
+    private int facadeDebugTick = 0;
+
     public void tick() {
         // Currently commands are not used by the bot and they represent
         // a decently big cpu chunk in ticking. Leaving them out reduces tick time significantly.
@@ -141,5 +143,10 @@ public class FacadeManager implements Manager, eu.darkbot.api.API.Singleton, Npc
 
         proxies.update();
         mediators.update();
+
+        if (++facadeDebugTick == 200) {
+            System.out.println("[FacadeManager] Proxies:   " + proxies.keySet());
+            System.out.println("[FacadeManager] Mediators: " + mediators.keySet());
+        }
     }
 }

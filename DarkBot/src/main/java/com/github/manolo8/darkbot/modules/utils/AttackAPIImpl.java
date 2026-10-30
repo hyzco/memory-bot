@@ -54,9 +54,14 @@ public class AttackAPIImpl extends AbstractAttackImpl implements Listener {
         return settingsManager.attackViaSlotbar;
     }
 
+    /** Set by Tutucu's VS mode while it mixes ammo; null = use the normal ammo selection. */
+    public static volatile java.util.function.Supplier<SelectableItem.Laser> ammoOverride;
+
     @Override
     protected SelectableItem.Laser getBestLaserAmmo() {
-        return laserHandler.getBest();
+        java.util.function.Supplier<SelectableItem.Laser> override = ammoOverride;
+        SelectableItem.Laser mixed = override == null ? null : override.get();
+        return mixed != null ? mixed : laserHandler.getBest();
     }
 
     @Override
@@ -116,7 +121,11 @@ public class AttackAPIImpl extends AbstractAttackImpl implements Listener {
         if (hero.distanceTo(target) > 1_000 || (isAttacking() && (
                 target.hasEffect(EntityEffect.NPC_ISH)
                         || target.hasEffect(EntityEffect.ISH)
-                        || target.getHealth().hpDecreasedIn(3_000)))) {
+                        || target.getHealth().hpDecreasedIn(3_000)
+                        // Shield (or hull) soaking the hits is progress too; judging by HP alone declared big-shield
+                        // targets "bugged" every few seconds and the bot stopped and re-started the attack.
+                        || target.getHealth().shieldDecreasedIn(3_000)
+                        || target.getHealth().hullDecreasedIn(3_000)))) {
             buggedTimer.activate();
         }
 

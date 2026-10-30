@@ -35,10 +35,23 @@ public class HeroDrawer implements Drawable {
         drawHeroDestination(mg);
 
         mg.setColor("hero");
+        glow(mg, hero, 30, 20);
         mg.drawOvalCentered(hero, 9.0, true);
 
         drawScreenBounds(mg);
         drawPet(mg);
+    }
+
+    /** Soft pulsing halo in the current color, drawn under the marker. */
+    static void glow(MapGraphics mg, Locatable at, double outer, double inner) {
+        java.awt.Graphics2D g = mg.getGraphics2D();
+        java.awt.Composite old = g.getComposite();
+        double pulse = 0.5 + 0.5 * Math.sin(System.currentTimeMillis() / 380.0);
+        g.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, (float) (0.10 + 0.08 * pulse)));
+        mg.drawOvalCentered(at, outer, true);
+        g.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, (float) (0.16 + 0.10 * pulse)));
+        mg.drawOvalCentered(at, inner, true);
+        g.setComposite(old);
     }
 
     private void drawConfiguration(MapGraphics mg) {

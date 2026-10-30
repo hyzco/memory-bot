@@ -23,6 +23,7 @@ public class KekkaPlayerProxyServer extends Thread {
 
     private final GameAPI.Handler handler;
     private ServerSocket serverSocket;
+    private int port = -1;
 
     public KekkaPlayerProxyServer(GameAPI.Handler handler) {
         super("Kekka Proxy");
@@ -32,7 +33,7 @@ public class KekkaPlayerProxyServer extends Thread {
                 serverSocket = new ServerSocket(port);
 
                 if (serverSocket.isBound()) {
-                    handler.setLocalProxy(port);
+                    this.port = port;
                     System.out.println("Proxy created at port: " + port);
                     break;
                 }
@@ -46,6 +47,10 @@ public class KekkaPlayerProxyServer extends Thread {
 
         if (serverSocket == null)
             throw new IllegalStateException("Every port is taken!");
+    }
+
+    public int getPort() {
+        return port;
     }
 
     @Override

@@ -21,8 +21,9 @@ public class LoginForm extends JPanel {
     private final LoginData loginData = new LoginData();
 
     public LoginForm() {
-        super(new MigLayout("wrap 2, ins 0", "[]10px:push[]", "[]8px[]"));
+        super(new MigLayout("wrap 1, ins 8 10 10 10, fillx", "[grow,fill,360:360:]", ""));
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedPane.putClientProperty("JTabbedPane.tabAreaAlignment", "fill");
 
         tabbedPane.addTab(I18n.get("gui.login.user_pass"), new UserLogin());
         tabbedPane.addTab(I18n.get("gui.login.sid"), new SidLogin());
@@ -30,12 +31,80 @@ public class LoginForm extends JPanel {
         tabbedPane.addTab(I18n.get("gui.login.saved"), saved);
         tabbedPane.setEnabledAt(2, saved.isLoaded());
         if (saved.getLogins() > 0) tabbedPane.setSelectedComponent(saved);
+        String lastUser = saved.selectLastUsed();
 
         loginBtn.addActionListener(ac -> startLogin());
 
-        add(tabbedPane, "span 2, growx, height 112px!");
-        add(infoLb, "gapleft 8px, grow 0");
-        add(loginBtn, "gapright 8px");
+        JLabel logo = new JLabel(new ImageIcon(com.github.manolo8.darkbot.gui.utils.AppIcon.create(44)));
+        JLabel title = new JLabel("HAK CLAN");
+        title.setFont(title.getFont().deriveFont(java.awt.Font.BOLD, 20f));
+        title.setForeground(new java.awt.Color(0x8B5CF6));
+        JLabel subtitle = new JLabel("Sign in to continue");
+        subtitle.setForeground(new java.awt.Color(0x8A90A8));
+        JPanel header = new JPanel(new MigLayout("ins 0, gapx 12", "[][]", "[]0[]"));
+        header.setOpaque(false);
+        header.add(logo, "spany 2");
+        header.add(title, "wrap");
+        header.add(subtitle);
+
+        loginBtn.putClientProperty("FlatLaf.style",
+                "background: #8B5CF6; foreground: #FFFFFF; hoverBackground: #A78BFA; pressedBackground: #7C3AED; "
+                        + "arc: 14; font: bold +1; borderWidth: 0; focusWidth: 0");
+        infoLb.setFont(infoLb.getFont().deriveFont(12f));
+
+        add(header, "gapbottom 10");
+        add(tabbedPane, "growx, h 168!");
+        add(infoLb, "growx, gaptop 4, hmin 18");
+        add(loginBtn, "growx, h 42!, gaptop 4");
+
+        com.github.manolo8.darkbot.config.Config.BotSettings.Other other =
+                com.github.manolo8.darkbot.config.ConfigEntity.INSTANCE.getConfig().BOT_SETTINGS.OTHER;
+        JCheckBox auto = new JCheckBox("Log in automatically as the last used account", other.AUTO_LOGIN);
+        auto.addActionListener(e -> other.AUTO_LOGIN = auto.isSelected());
+        add(auto, "gaptop 2");
+
+        if (other.AUTO_LOGIN && lastUser != null && saved.isLoaded()) startCountdown(lastUser);
+    }
+
+    private Timer countdown;
+
+    /** Logs in by itself after a few seconds; any click, key press or tab change cancels it. */
+    private void startCountdown(String user) {
+        int[] left = {3};
+        setInfoText(new Message(false, "Logging in as " + user + " in " + left[0] + "...  (click anywhere to cancel)", null));
+        countdown = new Timer(1000, e -> {
+            if (--left[0] <= 0) {
+                cancelCountdown();
+                startLogin();
+            } else {
+                setInfoText(new Message(false, "Logging in as " + user + " in " + left[0] + "...  (click anywhere to cancel)", null));
+            }
+        });
+        countdown.start();
+
+        java.awt.event.MouseAdapter cancelOnClick = new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                if (e.getSource() != loginBtn) cancelCountdownWithMessage();
+            }
+        };
+        addMouseListener(cancelOnClick);
+        tabbedPane.addMouseListener(cancelOnClick);
+        tabbedPane.addChangeListener(e -> cancelCountdownWithMessage());
+        java.awt.Toolkit.getDefaultToolkit().addAWTEventListener(ev -> {
+            if (countdown != null && countdown.isRunning()) cancelCountdownWithMessage();
+        }, java.awt.AWTEvent.KEY_EVENT_MASK);
+    }
+
+    private void cancelCountdown() {
+        if (countdown != null) countdown.stop();
+    }
+
+    private void cancelCountdownWithMessage() {
+        if (countdown != null && countdown.isRunning()) {
+            countdown.stop();
+            setInfoText(new Message(false, "", null));
+        }
     }
 
     public JButton getLoginBtn() {

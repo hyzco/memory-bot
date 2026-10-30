@@ -85,6 +85,20 @@ public class SavedLogins extends JPanel implements LoginScreen {
         });
     }
 
+    /** Selects the account used last time. Returns its name, or null if there is none / it was removed. */
+    public String selectLastUsed() {
+        if (!loaded) return null;
+        String last = ConfigEntity.INSTANCE.getConfig().BOT_SETTINGS.OTHER.LAST_LOGIN_USER;
+        if (last == null) return null;
+        for (int i = 0; i < model.getSize(); i++) {
+            if (last.equals(model.get(i).u)) {
+                users.setSelectedIndex(i);
+                return last;
+            }
+        }
+        return null;
+    }
+
     public int getLogins() {
         return loaded ? model.getSize() : 0;
     }
@@ -161,6 +175,7 @@ public class SavedLogins extends JPanel implements LoginScreen {
         if (user == null) return new LoginForm.Message(true,
                 I18n.get("gui.login.error.no_user"), I18n.get("gui.login.error.no_user.desc"));
 
+        ConfigEntity.INSTANCE.getConfig().BOT_SETTINGS.OTHER.LAST_LOGIN_USER = user.u;
         login.setCredentials(user.u, user.p, (sid, sv) -> {
             if (Objects.equals(user.s, sid) && Objects.equals(user.sv, sv)) return;
             user.setSid(sid, sv);

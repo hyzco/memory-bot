@@ -32,15 +32,24 @@ public class ChatProxy extends Updatable implements ChatAPI, Listener {
         this.eventBroker.registerListener(this);
     }
 
+    private int chatDebugTick = 0;
+
     @Override
     public void update() {
         long data = API.readLong(address + 48) & ByteUtils.ATOM_MASK;
         this.chats.update(API.readLong(data + 64));
 
+        boolean printRooms = ++chatDebugTick % 600 == 0;
+        if (printRooms) System.out.printf("[ChatProxy] %d rooms%n", chats.size());
+
         for (ChatRoom chat : chats) {
+            if (printRooms) System.out.printf("  room='%s' size=%d%n", chat.chatName, chat.messagesArr.size());
             if (chat.messagesArr.size() > 150) continue;
-            chat.messagesArr.forEachIncremental(ptr ->
-                    eventBroker.sendEvent(new MessageSentEvent(chat.chatName, new Message(ptr))));
+            chat.messagesArr.forEachIncremental(ptr -> {
+                Message msg = new Message(ptr);
+                System.out.printf("[ChatProxy MSG] room='%s' msg='%s'%n", chat.chatName, msg.message);
+                eventBroker.sendEvent(new MessageSentEvent(chat.chatName, msg));
+            });
         }
     }
 
